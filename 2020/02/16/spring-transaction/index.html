@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Spring事务管理, 小张哥blog">
     <meta name="description" content="什么是事务事务是逻辑上的一组操作，要么都执行，要么都不执行。
@@ -34,6 +34,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -455,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.7k
+                    3.8k
                 </div>
                 
 
@@ -505,8 +507,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>org.springframework.jdbc.datasource.DataSourceTransactionManager</td>
 <td>使用Spring Jdbc或者MyBatis进行持久化数据时使用</td>
 </tr>
@@ -522,8 +523,7 @@
 <td>org.springframework.kafka.transaction.KafkaTransactionManager</td>
 <td>使用Kafka事务时使用</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="TransactionDefinition"><a href="#TransactionDefinition" class="headerlink" title="TransactionDefinition"></a>TransactionDefinition</h3><p>事务管理器接口 <strong>PlatformTransactionManager</strong> 通过 <strong>getTransaction(TransactionDefinition definition)</strong> 方法来得到一个事务，这个方法里面的参数是 <strong>TransactionDefinition类</strong> ，这个类就定义了一些基本的事务属性。</p>
 <p><img src="/images/spring/spring-transactionDefinition.jpeg" alt="TransactionDefinition"></p>
 <h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><p>在不考虑隔离性的情况下，会引发如下问题</p>
@@ -553,8 +553,7 @@
 <th>导致的问题</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>ISOLATION_DEFAULT</strong></td>
 <td>使用数据库默认的隔离级别（spring默认）</td>
 </tr>
@@ -574,8 +573,7 @@
 <td>ISOLATION_SERIALIZABLE</td>
 <td>完全服从ACID的隔离级别，事务只能一个一个执行，避免了脏读、不可重复读、幻读。执行效率慢，使用时慎重</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>注：MySQL使用的是<code>REPEATABLE_READ</code>；Oracle使用的是<code>READ_COMMITTED</code></p>
 <h4 id="传播行为"><a href="#传播行为" class="headerlink" title="传播行为"></a>传播行为</h4><p>解决业务层方法之间的相互调用的问题，事务传递方式。</p>
 <table>
@@ -585,8 +583,7 @@
 <th>常量解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>PROPAGATION_REQUIRED</strong></td>
 <td>支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择，也是 Spring 默认的事务的传播。</td>
 </tr>
@@ -614,10 +611,9 @@
 <td><strong>PROPAGATION_NESTED</strong></td>
 <td>如果一个活动的事务存在，则运行在一个嵌套的事务中。如果没有活动事务，则按REQUIRED属性执行。它使用了一个单独的事务，这个事务拥有多个可以回滚的保存点。内部事务的回滚不会对外部事务造成影响。它只对DataSourceTransactionManager事务管理器起效。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="TransactionStatus"><a href="#TransactionStatus" class="headerlink" title="TransactionStatus"></a>TransactionStatus</h3><p><code>TransactionStatus</code>接口用来记录事务的状态 该接口定义了一组方法,用来获取或判断事务的相应状态信息.</p>
-<p><code>PlatformTransactionManager.getTransaction(…)</code>方法返回一个 <code>TransactionStatus</code> 对象。返回的<code>TransactionStatus</code> 对象可能代表一个新的或已经存在的事务（如果在当前调用堆栈有一个符合条件的事务）。</p>
+<p><code>PlatformTransactionManager.getTransaction(…) </code>方法返回一个 <code>TransactionStatus</code> 对象。返回的<code>TransactionStatus</code> 对象可能代表一个新的或已经存在的事务（如果在当前调用堆栈有一个符合条件的事务）。</p>
 <p><img src="/images/spring/spring-transactionStatus-diagram.jpeg" alt="TransactionStatus-diagram"></p>
 <p><img src="/images/spring/spring-transactionStatus.jpeg" alt="TransactionStatus"></p>
 <p><img src="/images/spring/spring-transactionExecution.jpeg" alt="TransactionExecution"></p>
@@ -632,31 +628,30 @@
 ├── pom.xml
 └── src
     ├── main
-    │   ├── java
-    │   │   └── com
-    │   │       └── iogogogo
-    │   │           └── transfer
-    │   │               ├── TransferApplication.java
-    │   │               ├── entity
-    │   │               │   └── TransferAccount.java
-    │   │               ├── jpa
-    │   │               │   └── TransferRepository.java
-    │   │               ├── mapper
-    │   │               │   └── TransferMapper.java
-    │   │               └── service
-    │   │                   ├── TransferService.java
-    │   │                   └── impl
-    │   │                       └── TransferServiceImpl.java
-    │   └── resources
-    │       ├── application.yml
-    │       └── transfer.sql
+    │&nbsp;&nbsp; ├── java
+    │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
+    │&nbsp;&nbsp; │&nbsp;&nbsp;     └── iogogogo
+    │&nbsp;&nbsp; │&nbsp;&nbsp;         └── transfer
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── TransferApplication.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── entity
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             │&nbsp;&nbsp; └── TransferAccount.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── jpa
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             │&nbsp;&nbsp; └── TransferRepository.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── mapper
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             │&nbsp;&nbsp; └── TransferMapper.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             └── service
+    │&nbsp;&nbsp; │&nbsp;&nbsp;                 ├── TransferService.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;                 └── impl
+    │&nbsp;&nbsp; │&nbsp;&nbsp;                     └── TransferServiceImpl.java
+    │&nbsp;&nbsp; └── resources
+    │&nbsp;&nbsp;     ├── application.yml
+    │&nbsp;&nbsp;     └── transfer.sql
     └── test
         └── java
             └── com
                 └── iogogogo
                     └── transfer
-                        └── TransferApplicationTests.java
-</code></pre>
+                        └── TransferApplicationTests.java</code></pre>
 <h3 id="新建数据库表"><a href="#新建数据库表" class="headerlink" title="新建数据库表"></a>新建数据库表</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> transfer_account<span class="token punctuation">;</span>
 
 <span class="token keyword">create</span> <span class="token keyword">table</span> transfer_account
@@ -672,8 +667,7 @@
 <span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">'kevin.yu'</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">select</span> <span class="token operator">*</span>
-<span class="token keyword">from</span> transfer_account<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">from</span> transfer_account<span class="token punctuation">;</span></code></pre>
 <h3 id="pom配置"><a href="#pom配置" class="headerlink" title="pom配置"></a>pom配置</h3><pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>mysql<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -688,8 +682,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>mybatis-plus-boot-starter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.3.1.tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span></code></pre>
 <h3 id="application-yml"><a href="#application-yml" class="headerlink" title="application.yml"></a>application.yml</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8084</span>
 <span class="token key atrule">spring</span><span class="token punctuation">:</span>
@@ -720,7 +713,6 @@
 <span class="token key atrule">logging</span><span class="token punctuation">:</span>
   <span class="token key atrule">level</span><span class="token punctuation">:</span>
     <span class="token key atrule">com.iogogogo.transfer.mapper</span><span class="token punctuation">:</span> debug
-
 </code></pre>
 <h3 id="Jpa操作数据库"><a href="#Jpa操作数据库" class="headerlink" title="Jpa操作数据库"></a>Jpa操作数据库</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>jpa<span class="token punctuation">;</span>
 
@@ -753,7 +745,6 @@
     <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"update transfer_account set money = money - :money where name = :name"</span><span class="token punctuation">,</span> nativeQuery <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
     <span class="token keyword">void</span> <span class="token function">outMoney</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> String out<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"money"</span><span class="token punctuation">)</span> <span class="token keyword">float</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h4 id="业务层模拟一个转账操作"><a href="#业务层模拟一个转账操作" class="headerlink" title="业务层模拟一个转账操作"></a>业务层模拟一个转账操作</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
 
@@ -786,7 +777,6 @@
         transferRepository<span class="token punctuation">.</span><span class="token function">inMoney</span><span class="token punctuation">(</span>in<span class="token punctuation">,</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h4 id="新建测试类"><a href="#新建测试类" class="headerlink" title="新建测试类"></a>新建测试类</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">;</span>
 
@@ -814,7 +804,6 @@
         transferService<span class="token punctuation">.</span><span class="token function">transfer</span><span class="token punctuation">(</span><span class="token string">"jack.zhang"</span><span class="token punctuation">,</span> <span class="token string">"kevin.yu"</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>但我们运行时，会抛出如下异常：</p>
 <pre class=" language-verilog"><code class="language-verilog">
@@ -889,7 +878,6 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
     at org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>dao<span class="token punctuation">.</span>support<span class="token punctuation">.</span>PersistenceExceptionTranslationInterceptor<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>PersistenceExceptionTranslationInterceptor<span class="token punctuation">.</span>java<span class="token punctuation">:</span><span class="token number">139</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token number">39</span> more
 
-
 </code></pre>
 <p>那是因为使用jpa的时候，涉及到<code>@Modifying</code>就表示是增删改操作，那么就必须添加<code>@Transactional</code>，当然如果是单纯的查询就不需要了（spring考虑的挺全面）。当加上<code>@Transactional</code>就可以正常运行了。</p>
 <p>我们可以在代码上手动给他添加一个异常，再来看结果。这里我们加了一个<code>int i = 1 / 0;</code>会产生一个除以0的异常，因为有<code>@Transactional</code>的存在，整个执行是不能成功的。</p>
@@ -900,8 +888,7 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
   transferRepository<span class="token punctuation">.</span><span class="token function">outMoney</span><span class="token punctuation">(</span>out<span class="token punctuation">,</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">0</span><span class="token punctuation">;</span>
   transferRepository<span class="token punctuation">.</span><span class="token function">inMoney</span><span class="token punctuation">(</span>in<span class="token punctuation">,</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="MyBatis-Plus操作数据库"><a href="#MyBatis-Plus操作数据库" class="headerlink" title="MyBatis-Plus操作数据库"></a>MyBatis-Plus操作数据库</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>mapper<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>BaseMapper<span class="token punctuation">;</span>
@@ -929,8 +916,7 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
      */</span>
     <span class="token annotation punctuation">@Update</span><span class="token punctuation">(</span><span class="token string">"update transfer_account set money = money - #{money} where name = #{name}"</span><span class="token punctuation">)</span>
     <span class="token keyword">void</span> <span class="token function">outMoney</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> String out<span class="token punctuation">,</span> <span class="token annotation punctuation">@Param</span><span class="token punctuation">(</span><span class="token string">"money"</span><span class="token punctuation">)</span> <span class="token keyword">float</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h4 id="业务层模拟一个转账操作-1"><a href="#业务层模拟一个转账操作-1" class="headerlink" title="业务层模拟一个转账操作"></a>业务层模拟一个转账操作</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>TransferRepository<span class="token punctuation">;</span>
@@ -964,9 +950,8 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
         transferMapper<span class="token punctuation">.</span><span class="token function">inMoney</span><span class="token punctuation">(</span>in<span class="token punctuation">,</span> money<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
-<p>在没有异常情况下，就算不加<code>@Transactional</code>是可以直接操作成功的，但是如果 <code>int i = 1 / 0;</code>存在，<code>outMoney</code>方法还是可以正常执行的，这样就会造成钱被扣了但是对方却没有收到的情况，所以这时候就需要添加<code>@Transactional</code>让他进行事务处理，这里mybatis就没有jpa处理的好了。</p>
+<p>在没有异常情况下，就算不加<code> @Transactional</code>是可以直接操作成功的，但是如果 <code>int i = 1 / 0;</code>存在，<code>outMoney</code>方法还是可以正常执行的，这样就会造成钱被扣了但是对方却没有收到的情况，所以这时候就需要添加<code> @Transactional</code>让他进行事务处理，这里mybatis就没有jpa处理的好了。</p>
 <h2 id="Transactional-介绍"><a href="#Transactional-介绍" class="headerlink" title="@Transactional 介绍"></a>@Transactional 介绍</h2><table>
 <thead>
 <tr>
@@ -974,8 +959,7 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
 <th><strong>描述</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>readOnly</strong></td>
 <td>该属性用于设置当前事务是否为只读事务，设置为true表示只读，false则表示可读写，默认值为false。例如：@Transactional(readOnly=true)</td>
 </tr>
@@ -1007,11 +991,10 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
 <td><strong>timeout</strong></td>
 <td>该属性用于设置事务的超时秒数，默认值为-1表示永不超时</td>
 </tr>
-</tbody>
-</table>
-<p>以上参考：<a href="https://www.cnblogs.com/caoyc/p/5632963.html" target="_blank" rel="noopener"><code>spring</code>事务注解</a></p>
+</tbody></table>
+<p>以上参考：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/caoyc/p/5632963.html"><code>spring</code>事务注解</a></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上介绍了一下spring中的事务接口和事务的传播行为以及隔离级别，也通过转账的例子演示了有事务和没有事务的区别，再有了<code>spring boot</code>以后，基本都是使用注解的形式进行事务处理。</p>
-<p>源码地址：<a href="https://github.com/iogogogo/life-example/tree/master/example-transaction" target="_blank" rel="noopener">https://github.com/iogogogo/life-example/tree/master/example-transaction</a></p>
+<p>源码地址：<a target="_blank" rel="noopener" href="https://github.com/iogogogo/life-example/tree/master/example-transaction">https://github.com/iogogogo/life-example/tree/master/example-transaction</a></p>
 
             </div>
             <hr/>
@@ -1303,7 +1286,7 @@ Caused by<span class="token punctuation">:</span> javax<span class="token punctu
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/工具使用/" class="post-category">
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
                                     工具使用
                                 </a>
                             
@@ -1524,7 +1507,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Spring Boot 2.x使用mybatis, 小张哥blog">
     <meta name="description" content="orm框架的本质是简化编程中操作数据库的编码，发展到现在基本上就剩两家了，一个是宣称可以不用写一句SQL的hibernate，一个是可以灵活调试动态sql的mybatis,两者各有特点，在企业级系统开发中可以根据需求灵活使用。
@@ -27,6 +27,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -534,8 +536,7 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">></span></span>
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="application-yml文件"><a href="#application-yml文件" class="headerlink" title="application.yml文件"></a>application.yml文件</h2><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">application</span><span class="token punctuation">:</span>
     <span class="token key atrule">name</span><span class="token punctuation">:</span> life<span class="token punctuation">-</span>spring<span class="token punctuation">-</span>sample<span class="token punctuation">-</span>mybatis
@@ -549,9 +550,8 @@
   <span class="token key atrule">type-aliases-package</span><span class="token punctuation">:</span> com.zz.entity
 
 <span class="token key atrule">server</span><span class="token punctuation">:</span>
-  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span>
-</code></pre>
-<h2 id="实体对象"><a href="#实体对象" class="headerlink" title="实体对象"></a>实体对象</h2><p>这里为了方便，使用了<a href="https://projectlombok.org/" target="_blank" rel="noopener">lombok</a>，不了解的同学可以自己Google看一下</p>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8080</span></code></pre>
+<h2 id="实体对象"><a href="#实体对象" class="headerlink" title="实体对象"></a>实体对象</h2><p>这里为了方便，使用了<a target="_blank" rel="noopener" href="https://projectlombok.org/">lombok</a>，不了解的同学可以自己Google看一下</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
@@ -566,8 +566,7 @@
     <span class="token keyword">private</span> Date birthday<span class="token punctuation">;</span>
 
     <span class="token keyword">private</span> <span class="token keyword">int</span> deptId<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="mapper"><a href="#mapper" class="headerlink" title="mapper"></a>mapper</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">EmployeeMapper</span> <span class="token punctuation">{</span>
 
@@ -593,8 +592,7 @@
 
     <span class="token annotation punctuation">@Insert</span><span class="token punctuation">(</span><span class="token string">"insert into employee(name,birthday,age,dept_id) values(#{name},#{birthday},#{age},#{deptId})"</span><span class="token punctuation">)</span>
     <span class="token keyword">int</span> <span class="token function">save</span><span class="token punctuation">(</span>Employee employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="controller通过前端完成增删改查"><a href="#controller通过前端完成增删改查" class="headerlink" title="controller通过前端完成增删改查"></a>controller通过前端完成增删改查</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Slf4j</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api/emp"</span><span class="token punctuation">)</span>
@@ -632,11 +630,9 @@
         employee<span class="token punctuation">.</span><span class="token function">setId</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> employeeMapper<span class="token punctuation">.</span><span class="token function">updateById</span><span class="token punctuation">(</span>employee<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>运行项目以后就可以使用postman工具进行接口请求测试，对应的使用post、get、put等请求，可以自行测试</p>
-<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">localhost:</span>8080/api/emp/
-</code></pre>
+<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">localhost:</span>8080/api/emp/</code></pre>
 <p>response</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -695,8 +691,7 @@
         <span class="token property">"birthday"</span><span class="token operator">:</span> <span class="token string">"2000-01-01T00:00:00.000+0000"</span><span class="token punctuation">,</span>
         <span class="token property">"deptId"</span><span class="token operator">:</span> <span class="token number">0</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">]</span></code></pre>
 <h1 id="使用xml版"><a href="#使用xml版" class="headerlink" title="使用xml版"></a>使用xml版</h1><p>前面我们可以看到，使用注解版的mybatis可以一行xml文件都不写，但是这个所有的sql都硬编码在mapper文件中，对后期的维护和复用不是特别方便，所有接下来我们看看使用xml完成增删改查</p>
 <h2 id="application-yml文件-1"><a href="#application-yml文件-1" class="headerlink" title="application.yml文件"></a>application.yml文件</h2><p>这里和使用注解的区别就是需要指定mapper文件的位置，为了方便我们还有一张dept表，这次使用dept表来进行演示</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
@@ -715,8 +710,7 @@
   <span class="token key atrule">mapper-locations</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>mybatis/*.xml
 
 <span class="token key atrule">server</span><span class="token punctuation">:</span>
-  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8082</span>
-</code></pre>
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8082</span></code></pre>
 <h2 id="dept实体对象"><a href="#dept实体对象" class="headerlink" title="dept实体对象"></a>dept实体对象</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
@@ -725,8 +719,7 @@
     <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>
 
     <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="deptMapper对象"><a href="#deptMapper对象" class="headerlink" title="deptMapper对象"></a>deptMapper对象</h2><p>可以看到，我们这里只有mapper接口中的方法声明，没有在上面进行注解操作，那么接下来我们就需要编写mapper.xml文件进行数据库操作，在resources/mybatis文件夹下新建DeptMapper.xml文件</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">DeptMapper</span> <span class="token punctuation">{</span>
@@ -740,8 +733,7 @@
     List<span class="token operator">&lt;</span>Dept<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     Dept <span class="token function">findById</span><span class="token punctuation">(</span><span class="token keyword">long</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="mapper-xml文件"><a href="#mapper-xml文件" class="headerlink" title="mapper.xml文件"></a>mapper.xml文件</h2><pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8" ?></span>
 <span class="token doctype">&lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" ></span>
@@ -774,8 +766,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>select</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>findById<span class="token punctuation">"</span></span> <span class="token attr-name">resultType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.zz.entity.Dept<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
         select * from dept where id=#{id}
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mapper</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="控制器对象"><a href="#控制器对象" class="headerlink" title="控制器对象"></a>控制器对象</h2><p>这里只是为了演示使用xml操作，controller中就不一一写出所有的接口，其实和使用注解完全是一样的</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api/dept"</span><span class="token punctuation">)</span>
@@ -788,11 +779,9 @@
     <span class="token keyword">public</span> List<span class="token operator">&lt;</span>Dept<span class="token operator">></span> <span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> deptMapper<span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>这里使用postman工具进行简单的测试，可以看到所有的部门数据全部被查出来了</p>
-<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">localhost:</span>8082/api/dept/
-</code></pre>
+<pre class=" language-http"><code class="language-http"><span class="token header-name keyword">localhost:</span>8082/api/dept/</code></pre>
 <p>response</p>
 <pre class=" language-java"><code class="language-java"><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
@@ -823,14 +812,13 @@
         <span class="token string">"id"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
         <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"鸡犬不宁部"</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">]</span>
-</code></pre>
+<span class="token punctuation">]</span></code></pre>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ul>
 <li>其实使用spring boot-1.x版本和2.x版本操作基本是一致的</li>
 <li>注解方便单表的操作，xml适用于复杂的操作，各有优点，没有最好的，只有最合适的</li>
 </ul>
-<p>完整代码链接<a href="https://github.com/flower-face/spring-boot-samples" target="_blank" rel="noopener">github</a></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.mybatis.org/mybatis-3/zh/index.html" target="_blank" rel="noopener">mybatis</a></p>
+<p>完整代码链接<a target="_blank" rel="noopener" href="https://github.com/flower-face/spring-boot-samples">github</a></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/zh/index.html">mybatis</a></p>
 
             </div>
             <hr/>
@@ -1328,7 +1316,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

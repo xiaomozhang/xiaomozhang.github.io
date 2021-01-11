@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Vertica 简介, 小张哥blog">
     <meta name="description" content="Vertica是一款基于列存储的MPP （massively parallel processing）架构的数据库。它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebra">
@@ -26,6 +26,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -466,15 +468,15 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Vertica是一款基于列存储的<a href="https://baike.baidu.com/item/MPP" target="_blank" rel="noopener">MPP</a> （massively parallel processing）架构的数据库。它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebraker(2014 年<a href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96/324645" target="_blank" rel="noopener">图灵奖</a>获得者)所创建，于2011年被<a href="https://baike.baidu.com/item/%E6%83%A0%E6%99%AE/275141" target="_blank" rel="noopener">惠普</a>收购并成为其核心大数据平台软件。</p>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Vertica是一款基于列存储的<a href="https://baike.baidu.com/item/MPP" target="_blank" rel="noopener">MPP</a>（massively parallel processing）架构的数据库。 它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebraker(2014 年<a href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96" target="_blank" rel="noopener">图灵奖</a>获得者)所创建，于2011年被惠普收购并成为其核心大数据平台软件。</p>
-<p>Vertica 采用无共享的MPP 架构，基于工业标准的<a href="https://baike.baidu.com/item/x86" target="_blank" rel="noopener">x86</a> 服务器，拥有高可扩展性。Vertica 集群中的所有节点100%对等，集群中没有主节点或其他共享资源。通过增加节点，就可以线性地扩展集群的计算能力和数据处理容量。</p>
-<p>Vertica 是真正的纯列式数据库，优化器和执行引擎可以忽略表中与查询无关的列。Vertica 不仅仅按列式存储数据，还主动地根据列数据的特点和查询的要求选用最佳的算法对数据进行排序和编码压缩，这就极大地降低磁盘I/O 消耗。同时，Vertica 的执行引擎和优化器也是基于列式数据库设计的，编码压缩过的列数据在Vertica 的执行引擎中进行过滤、关联、分组等操作时不需要解反编码，从而大大降低了<a href="https://baike.baidu.com/item/CPU/120556" target="_blank" rel="noopener">CPU</a> 和<a href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98" target="_blank" rel="noopener">内存</a>消耗。</p>
+                <p>Vertica是一款基于列存储的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/MPP">MPP</a> （massively parallel processing）架构的数据库。它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebraker(2014 年<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96/324645">图灵奖</a>获得者)所创建，于2011年被<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%83%A0%E6%99%AE/275141">惠普</a>收购并成为其核心大数据平台软件。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Vertica是一款基于列存储的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/MPP">MPP</a>（massively parallel processing）架构的数据库。 它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebraker(2014 年<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96">图灵奖</a>获得者)所创建，于2011年被惠普收购并成为其核心大数据平台软件。</p>
+<p>Vertica 采用无共享的MPP 架构，基于工业标准的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/x86">x86</a> 服务器，拥有高可扩展性。Vertica 集群中的所有节点100%对等，集群中没有主节点或其他共享资源。通过增加节点，就可以线性地扩展集群的计算能力和数据处理容量。</p>
+<p>Vertica 是真正的纯列式数据库，优化器和执行引擎可以忽略表中与查询无关的列。Vertica 不仅仅按列式存储数据，还主动地根据列数据的特点和查询的要求选用最佳的算法对数据进行排序和编码压缩，这就极大地降低磁盘I/O 消耗。同时，Vertica 的执行引擎和优化器也是基于列式数据库设计的，编码压缩过的列数据在Vertica 的执行引擎中进行过滤、关联、分组等操作时不需要解反编码，从而大大降低了<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CPU/120556">CPU</a> 和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%85%E5%AD%98">内存</a>消耗。</p>
 <p>Vertica 充分利用列式存储的优点，在保持对前端应用透明的前提下，把数据在集群中的所有节点进行均匀分布的同时，还在多个节点上对同一份数据维护了多个拷贝，确保任意一个扩几个节点出现故障或进入维修状态都不会影响集群的健康状态。这使得Vertica 拥有类似磁盘RAID 一样高可靠性。</p>
 <p>无共享的MPP 架构和真正的列式数据库特性，使Vertica 拥有高性能、高扩展性、高压缩率、高健壮性的特点。与传统的解决方案相比，Vertica 可以以30%的成本，实现50 倍-1000 倍的性能提高。</p>
 <h2 id="软件优势"><a href="#软件优势" class="headerlink" title="软件优势"></a>软件优势</h2><p>作为全新架构的实时分析平台，Vertica 有很多的创新，特点包括：</p>
 <p><strong>列式存储和计算</strong></p>
-<p>通过列式计算和强大的主动数据压缩，大幅降低成本高昂的磁盘 <a href="https://baike.baidu.com/item/I%2FO/84718" target="_blank" rel="noopener">I/O</a>（主要是传统的以行为存储单位的<a href="https://baike.baidu.com/item/SQL" target="_blank" rel="noopener">SQL</a> 数据库使用），执行查询的速度可提升 50 到 1000倍，存储成本最高削减 90%。</p>
+<p>通过列式计算和强大的主动数据压缩，大幅降低成本高昂的磁盘 <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/I%2FO/84718">I/O</a>（主要是传统的以行为存储单位的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/SQL">SQL</a> 数据库使用），执行查询的速度可提升 50 到 1000倍，存储成本最高削减 90%。</p>
 <p><strong>“横向扩展式”大规模并行处理 (MPP)</strong></p>
 <p>基于无共享的MPP 架构，支持在线添加数量不限的X86 工业标准服务器，可根据需求任意扩展解决方案。</p>
 <p><strong>实时分析</strong></p>
@@ -992,7 +994,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

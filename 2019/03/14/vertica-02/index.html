@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Vertica 基本操作语句, 小张哥blog">
     <meta name="description" content="基本介绍基于列存储的数据库，相对于传统的基于行的数据库，它更适合在数据仓库存储方面发挥特长。基于列存储的数据库的优点：
@@ -30,6 +30,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -486,50 +488,34 @@
 <li>完全无共享架构，降低对共享资源的系统竞争。</li>
 </ul>
 <p>Vertica数据库运行在基于Linux的网格服务器上，目前应用于Amazon Elastic Compute Cloud的数据库管理系统。</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="进入-vsql-环境"><a href="#进入-vsql-环境" class="headerlink" title="进入 vsql 环境"></a>进入 vsql 环境</h2><pre class=" language-shell"><code class="language-shell">vsql -U dbadmin -w 123456
-</code></pre>
-<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><pre class=" language-shell"><code class="language-shell">dbadmin=> \h
-</code></pre>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><h2 id="进入-vsql-环境"><a href="#进入-vsql-环境" class="headerlink" title="进入 vsql 环境"></a>进入 vsql 环境</h2><pre class=" language-shell"><code class="language-shell">vsql -U dbadmin -w 123456</code></pre>
+<h2 id="查看帮助"><a href="#查看帮助" class="headerlink" title="查看帮助"></a>查看帮助</h2><pre class=" language-shell"><code class="language-shell">dbadmin=> \h</code></pre>
 <h2 id="切换vertica用户，用于创建database"><a href="#切换vertica用户，用于创建database" class="headerlink" title="切换vertica用户，用于创建database"></a>切换vertica用户，用于创建database</h2><pre class=" language-shell"><code class="language-shell"># 切换用户
 su - dbadmin
 
 # 进入vertica管理工具
-/opt/vertica/bin/admintools
-</code></pre>
-<p><a href="https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/AdministratorsGuide/AdminTools/CreatingADatabase.htm" target="_blank" rel="noopener">创建数据库</a></p>
-<h1 id="用户与schema查询"><a href="#用户与schema查询" class="headerlink" title="用户与schema查询"></a>用户与schema查询</h1><h2 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> v_catalog<span class="token punctuation">.</span>users<span class="token punctuation">;</span>
-</code></pre>
-<h2 id="查询schema"><a href="#查询schema" class="headerlink" title="查询schema"></a>查询schema</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> schemata<span class="token punctuation">;</span>
-</code></pre>
+/opt/vertica/bin/admintools</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.vertica.com/docs/9.2.x/HTML/Content/Authoring/AdministratorsGuide/AdminTools/CreatingADatabase.htm">创建数据库</a></p>
+<h1 id="用户与schema查询"><a href="#用户与schema查询" class="headerlink" title="用户与schema查询"></a>用户与schema查询</h1><h2 id="查询用户"><a href="#查询用户" class="headerlink" title="查询用户"></a>查询用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> v_catalog<span class="token punctuation">.</span>users<span class="token punctuation">;</span></code></pre>
+<h2 id="查询schema"><a href="#查询schema" class="headerlink" title="查询schema"></a>查询schema</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> schemata<span class="token punctuation">;</span></code></pre>
 <h2 id="某个schema必须附属于某个用户（user），查询用户和schema信息"><a href="#某个schema必须附属于某个用户（user），查询用户和schema信息" class="headerlink" title="某个schema必须附属于某个用户（user），查询用户和schema信息"></a>某个schema必须附属于某个用户（user），查询用户和schema信息</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> u<span class="token punctuation">.</span>user_name<span class="token punctuation">,</span> s<span class="token punctuation">.</span>schema_name
-<span class="token keyword">FROM</span> users u <span class="token keyword">LEFT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> schemata s <span class="token keyword">ON</span> u<span class="token punctuation">.</span>user_name <span class="token operator">=</span> s<span class="token punctuation">.</span>schema_owner<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">FROM</span> users u <span class="token keyword">LEFT</span> <span class="token keyword">OUTER</span> <span class="token keyword">JOIN</span> schemata s <span class="token keyword">ON</span> u<span class="token punctuation">.</span>user_name <span class="token operator">=</span> s<span class="token punctuation">.</span>schema_owner<span class="token punctuation">;</span></code></pre>
 <h1 id="创建用户和schema"><a href="#创建用户和schema" class="headerlink" title="创建用户和schema"></a>创建用户和schema</h1><h2 id="创建一个用户"><a href="#创建一个用户" class="headerlink" title="创建一个用户"></a>创建一个用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># username:dev_test password:test</span>
-<span class="token keyword">create</span> <span class="token keyword">user</span> dev_test identified <span class="token keyword">by</span> <span class="token string">'test'</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="基于某个用户创建schema"><a href="#基于某个用户创建schema" class="headerlink" title="基于某个用户创建schema"></a>基于某个用户创建schema</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">schema</span> <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token keyword">exists</span> test <span class="token keyword">authorization</span> dev_test<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">create</span> <span class="token keyword">user</span> dev_test identified <span class="token keyword">by</span> <span class="token string">'test'</span><span class="token punctuation">;</span></code></pre>
+<h2 id="基于某个用户创建schema"><a href="#基于某个用户创建schema" class="headerlink" title="基于某个用户创建schema"></a>基于某个用户创建schema</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">schema</span> <span class="token keyword">if</span> <span class="token operator">not</span> <span class="token keyword">exists</span> test <span class="token keyword">authorization</span> dev_test<span class="token punctuation">;</span></code></pre>
 <h2 id="重命名-备份"><a href="#重命名-备份" class="headerlink" title="重命名(备份)"></a>重命名(备份)</h2><p>dataname数据库为 dataname_bak</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">schema</span> dataname <span class="token keyword">rename</span> <span class="token keyword">to</span> dataname_bak<span class="token punctuation">;</span>
-</code></pre>
-<h2 id="删除-schema-dataname"><a href="#删除-schema-dataname" class="headerlink" title="删除 schema(dataname)"></a>删除 schema(dataname)</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">schema</span> dataname <span class="token keyword">cascade</span><span class="token punctuation">;</span>    
-</code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">schema</span> dataname <span class="token keyword">rename</span> <span class="token keyword">to</span> dataname_bak<span class="token punctuation">;</span></code></pre>
+<h2 id="删除-schema-dataname"><a href="#删除-schema-dataname" class="headerlink" title="删除 schema(dataname)"></a>删除 schema(dataname)</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">schema</span> dataname <span class="token keyword">cascade</span><span class="token punctuation">;</span>    </code></pre>
 <h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> test<span class="token punctuation">.</span><span class="token string">"user"</span> <span class="token punctuation">(</span>
     id <span class="token keyword">Integer</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
     name <span class="token keyword">Varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     description <span class="token keyword">Varchar</span><span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h1 id="赋权"><a href="#赋权" class="headerlink" title="赋权"></a>赋权</h1><h2 id="一个schema上的权限赋给另一个用户"><a href="#一个schema上的权限赋给另一个用户" class="headerlink" title="一个schema上的权限赋给另一个用户"></a>一个schema上的权限赋给另一个用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> dbname_dw <span class="token keyword">TO</span> dev_test<span class="token punctuation">;</span>
-</code></pre>
-<h2 id="把对某个表的操作的权限赋给另一个用户"><a href="#把对某个表的操作的权限赋给另一个用户" class="headerlink" title="把对某个表的操作的权限赋给另一个用户"></a>把对某个表的操作的权限赋给另一个用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">TABLE</span> tw_re_pm_cell_all_cell_h <span class="token keyword">to</span> dev_test<span class="token punctuation">;</span>
-</code></pre>
-<h2 id="从某个用户收回对某个schema的使用权限"><a href="#从某个用户收回对某个schema的使用权限" class="headerlink" title="从某个用户收回对某个schema的使用权限"></a>从某个用户收回对某个schema的使用权限</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">revoke</span> <span class="token keyword">all</span> <span class="token keyword">on</span> <span class="token keyword">SCHEMA</span> dbname_dw <span class="token keyword">from</span> dev_test<span class="token punctuation">;</span>
-</code></pre>
-<h2 id="从某个用户收回对某个表的使用权限"><a href="#从某个用户收回对某个表的使用权限" class="headerlink" title="从某个用户收回对某个表的使用权限"></a>从某个用户收回对某个表的使用权限</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">revoke</span> <span class="token keyword">all</span> <span class="token keyword">on</span> <span class="token keyword">table</span> fct_flux_se_flux_flow_whole_ana_d <span class="token keyword">from</span> dev_test<span class="token punctuation">;</span>
-</code></pre>
-<h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="查询系统中的序列"><a href="#查询系统中的序列" class="headerlink" title="查询系统中的序列"></a>查询系统中的序列</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sequences<span class="token punctuation">;</span>
-</code></pre>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h1 id="赋权"><a href="#赋权" class="headerlink" title="赋权"></a>赋权</h1><h2 id="一个schema上的权限赋给另一个用户"><a href="#一个schema上的权限赋给另一个用户" class="headerlink" title="一个schema上的权限赋给另一个用户"></a>一个schema上的权限赋给另一个用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">USAGE</span> <span class="token keyword">ON</span> <span class="token keyword">SCHEMA</span> dbname_dw <span class="token keyword">TO</span> dev_test<span class="token punctuation">;</span></code></pre>
+<h2 id="把对某个表的操作的权限赋给另一个用户"><a href="#把对某个表的操作的权限赋给另一个用户" class="headerlink" title="把对某个表的操作的权限赋给另一个用户"></a>把对某个表的操作的权限赋给另一个用户</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token keyword">TABLE</span> tw_re_pm_cell_all_cell_h <span class="token keyword">to</span> dev_test<span class="token punctuation">;</span></code></pre>
+<h2 id="从某个用户收回对某个schema的使用权限"><a href="#从某个用户收回对某个schema的使用权限" class="headerlink" title="从某个用户收回对某个schema的使用权限"></a>从某个用户收回对某个schema的使用权限</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">revoke</span> <span class="token keyword">all</span> <span class="token keyword">on</span> <span class="token keyword">SCHEMA</span> dbname_dw <span class="token keyword">from</span> dev_test<span class="token punctuation">;</span></code></pre>
+<h2 id="从某个用户收回对某个表的使用权限"><a href="#从某个用户收回对某个表的使用权限" class="headerlink" title="从某个用户收回对某个表的使用权限"></a>从某个用户收回对某个表的使用权限</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">revoke</span> <span class="token keyword">all</span> <span class="token keyword">on</span> <span class="token keyword">table</span> fct_flux_se_flux_flow_whole_ana_d <span class="token keyword">from</span> dev_test<span class="token punctuation">;</span></code></pre>
+<h1 id="序列"><a href="#序列" class="headerlink" title="序列"></a>序列</h1><h2 id="查询系统中的序列"><a href="#查询系统中的序列" class="headerlink" title="查询系统中的序列"></a>查询系统中的序列</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> sequences<span class="token punctuation">;</span></code></pre>
 <h2 id="创建序列"><a href="#创建序列" class="headerlink" title="创建序列"></a>创建序列</h2><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 简单语法：</span>
 <span class="token keyword">CREATE</span> SEQUENCE my_seq MAXVALUE <span class="token number">5000</span> <span class="token keyword">START</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
@@ -540,17 +526,14 @@ su - dbadmin
                     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span> MAXVALUE maxvalue <span class="token operator">|</span> <span class="token keyword">NO</span> MAXVALUE <span class="token punctuation">]</span>
                     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span> <span class="token keyword">START</span> <span class="token punctuation">[</span> <span class="token keyword">WITH</span> <span class="token punctuation">]</span> <span class="token keyword">start</span> <span class="token punctuation">]</span>
                     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span> CACHE cache <span class="token punctuation">]</span>
-                    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span> CYCLE <span class="token operator">|</span> <span class="token keyword">NO</span> CYCLE <span class="token punctuation">]</span>
-</code></pre>
+                    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">[</span> CYCLE <span class="token operator">|</span> <span class="token keyword">NO</span> CYCLE <span class="token punctuation">]</span></code></pre>
 <h2 id="使用序列"><a href="#使用序列" class="headerlink" title="使用序列"></a>使用序列</h2><pre class=" language-sql"><code class="language-sql"><span class="token comment" spellcheck="true"># 一个新创建还没有使用过的序列，必须首先执行NEXTVAL，然后才能执行CURRVAL。</span>
 <span class="token keyword">SELECT</span> NEXTVAL<span class="token punctuation">(</span><span class="token string">'my_seq'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">SELECT</span> CURRVAL<span class="token punctuation">(</span><span class="token string">'my_seq'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">SELECT</span> CURRVAL<span class="token punctuation">(</span><span class="token string">'my_seq'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>在INSERT语句里使用序列</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> customer <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'Hawkins'</span> <span class="token punctuation">,</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token number">072753</span><span class="token punctuation">,</span> NEXTVAL<span class="token punctuation">(</span><span class="token string">'my_seq'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> customer <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'Hawkins'</span> <span class="token punctuation">,</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token number">072753</span><span class="token punctuation">,</span> NEXTVAL<span class="token punctuation">(</span><span class="token string">'my_seq'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>在INSERT语句里把序列作为默认值：</li>
 </ul>
@@ -559,52 +542,35 @@ su - dbadmin
                                    fname <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
                                    membership_card <span class="token keyword">INTEGER</span>
                                   <span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> customer2 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">,</span><span class="token string">'Carr'</span><span class="token punctuation">,</span> <span class="token string">'Mary'</span><span class="token punctuation">,</span> <span class="token number">87432</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+            <span class="token operator">=</span><span class="token operator">></span> <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> customer2 <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token keyword">default</span><span class="token punctuation">,</span><span class="token string">'Carr'</span><span class="token punctuation">,</span> <span class="token string">'Mary'</span><span class="token punctuation">,</span> <span class="token number">87432</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>删除序列</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">DROP</span> SEQUENCE seq_name<span class="token punctuation">;</span>
-</code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">DROP</span> SEQUENCE seq_name<span class="token punctuation">;</span></code></pre>
 <h1 id="Vertica创建外部表"><a href="#Vertica创建外部表" class="headerlink" title="Vertica创建外部表"></a>Vertica创建外部表</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ext1 <span class="token punctuation">(</span>x <span class="token keyword">integer</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> COPY <span class="token keyword">FROM</span> <span class="token string">'/tmp/ext1.dat'</span> <span class="token keyword">DELIMITER</span> <span class="token string">','</span><span class="token punctuation">;</span>
 <span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ext1 <span class="token punctuation">(</span>x <span class="token keyword">integer</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> COPY <span class="token keyword">FROM</span> <span class="token string">'/tmp/ext1.dat.bz2'</span> BZIP <span class="token keyword">DELIMITER</span> <span class="token string">','</span><span class="token punctuation">;</span>
-<span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ext1 <span class="token punctuation">(</span>x <span class="token keyword">integer</span><span class="token punctuation">,</span> y <span class="token keyword">integer</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> COPY <span class="token punctuation">(</span>x <span class="token keyword">as</span> <span class="token string">'5'</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">FROM</span> <span class="token string">'/tmp/ext1.dat.bz2'</span> BZIP <span class="token keyword">DELIMITER</span> <span class="token string">','</span><span class="token punctuation">;</span>
-</code></pre>
-<h1 id="copy执行错误后的Vertica的错误日志"><a href="#copy执行错误后的Vertica的错误日志" class="headerlink" title="copy执行错误后的Vertica的错误日志"></a>copy执行错误后的Vertica的错误日志</h1><pre class=" language-shell"><code class="language-shell">/database/dbname/dbname/v_dbname_node0002_catalog/CopyErrorLogs
-</code></pre>
-<h1 id="从vertica数据的表中导出数据到数据文件"><a href="#从vertica数据的表中导出数据到数据文件" class="headerlink" title="从vertica数据的表中导出数据到数据文件"></a>从vertica数据的表中导出数据到数据文件</h1><pre class=" language-shell"><code class="language-shell">echo `vsql -d dbname -U dbadmin -Atq -w Zongfen_12 -c "select * from test.dim_flow_direction order by flow_type_code"> /database/datastage/export/dim_all/test`
-</code></pre>
-<h1 id="通过数据文件向vertica数据库里加载数据"><a href="#通过数据文件向vertica数据库里加载数据" class="headerlink" title="通过数据文件向vertica数据库里加载数据"></a>通过数据文件向vertica数据库里加载数据</h1><pre class=" language-shell"><code class="language-shell">copy test.fct_flux_se_bus_res_ana_d from '/database/imp_file/fct_flux_se_bus_res_ana_d' on v_dbname_node0002 delimiter '|';
-</code></pre>
-<h1 id="修改字段"><a href="#修改字段" class="headerlink" title="修改字段"></a>修改字段</h1><h2 id="修改字段为非空"><a href="#修改字段为非空" class="headerlink" title="修改字段为非空"></a>修改字段为非空</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d <span class="token keyword">alter</span> <span class="token keyword">column</span> day_id <span class="token keyword">set</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">CREATE</span> EXTERNAL <span class="token keyword">TABLE</span> ext1 <span class="token punctuation">(</span>x <span class="token keyword">integer</span><span class="token punctuation">,</span> y <span class="token keyword">integer</span><span class="token punctuation">)</span> <span class="token keyword">AS</span> COPY <span class="token punctuation">(</span>x <span class="token keyword">as</span> <span class="token string">'5'</span><span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token keyword">FROM</span> <span class="token string">'/tmp/ext1.dat.bz2'</span> BZIP <span class="token keyword">DELIMITER</span> <span class="token string">','</span><span class="token punctuation">;</span></code></pre>
+<h1 id="copy执行错误后的Vertica的错误日志"><a href="#copy执行错误后的Vertica的错误日志" class="headerlink" title="copy执行错误后的Vertica的错误日志"></a>copy执行错误后的Vertica的错误日志</h1><pre class=" language-shell"><code class="language-shell">/database/dbname/dbname/v_dbname_node0002_catalog/CopyErrorLogs</code></pre>
+<h1 id="从vertica数据的表中导出数据到数据文件"><a href="#从vertica数据的表中导出数据到数据文件" class="headerlink" title="从vertica数据的表中导出数据到数据文件"></a>从vertica数据的表中导出数据到数据文件</h1><pre class=" language-shell"><code class="language-shell">echo `vsql -d dbname -U dbadmin -Atq -w Zongfen_12 -c "select * from test.dim_flow_direction order by flow_type_code"> /database/datastage/export/dim_all/test`</code></pre>
+<h1 id="通过数据文件向vertica数据库里加载数据"><a href="#通过数据文件向vertica数据库里加载数据" class="headerlink" title="通过数据文件向vertica数据库里加载数据"></a>通过数据文件向vertica数据库里加载数据</h1><pre class=" language-shell"><code class="language-shell">copy test.fct_flux_se_bus_res_ana_d from '/database/imp_file/fct_flux_se_bus_res_ana_d' on v_dbname_node0002 delimiter '|';</code></pre>
+<h1 id="修改字段"><a href="#修改字段" class="headerlink" title="修改字段"></a>修改字段</h1><h2 id="修改字段为非空"><a href="#修改字段为非空" class="headerlink" title="修改字段为非空"></a>修改字段为非空</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d <span class="token keyword">alter</span> <span class="token keyword">column</span> day_id <span class="token keyword">set</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">;</span></code></pre>
 <h2 id="更改字段数据类型"><a href="#更改字段数据类型" class="headerlink" title="更改字段数据类型"></a>更改字段数据类型</h2><p>对于数值类型：types–INTEGER, INT, BIGINT, TINYINT, INT8, SMALLINT, and all NUMERIC values of scale &lt;=18 and precision 0 之间是可以互相转化的。此外，numeric类型的精度（precision）是无法更改的，但是长度(scale)是可以修改的，（0-18）之间可以互修改，（19-37）之间可以互修改。</p>
-<pre class=" language-sql"><code class="language-sql"> <span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>dim_micro_area_gsm <span class="token keyword">alter</span> <span class="token keyword">column</span> cell_id <span class="token keyword">set</span> <span class="token keyword">data</span> <span class="token keyword">type</span> <span class="token keyword">numeric</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-</code></pre>
-<h2 id="给表增加字段"><a href="#给表增加字段" class="headerlink" title="给表增加字段"></a>给表增加字段</h2><pre class=" language-sql"><code class="language-sql"> <span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>DIM_DETAIL_SVCTYPE <span class="token keyword">add</span> <span class="token keyword">column</span> if_app <span class="token keyword">numeric</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="删除表字段"><a href="#删除表字段" class="headerlink" title="删除表字段"></a>删除表字段</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>DIM_DETAIL_SVCTYPE <span class="token keyword">drop</span> <span class="token keyword">column</span> if_app<span class="token punctuation">;</span>
-</code></pre>
+<pre class=" language-sql"><code class="language-sql"> <span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>dim_micro_area_gsm <span class="token keyword">alter</span> <span class="token keyword">column</span> cell_id <span class="token keyword">set</span> <span class="token keyword">data</span> <span class="token keyword">type</span> <span class="token keyword">numeric</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre>
+<h2 id="给表增加字段"><a href="#给表增加字段" class="headerlink" title="给表增加字段"></a>给表增加字段</h2><pre class=" language-sql"><code class="language-sql"> <span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>DIM_DETAIL_SVCTYPE <span class="token keyword">add</span> <span class="token keyword">column</span> if_app <span class="token keyword">numeric</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="删除表字段"><a href="#删除表字段" class="headerlink" title="删除表字段"></a>删除表字段</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>DIM_DETAIL_SVCTYPE <span class="token keyword">drop</span> <span class="token keyword">column</span> if_app<span class="token punctuation">;</span></code></pre>
 <h1 id="数据库表之间导数据"><a href="#数据库表之间导数据" class="headerlink" title="数据库表之间导数据"></a>数据库表之间导数据</h1><pre class=" language-shell"><code class="language-shell">CONNECT TO VERTICA dbname USER dbadmin PASSWORD 'dbname' ON '192.168.1.1',5433;
-export TO VERTICA dbname.test.FCT_TNES_GN_NET_M FROM test.FCT_TNES_GN_NET_M;
-</code></pre>
-<h1 id="修改普通表为分区表"><a href="#修改普通表为分区表" class="headerlink" title="修改普通表为分区表"></a>修改普通表为分区表</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d <span class="token keyword">partition</span> <span class="token keyword">by</span> day_id<span class="token punctuation">;</span>
-</code></pre>
-<h1 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d_x <span class="token keyword">rename</span> <span class="token keyword">to</span> fct_fournet_wlanap_equp_ana_d<span class="token punctuation">;</span>
-</code></pre>
-<h1 id="修改表所属的用户"><a href="#修改表所属的用户" class="headerlink" title="修改表所属的用户"></a>修改表所属的用户</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d owner <span class="token keyword">to</span> dev_test
-</code></pre>
-<h1 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">tables</span>
-</code></pre>
+export TO VERTICA dbname.test.FCT_TNES_GN_NET_M FROM test.FCT_TNES_GN_NET_M;</code></pre>
+<h1 id="修改普通表为分区表"><a href="#修改普通表为分区表" class="headerlink" title="修改普通表为分区表"></a>修改普通表为分区表</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d <span class="token keyword">partition</span> <span class="token keyword">by</span> day_id<span class="token punctuation">;</span></code></pre>
+<h1 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d_x <span class="token keyword">rename</span> <span class="token keyword">to</span> fct_fournet_wlanap_equp_ana_d<span class="token punctuation">;</span></code></pre>
+<h1 id="修改表所属的用户"><a href="#修改表所属的用户" class="headerlink" title="修改表所属的用户"></a>修改表所属的用户</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">alter</span> <span class="token keyword">table</span> test<span class="token punctuation">.</span>fct_fournet_wlanap_equp_ana_d owner <span class="token keyword">to</span> dev_test</code></pre>
+<h1 id="查询表"><a href="#查询表" class="headerlink" title="查询表"></a>查询表</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">tables</span></code></pre>
 <h1 id="projections"><a href="#projections" class="headerlink" title="projections"></a>projections</h1><pre class=" language-sql"><code class="language-sql">projections
 
 <span class="token comment" spellcheck="true"># 查询表对应的projection</span>
 <span class="token keyword">SELECT</span> owner_name<span class="token punctuation">,</span> anchor_table_name<span class="token punctuation">,</span> projection_name
   <span class="token keyword">FROM</span> projections
- <span class="token keyword">WHERE</span> projection_basename <span class="token operator">=</span> <span class="token string">'DIM_CFG_LEVEL'</span><span class="token punctuation">;</span>
-</code></pre>
-<h1 id="查询列"><a href="#查询列" class="headerlink" title="查询列"></a>查询列</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">columns</span>
-</code></pre>
+ <span class="token keyword">WHERE</span> projection_basename <span class="token operator">=</span> <span class="token string">'DIM_CFG_LEVEL'</span><span class="token punctuation">;</span></code></pre>
+<h1 id="查询列"><a href="#查询列" class="headerlink" title="查询列"></a>查询列</h1><pre class=" language-sql"><code class="language-sql"><span class="token keyword">columns</span></code></pre>
 <h1 id="查询注释"><a href="#查询注释" class="headerlink" title="查询注释"></a>查询注释</h1><pre class=" language-sql"><code class="language-sql">comments
 
 <span class="token comment" spellcheck="true"># 查询表的列对应的注释</span>
@@ -615,25 +581,21 @@ export TO VERTICA dbname.test.FCT_TNES_GN_NET_M FROM test.FCT_TNES_GN_NET_M;
  <span class="token keyword">WHERE</span>  SUBSTR <span class="token punctuation">(</span>t1<span class="token punctuation">.</span>object_name<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> INSTR <span class="token punctuation">(</span>t1<span class="token punctuation">.</span>object_name<span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">=</span>
               t3<span class="token punctuation">.</span>projection_name
        <span class="token operator">AND</span> t1<span class="token punctuation">.</span>object_type <span class="token operator">=</span> <span class="token string">'COLUMN'</span>
-<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> t3<span class="token punctuation">.</span>anchor_table_name<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> t3<span class="token punctuation">.</span>anchor_table_name<span class="token punctuation">;</span></code></pre>
 <h1 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h1><h2 id="四舍五入、并且保留两位小数"><a href="#四舍五入、并且保留两位小数" class="headerlink" title="四舍五入、并且保留两位小数"></a>四舍五入、并且保留两位小数</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> TRIM <span class="token punctuation">(</span>TO_CHAR <span class="token punctuation">(</span><span class="token function">ROUND</span> <span class="token punctuation">(</span><span class="token number">3.456</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'999999999999999999.00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
        TRIM <span class="token punctuation">(</span>TO_CHAR <span class="token punctuation">(</span><span class="token function">ROUND</span> <span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'999999999999999999.00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
        TRIM <span class="token punctuation">(</span>TO_CHAR <span class="token punctuation">(</span><span class="token function">ROUND</span> <span class="token punctuation">(</span><span class="token number">3.00</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'999999999999999999.00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
        TRIM <span class="token punctuation">(</span>TO_CHAR <span class="token punctuation">(</span><span class="token function">ROUND</span> <span class="token punctuation">(</span><span class="token number">323542.101</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'999999999999999999.00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
        TRIM <span class="token punctuation">(</span>TO_CHAR <span class="token punctuation">(</span><span class="token function">ROUND</span> <span class="token punctuation">(</span><span class="token number">3.1067</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'999999999999999999.00'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
 </code></pre>
 <h2 id="产生随机数"><a href="#产生随机数" class="headerlink" title="产生随机数"></a>产生随机数</h2><ul>
 <li>RANDOM()</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> RANDOM<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> RANDOM<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>RANDOMINT</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">RANDOMINT <span class="token punctuation">(</span> N <span class="token punctuation">)</span>
-</code></pre>
+<pre class=" language-sql"><code class="language-sql">RANDOMINT <span class="token punctuation">(</span> N <span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -1129,7 +1091,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

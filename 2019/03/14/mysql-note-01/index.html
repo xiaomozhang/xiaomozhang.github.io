@@ -2,13 +2,12 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="MySQL 常用语句, 小张哥blog">
     <meta name="description" content="MySQL 常用语句sql-joinmysql常用sql语句总结
 修改替换字段中的某一个值update dictionary set content=REPLACE(content, &#39;谭&#39;, &#39;谈&#39;);
-
-update recipes s">
+update recipes se">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,6 +28,8 @@ update recipes s">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -469,18 +470,14 @@ update recipes s">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MySQL-常用语句"><a href="#MySQL-常用语句" class="headerlink" title="MySQL 常用语句"></a>MySQL 常用语句</h1><p><a href="http://www.powerxing.com/sql-join/" target="_blank" rel="noopener">sql-join</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzAwOTE3NDY5OA==&amp;mid=2647906520&amp;idx=2&amp;sn=e1da610a41a0692721d3756f9e1583bb&amp;chksm=8344d31db4335a0bf5164b6c57c7e49f6a89f0538d778b156450bbaceba55e6a47abcebf2dd1&amp;mpshare=1&amp;scene=1&amp;srcid=0128OHhJN5V4SPLdlN1uN4lb#rd" target="_blank" rel="noopener">mysql常用sql语句总结</a></p>
-<h2 id="修改替换字段中的某一个值"><a href="#修改替换字段中的某一个值" class="headerlink" title="修改替换字段中的某一个值"></a>修改替换字段中的某一个值</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> dictionary <span class="token keyword">set</span> content<span class="token operator">=</span>REPLACE<span class="token punctuation">(</span>content<span class="token punctuation">,</span> <span class="token string">'谭'</span><span class="token punctuation">,</span> <span class="token string">'谈'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                <h1 id="MySQL-常用语句"><a href="#MySQL-常用语句" class="headerlink" title="MySQL 常用语句"></a>MySQL 常用语句</h1><p><a target="_blank" rel="noopener" href="http://www.powerxing.com/sql-join/">sql-join</a><br><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzAwOTE3NDY5OA==&amp;mid=2647906520&amp;idx=2&amp;sn=e1da610a41a0692721d3756f9e1583bb&amp;chksm=8344d31db4335a0bf5164b6c57c7e49f6a89f0538d778b156450bbaceba55e6a47abcebf2dd1&amp;mpshare=1&amp;scene=1&amp;srcid=0128OHhJN5V4SPLdlN1uN4lb#rd">mysql常用sql语句总结</a></p>
+<h2 id="修改替换字段中的某一个值"><a href="#修改替换字段中的某一个值" class="headerlink" title="修改替换字段中的某一个值"></a>修改替换字段中的某一个值</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> dictionary <span class="token keyword">set</span> content<span class="token operator">=</span>REPLACE<span class="token punctuation">(</span>content<span class="token punctuation">,</span> <span class="token string">'谭'</span><span class="token punctuation">,</span> <span class="token string">'谈'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">update</span> recipes <span class="token keyword">set</span> item_image<span class="token operator">=</span>REPLACE<span class="token punctuation">(</span>item_image<span class="token punctuation">,</span>'http:<span class="token comment" spellcheck="true">//app-file.botu.com:9000','http://app-file.botu.com:9000/BOTU')</span>
-<span class="token keyword">where</span> id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token keyword">select</span> rec<span class="token punctuation">.</span>id <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> id <span class="token keyword">from</span> recipes r <span class="token keyword">where</span>  <span class="token keyword">binary</span> r<span class="token punctuation">.</span>item_image <span class="token operator">not</span> <span class="token operator">like</span> <span class="token string">'%BOTU%'</span><span class="token punctuation">)</span> rec<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">where</span> id <span class="token operator">in</span> <span class="token punctuation">(</span><span class="token keyword">select</span> rec<span class="token punctuation">.</span>id <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> id <span class="token keyword">from</span> recipes r <span class="token keyword">where</span>  <span class="token keyword">binary</span> r<span class="token punctuation">.</span>item_image <span class="token operator">not</span> <span class="token operator">like</span> <span class="token string">'%BOTU%'</span><span class="token punctuation">)</span> rec<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="清空表数据"><a href="#清空表数据" class="headerlink" title="清空表数据"></a>清空表数据</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">truncate</span> <span class="token keyword">table</span> dictionary<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">-- 清空自增主键</span>
-<span class="token keyword">delete</span> <span class="token keyword">from</span> dictionary<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">-- 不清空自增主键</span>
-</code></pre>
+<span class="token keyword">delete</span> <span class="token keyword">from</span> dictionary<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">-- 不清空自增主键</span></code></pre>
 <h2 id="NULL查询"><a href="#NULL查询" class="headerlink" title="NULL查询"></a>NULL查询</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> tmp <span class="token keyword">where</span> name <span class="token operator">is</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">;</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> tmp <span class="token keyword">where</span> name <span class="token operator">is</span> <span class="token boolean">null</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> tmp <span class="token keyword">where</span> name <span class="token operator">is</span> <span class="token boolean">null</span><span class="token punctuation">;</span></code></pre>
 <h2 id="根据表结构生成实体对应字段"><a href="#根据表结构生成实体对应字段" class="headerlink" title="根据表结构生成实体对应字段"></a>根据表结构生成实体对应字段</h2><pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
     CONCAT_WS<span class="token punctuation">(</span>
         <span class="token string">''</span><span class="token punctuation">,</span>
@@ -549,8 +546,7 @@ FROM
     information_schema.`COLUMNS`
 WHERE
     TABLE_SCHEMA = '</span>life_health<span class="token string">'
-AND TABLE_NAME = '</span>health_exp'<span class="token punctuation">;</span> 
-</code></pre>
+AND TABLE_NAME = '</span>health_exp'<span class="token punctuation">;</span> </code></pre>
 <h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><h3 id="增加与修改列"><a href="#增加与修改列" class="headerlink" title="增加与修改列"></a>增加与修改列</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> 列名称 列类型 列参数<span class="token punctuation">;</span> <span class="token punctuation">[</span>加的列在表的最后<span class="token punctuation">]</span>
 例: <span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">add</span> birth <span class="token keyword">date</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token string">'0000-00-00'</span><span class="token punctuation">;</span>
 
@@ -558,22 +554,15 @@ AND TABLE_NAME = '</span>health_exp'<span class="token punctuation">;</span>
 例: <span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">add</span> gender char<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token string">''</span> <span class="token keyword">after</span> username<span class="token punctuation">;</span>
 
 <span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">add</span> 列名称 列类型 列参数 <span class="token keyword">first</span><span class="token punctuation">;</span> <span class="token punctuation">[</span>把新列加在最前面<span class="token punctuation">]</span>
-例: <span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">add</span> pid <span class="token keyword">int</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token number">0</span> <span class="token keyword">first</span><span class="token punctuation">;</span>
-</code></pre>
-<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">drop</span> 列名<span class="token punctuation">;</span>
-</code></pre>
+例: <span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">add</span> pid <span class="token keyword">int</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token number">0</span> <span class="token keyword">first</span><span class="token punctuation">;</span></code></pre>
+<h3 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">drop</span> 列名<span class="token punctuation">;</span></code></pre>
 <h3 id="修改列类型"><a href="#修改列类型" class="headerlink" title="修改列类型"></a>修改列类型</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 <span class="token keyword">modify</span> 列名 新类型 新参数<span class="token punctuation">;</span> <span class="token punctuation">(</span>不能修改列名<span class="token punctuation">)</span><span class="token punctuation">;</span>
-例:<span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">modify</span> gender char<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span>
-</code></pre>
+例:<span class="token keyword">alter</span> <span class="token keyword">table</span> m1 <span class="token keyword">modify</span> gender char<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token operator">not</span> <span class="token boolean">null</span> <span class="token keyword">default</span> <span class="token string">''</span><span class="token punctuation">;</span></code></pre>
 <h3 id="修改列名及列类型"><a href="#修改列名及列类型" class="headerlink" title="修改列名及列类型"></a>修改列名及列类型</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">Alter</span> <span class="token keyword">table</span> 表名 change 旧列名 新列名 新类型 新参数<span class="token punctuation">;</span>
-例:<span class="token keyword">alter</span> <span class="token keyword">table</span> m1 change id uid <span class="token keyword">int</span> unsigned<span class="token punctuation">;</span>
-</code></pre>
-<h3 id="改表名"><a href="#改表名" class="headerlink" title="改表名"></a>改表名</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">rename</span> <span class="token keyword">table</span> regist3 <span class="token keyword">to</span> reg3<span class="token punctuation">;</span>
-</code></pre>
-<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>dictionary<span class="token punctuation">`</span><span class="token punctuation">;</span>
-</code></pre>
-<h3 id="常用查询"><a href="#常用查询" class="headerlink" title="常用查询"></a>常用查询</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> sensitive_word_condition <span class="token number">a</span> <span class="token keyword">WHERE</span> <span class="token number">a</span><span class="token punctuation">.</span>count <span class="token operator">&lt;</span> <span class="token number">11</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">a</span><span class="token punctuation">.</span>count <span class="token keyword">DESC</span> <span class="token keyword">LIMIT</span> <span class="token number">1</span><span class="token punctuation">;</span>
-</code></pre>
+例:<span class="token keyword">alter</span> <span class="token keyword">table</span> m1 change id uid <span class="token keyword">int</span> unsigned<span class="token punctuation">;</span></code></pre>
+<h3 id="改表名"><a href="#改表名" class="headerlink" title="改表名"></a>改表名</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">rename</span> <span class="token keyword">table</span> regist3 <span class="token keyword">to</span> reg3<span class="token punctuation">;</span></code></pre>
+<h3 id="删除表"><a href="#删除表" class="headerlink" title="删除表"></a>删除表</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>dictionary<span class="token punctuation">`</span><span class="token punctuation">;</span></code></pre>
+<h3 id="常用查询"><a href="#常用查询" class="headerlink" title="常用查询"></a>常用查询</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> sensitive_word_condition <span class="token number">a</span> <span class="token keyword">WHERE</span> <span class="token number">a</span><span class="token punctuation">.</span>count <span class="token operator">&lt;</span> <span class="token number">11</span> <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token number">a</span><span class="token punctuation">.</span>count <span class="token keyword">DESC</span> <span class="token keyword">LIMIT</span> <span class="token number">1</span><span class="token punctuation">;</span></code></pre>
 <h1 id="MySQL-5-7查询一段时间内最后一条数据"><a href="#MySQL-5-7查询一段时间内最后一条数据" class="headerlink" title="MySQL 5.7查询一段时间内最后一条数据"></a>MySQL 5.7查询一段时间内最后一条数据</h1><p>mysql 升级到5.7之后，存储引擎做了一些优化，之前我们使用的 先order by 再 group by 的方式取最后一条数据的查询，会出现取的不是最后一条记录的问题</p>
 <p>为了实现原有查询逻辑，请在子查询后面，加上limit 9223372036854775807<br>其中，9223372036854775807为bigint的最大值</p>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span>
@@ -594,8 +583,7 @@ AND TABLE_NAME = '</span>health_exp'<span class="token punctuation">;</span>
         <span class="token keyword">LIMIT</span> <span class="token number">9223372036854775807</span>
     <span class="token punctuation">)</span> t
 <span class="token keyword">GROUP</span> <span class="token keyword">BY</span>
-    t<span class="token punctuation">.</span>edt<span class="token punctuation">;</span>
-</code></pre>
+    t<span class="token punctuation">.</span>edt<span class="token punctuation">;</span></code></pre>
 
             </div>
             <hr/>
@@ -1091,7 +1079,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

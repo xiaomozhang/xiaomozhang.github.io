@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Apache CollectionUtils 常用方法总结, 小张哥blog">
     <meta name="description" content="CollectionUtils在真实项目中，是一个非常好用的工具类，使用非常频繁。它可以使代码更加简洁和安全。
@@ -30,6 +30,8 @@ maven
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -480,14 +482,12 @@ maven
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-collections<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.2.1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-
 </code></pre>
 <ul>
 <li>gradle</li>
 </ul>
 <pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">// https://mvnrepository.com/artifact/commons-collections/commons-collections</span>
-compile group<span class="token punctuation">:</span> <span class="token string">'commons-collections'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'commons-collections'</span><span class="token punctuation">,</span> version<span class="token punctuation">:</span> <span class="token string">'3.2.1'</span>
-</code></pre>
+compile group<span class="token punctuation">:</span> <span class="token string">'commons-collections'</span><span class="token punctuation">,</span> name<span class="token punctuation">:</span> <span class="token string">'commons-collections'</span><span class="token punctuation">,</span> version<span class="token punctuation">:</span> <span class="token string">'3.2.1'</span></code></pre>
 <h1 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h1><h3 id="非空判断"><a href="#非空判断" class="headerlink" title="非空判断"></a>非空判断</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 判断集合是否为空:</span>
 CollectionUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">true</span>
 CollectionUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">true</span>　　
@@ -496,8 +496,7 @@ CollectionUtils<span class="token punctuation">.</span><span class="token functi
 <span class="token comment" spellcheck="true">// 判断集合是否不为空:</span>
 CollectionUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span>null<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">false</span>
 CollectionUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">false</span>
-CollectionUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token punctuation">{</span>a<span class="token punctuation">,</span>b<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">true</span>
-</code></pre>
+CollectionUtils<span class="token punctuation">.</span><span class="token function">isNotEmpty</span><span class="token punctuation">(</span><span class="token punctuation">{</span>a<span class="token punctuation">,</span>b<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token boolean">true</span></code></pre>
 <h3 id="并集、交集、交集的补集、差集"><a href="#并集、交集、交集的补集、差集" class="headerlink" title="并集、交集、交集的补集、差集"></a>并集、交集、交集的补集、差集</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>String<span class="token operator">></span> list1 <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"e"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parallel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -524,8 +523,7 @@ CollectionUtils<span class="token punctuation">.</span><span class="token functi
 union<span class="token operator">:</span><span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> C<span class="token punctuation">,</span> d<span class="token punctuation">,</span> e<span class="token punctuation">,</span> f<span class="token punctuation">,</span> g<span class="token punctuation">,</span> z<span class="token punctuation">]</span>
 intersection<span class="token operator">:</span><span class="token punctuation">[</span>a<span class="token punctuation">,</span> e<span class="token punctuation">]</span>
 disjunction<span class="token operator">:</span><span class="token punctuation">[</span>b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> C<span class="token punctuation">,</span> d<span class="token punctuation">,</span> f<span class="token punctuation">,</span> g<span class="token punctuation">,</span> z<span class="token punctuation">]</span>
-subtract<span class="token operator">:</span><span class="token punctuation">[</span>b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">]</span>
-</code></pre>
+subtract<span class="token operator">:</span><span class="token punctuation">[</span>b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> d<span class="token punctuation">]</span></code></pre>
 <h3 id="判断相等"><a href="#判断相等" class="headerlink" title="判断相等"></a>判断相等</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testEqual</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     List<span class="token operator">&lt;</span>String<span class="token operator">></span> list1 <span class="token operator">=</span> Stream<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"e"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">parallel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -567,8 +565,7 @@ subtract<span class="token operator">:</span><span class="token punctuation">[</
     boy4<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>boy<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 比较集合中相同对象 true</span>
     log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"isEqualCollection:{}"</span><span class="token punctuation">,</span> CollectionUtils<span class="token punctuation">.</span><span class="token function">isEqualCollection</span><span class="token punctuation">(</span>boy3<span class="token punctuation">,</span> boy4<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="不可变集合"><a href="#不可变集合" class="headerlink" title="不可变集合"></a>不可变集合</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testUnmodifiable</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     Collection<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -584,8 +581,7 @@ subtract<span class="token operator">:</span><span class="token punctuation">[</
 
 <span class="token comment" spellcheck="true">// Collections.unmodifiableCollection可以得到一个集合的镜像，它的返回结果是不可直接被改变，否则会提示错误</span>
 java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>UnsupportedOperationException
-at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>collection<span class="token punctuation">.</span>UnmodifiableCollection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>UnmodifiableCollection<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">75</span><span class="token punctuation">)</span>
-</code></pre>
+at org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>collections<span class="token punctuation">.</span>collection<span class="token punctuation">.</span>UnmodifiableCollection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>UnmodifiableCollection<span class="token punctuation">.</span>java<span class="token operator">:</span><span class="token number">75</span><span class="token punctuation">)</span></code></pre>
 
             </div>
             <hr/>
@@ -1081,7 +1077,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hadoop常用运维命令, 小张哥blog">
     <meta name="description" content="一、HADOOP集群启动1. 格式化zk在zk的leader节点服务器上，Hadoop的bin目录中执行如下命令：改为在 nn的active节点上
@@ -28,6 +28,8 @@ sh hdfs zkfc -formatZK
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -469,41 +471,41 @@ sh hdfs zkfc -formatZK
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="一、HADOOP集群启动"><a href="#一、HADOOP集群启动" class="headerlink" title="一、HADOOP集群启动"></a>一、HADOOP集群启动</h2><h3 id="1-格式化zk"><a href="#1-格式化zk" class="headerlink" title="1. 格式化zk"></a>1. 格式化zk</h3><p>在zk的leader节点服务器上，Hadoop的bin目录中执行如下命令：<br>改为在 nn的active节点上</p>
-<pre><code>sh hdfs zkfc -formatZK
-</code></pre><h3 id="2-启动journalnode集群"><a href="#2-启动journalnode集群" class="headerlink" title="2. 启动journalnode集群"></a>2. 启动journalnode集群</h3><p>hadoop任意节点服务器执行</p>
-<pre><code>hadoop-daemons.sh start journalnode
-</code></pre><h3 id="3-格式化namenode"><a href="#3-格式化namenode" class="headerlink" title="3. 格式化namenode"></a>3. 格式化namenode</h3><p>在nn节点执行</p>
-<pre><code>hadoop namenode -format
-</code></pre><h3 id="4-启动NameNode"><a href="#4-启动NameNode" class="headerlink" title="4. 启动NameNode"></a>4. 启动NameNode</h3><p>在hdaoop01节点上执行如下命令，启动NameNode节点：</p>
-<pre><code>hadoop-daemon.sh start namenode
-</code></pre><p>首先把hdaoop02服务器的 namenode节点变为standby namenode节点。<br>执行命令如下：</p>
-<pre><code>hdfs namenode -bootstrapStandby
-</code></pre><p>启动hadoop02服务器的namenode节点，执行命令如下：</p>
-<pre><code>hadoop-daemon.sh start namenode
-</code></pre><h3 id="5-启动DataNode"><a href="#5-启动DataNode" class="headerlink" title="5. 启动DataNode"></a>5. 启动DataNode</h3><p>在hadoop01,hadoop02,hadoop03服务器上分别启动datanode节点，在这三台服务器上分别执行如下命令：</p>
-<pre><code>hadoop-daemon.sh start datanode
-</code></pre><h3 id="6-启动zkfc"><a href="#6-启动zkfc" class="headerlink" title="6. 启动zkfc"></a>6. 启动zkfc</h3><p>FalioverControllerActive是失败恢复线程。这个线程需要在NameNode节点所在的服务器上启动，在hadoop01,hadoop02服务器上执行如下命令：</p>
-<pre><code>hadoop-daemon.sh start zkfc
-</code></pre><h3 id="7-启动Resourcemanager"><a href="#7-启动Resourcemanager" class="headerlink" title="7. 启动Resourcemanager"></a>7. 启动Resourcemanager</h3><p>在<strong>hdaoop01</strong>服务器上启动主Resourcemanager节点，执行如下命令：<br>启动成功后，hadoop01,hadoop02,hadoop03服务器上的nodemanager 也会跟随启动</p>
-<pre><code>start-yarn.sh
-</code></pre><p>在<strong>hadoop02</strong>服务器上启动副 Resoucemanager节点，执行如下命令：</p>
-<pre><code>yarn-daemon.sh start resourcemanager
-</code></pre><h2 id="二、YARN运维命令"><a href="#二、YARN运维命令" class="headerlink" title="二、YARN运维命令"></a>二、YARN运维命令</h2><h3 id="1-yarn-application"><a href="#1-yarn-application" class="headerlink" title="1. yarn application"></a>1. yarn application</h3><p>1、-list 列出所有 application 信息</p>
-<pre><code>yarn application -list
-</code></pre><p>2、-appStates <states>跟-list一起使用，用来筛选不同状态的application，多个用”,”分隔；所有状态ALL,NEW,NEW_SAVING,SUBMITTED,ACCEPTED,RUNNING,FINISHED,FAILED,KILLED</states></p>
-<pre><code>yarn application -list -appStates RUNNING
-</code></pre><p>3、-appTypes <types>跟-list一起使用，用来筛选不同类型的application，多个用”,”分隔；如 MAPREDUCE</types></p>
-<pre><code>yarn application -list -appTypes MAPREDUCE
-</code></pre><p>4、-kill <application id>杀死一个application，需要指定一个Application ID</application></p>
-<pre><code>yarn  application -kill application_1526100291229_206393
-</code></pre><p>5、-status <application id>列出 某个application 的状态</application></p>
-<pre><code>yarn application -status application_1526100291229_206393
-</code></pre><p>6、-movetoqueue <applicationid>移动application到其他的queue，不能单独使用<br>7、-queue <queue name> 与 movetoqueue命令一起使用，指定移动到哪个queue</queue></applicationid></p>
-<pre><code>yarn application -movetoqueue application_1526100291229_206393 -queue other
-</code></pre><h3 id="2-yarn-node"><a href="#2-yarn-node" class="headerlink" title="2. yarn node"></a>2. yarn node</h3><p>查看各个node上的任务数</p>
-<pre><code>yarn  node --list
-</code></pre><h3 id="3-yarn-logs"><a href="#3-yarn-logs" class="headerlink" title="3. yarn logs"></a>3. yarn logs</h3><pre><code>yarn logs -applicationId application_1583405966138_0013
-</code></pre>
+<pre><code>sh hdfs zkfc -formatZK</code></pre>
+<h3 id="2-启动journalnode集群"><a href="#2-启动journalnode集群" class="headerlink" title="2. 启动journalnode集群"></a>2. 启动journalnode集群</h3><p>hadoop任意节点服务器执行</p>
+<pre><code>hadoop-daemons.sh start journalnode</code></pre>
+<h3 id="3-格式化namenode"><a href="#3-格式化namenode" class="headerlink" title="3. 格式化namenode"></a>3. 格式化namenode</h3><p>在nn节点执行</p>
+<pre><code>hadoop namenode -format</code></pre>
+<h3 id="4-启动NameNode"><a href="#4-启动NameNode" class="headerlink" title="4. 启动NameNode"></a>4. 启动NameNode</h3><p>在hdaoop01节点上执行如下命令，启动NameNode节点：</p>
+<pre><code>hadoop-daemon.sh start namenode</code></pre>
+<p>首先把hdaoop02服务器的 namenode节点变为standby namenode节点。<br>执行命令如下：</p>
+<pre><code>hdfs namenode -bootstrapStandby</code></pre>
+<p>启动hadoop02服务器的namenode节点，执行命令如下：</p>
+<pre><code>hadoop-daemon.sh start namenode</code></pre>
+<h3 id="5-启动DataNode"><a href="#5-启动DataNode" class="headerlink" title="5. 启动DataNode"></a>5. 启动DataNode</h3><p>在hadoop01,hadoop02,hadoop03服务器上分别启动datanode节点，在这三台服务器上分别执行如下命令：</p>
+<pre><code>hadoop-daemon.sh start datanode</code></pre>
+<h3 id="6-启动zkfc"><a href="#6-启动zkfc" class="headerlink" title="6. 启动zkfc"></a>6. 启动zkfc</h3><p>FalioverControllerActive是失败恢复线程。这个线程需要在NameNode节点所在的服务器上启动，在hadoop01,hadoop02服务器上执行如下命令：</p>
+<pre><code>hadoop-daemon.sh start zkfc</code></pre>
+<h3 id="7-启动Resourcemanager"><a href="#7-启动Resourcemanager" class="headerlink" title="7. 启动Resourcemanager"></a>7. 启动Resourcemanager</h3><p>在<strong>hdaoop01</strong>服务器上启动主Resourcemanager节点，执行如下命令：<br>启动成功后，hadoop01,hadoop02,hadoop03服务器上的nodemanager 也会跟随启动</p>
+<pre><code>start-yarn.sh</code></pre>
+<p>在<strong>hadoop02</strong>服务器上启动副 Resoucemanager节点，执行如下命令：</p>
+<pre><code>yarn-daemon.sh start resourcemanager</code></pre>
+<h2 id="二、YARN运维命令"><a href="#二、YARN运维命令" class="headerlink" title="二、YARN运维命令"></a>二、YARN运维命令</h2><h3 id="1-yarn-application"><a href="#1-yarn-application" class="headerlink" title="1. yarn application"></a>1. yarn application</h3><p>1、-list 列出所有 application 信息</p>
+<pre><code>yarn application -list</code></pre>
+<p>2、-appStates <states>跟-list一起使用，用来筛选不同状态的application，多个用”,”分隔；所有状态ALL,NEW,NEW_SAVING,SUBMITTED,ACCEPTED,RUNNING,FINISHED,FAILED,KILLED</states></p>
+<pre><code>yarn application -list -appStates RUNNING</code></pre>
+<p>3、-appTypes <types>跟-list一起使用，用来筛选不同类型的application，多个用”,”分隔；如 MAPREDUCE</types></p>
+<pre><code>yarn application -list -appTypes MAPREDUCE</code></pre>
+<p>4、-kill <application id="">杀死一个application，需要指定一个Application ID</application></p>
+<pre><code>yarn  application -kill application_1526100291229_206393</code></pre>
+<p>5、-status <application id="">列出 某个application 的状态</application></p>
+<pre><code>yarn application -status application_1526100291229_206393</code></pre>
+<p>6、-movetoqueue <applicationid>移动application到其他的queue，不能单独使用<br>7、-queue <queue name=""> 与 movetoqueue命令一起使用，指定移动到哪个queue</queue></applicationid></p>
+<pre><code>yarn application -movetoqueue application_1526100291229_206393 -queue other</code></pre>
+<h3 id="2-yarn-node"><a href="#2-yarn-node" class="headerlink" title="2. yarn node"></a>2. yarn node</h3><p>查看各个node上的任务数</p>
+<pre><code>yarn  node --list</code></pre>
+<h3 id="3-yarn-logs"><a href="#3-yarn-logs" class="headerlink" title="3. yarn logs"></a>3. yarn logs</h3><pre><code>yarn logs -applicationId application_1583405966138_0013</code></pre>
+
             </div>
             <hr/>
 
@@ -832,13 +834,9 @@ Spring Kafka（四）KafkaTemplate发送消
                     <div class="summary block-with-text">
                         
                             进入redis集群redis-cli -h ip -p port -c
-
 查看集群节点cluster nodes
-
 查看key对应的slotcluster keyslot key
-
 查看slot和节点的对应关系cluster slots
-
 
                         
                     </div>
@@ -1013,7 +1011,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

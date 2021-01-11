@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Elasticsearch 快速上手, 小张哥blog">
     <meta name="description" content="Elasticsearch 快速上手
@@ -30,6 +30,8 @@ curl -X&amp;lt;REST Verb&amp;gt; &amp;lt;Node&amp;gt;:&amp;lt;Port&amp;gt;/&amp;
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -447,14 +449,14 @@ curl -X&amp;lt;REST Verb&amp;gt; &amp;lt;Node&amp;gt;:&amp;lt;Port&amp;gt;/&amp;
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.3k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    24 分
+                    13 分
                 </div>
                 
 
@@ -474,1000 +476,1000 @@ curl -X&amp;lt;REST Verb&amp;gt; &amp;lt;Node&amp;gt;:&amp;lt;Port&amp;gt;/&amp;
 <p>注：本文档中除无特别说明，请求方式均为<code>GET</code>。所有的请求均在<code>Sense</code>中测试通过</p>
 </blockquote>
 <p>遵循的格式为</p>
-<pre><code>curl -X&lt;REST Verb&gt; &lt;Node&gt;:&lt;Port&gt;/&lt;Index&gt;/&lt;Type&gt;/&lt;ID&gt;
-</code></pre><h3 id="集群健康查看"><a href="#集群健康查看" class="headerlink" title="集群健康查看"></a>集群健康查看</h3><ul>
-<li><a href="http://127.0.0.1:9200/_cat/health?v" target="_blank" rel="noopener">http://127.0.0.1:9200/_cat/health?v</a></li>
+<pre><code>curl -X&lt;REST Verb&gt; &lt;Node&gt;:&lt;Port&gt;/&lt;Index&gt;/&lt;Type&gt;/&lt;ID&gt;</code></pre>
+<h3 id="集群健康查看"><a href="#集群健康查看" class="headerlink" title="集群健康查看"></a>集群健康查看</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:9200/_cat/health?v">http://127.0.0.1:9200/_cat/health?v</a></li>
 </ul>
 <pre><code>epoch      timestamp cluster       status node.total node.data shards pri relo init unassign pending_tasks 
-1441940569 11:02:49  elasticsearch yellow          1         1      7   7    0    0        7             0 
-</code></pre><ul>
-<li><a href="http://127.0.0.1:9200/_cat/nodes?v" target="_blank" rel="noopener">http://127.0.0.1:9200/_cat/nodes?v</a></li>
+1441940569 11:02:49  elasticsearch yellow          1         1      7   7    0    0        7             0 </code></pre>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:9200/_cat/nodes?v">http://127.0.0.1:9200/_cat/nodes?v</a></li>
 </ul>
 <pre><code>host ip            heap.percent ram.percent load node.role master name     
-acer 169.254.9.202           32          52      d         *      Mys-Tech
-</code></pre><h3 id="列出所有的indices"><a href="#列出所有的indices" class="headerlink" title="列出所有的indices"></a>列出所有的indices</h3><ul>
-<li><a href="http://127.0.0.1:9200/_cat/indices?v" target="_blank" rel="noopener">http://127.0.0.1:9200/_cat/indices?v</a></li>
+acer 169.254.9.202           32          52      d         *      Mys-Tech</code></pre>
+<h3 id="列出所有的indices"><a href="#列出所有的indices" class="headerlink" title="列出所有的indices"></a>列出所有的indices</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://127.0.0.1:9200/_cat/indices?v">http://127.0.0.1:9200/_cat/indices?v</a></li>
 </ul>
 <pre><code>health status index              pri rep docs.count docs.deleted store.size pri.store.size 
 yellow open   .marvel-2015.09.11   1   1       3233            0     10.5mb         10.5mb 
 yellow open   .marvel-2015.09.10   1   1       1996            0      3.9mb          3.9mb 
-yellow open   news                 5   1       3455            0     17.8mb         17.8mb 
-</code></pre><h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><p>使用<code>PUT</code>请求创建一个countries的索引</p>
-<pre><code>curl -XPUT http://127.0.0.1:9200/countries?pretty
-</code></pre><p>输出:</p>
+yellow open   news                 5   1       3455            0     17.8mb         17.8mb </code></pre>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><p>使用<code>PUT</code>请求创建一个countries的索引</p>
+<pre><code>curl -XPUT http://127.0.0.1:9200/countries?pretty</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;acknowledged&quot;: true
-}
-</code></pre><p>查看索引列表</p>
-<pre><code>curl -XGET http://127.0.0.1:9200/_cat/indices?v
-</code></pre><p>输出:</p>
+   "acknowledged": true
+}</code></pre>
+<p>查看索引列表</p>
+<pre><code>curl -XGET http://127.0.0.1:9200/_cat/indices?v</code></pre>
+<p>输出:</p>
 <pre><code>health status index              pri rep docs.count docs.deleted store.size pri.store.size 
 yellow open   countries              5   1          0            0       575b           575b 
 yellow open   .marvel-2015.09.11   1   1       3436            0     11.4mb         11.4mb 
 yellow open   .marvel-2015.09.10   1   1       1996            0      3.9mb          3.9mb 
-yellow open   news                 5   1       3455            0     17.8mb         17.8mb 
-</code></pre><h3 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h3><ul>
+yellow open   news                 5   1       3455            0     17.8mb         17.8mb </code></pre>
+<h3 id="索引文档"><a href="#索引文档" class="headerlink" title="索引文档"></a>索引文档</h3><ul>
 <li>使用自定义id索引文档</li>
 </ul>
 <p>使用<code>PUT</code>请求创建一个索引为<code>countries</code>类型为<code>country</code>的文档。其文档编号为<code>1</code>，文档内容包含<code>name</code>和<code>capital</code></p>
-<pre><code>curl -XPUT http://127.0.0.1:9200/countries/country/1?pretty -d &#39;
+<pre><code>curl -XPUT http://127.0.0.1:9200/countries/country/1?pretty -d '
 {
-  &quot;name&quot;: &quot;中国&quot;,
-  &quot;capital&quot;: &quot;北京&quot;
-}&#39;
-</code></pre><p>输出:</p>
-<pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;1&quot;,
-   &quot;_version&quot;: 1,
-   &quot;created&quot;: true
-}
-</code></pre><ul>
-<li>使用系统分配的id索引文档</li>
-</ul>
-<pre><code>curl -XPOST http://127.0.0.1:9200/countries/country?pretty -d &#39;
-{
-  &quot;name&quot;: &quot;韩国&quot;,
-  &quot;capital&quot;: &quot;首尔&quot;
-}&#39;
-</code></pre><p>注意：使用系统分配的id时使用<code>POST</code>方式提交文档，且在<code>索引\类型</code>url格式中不再有id</p>
+  "name": "中国",
+  "capital": "北京"
+}'</code></pre>
 <p>输出:</p>
 <pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;AU-6awteDgxJZYVN-E5I&quot;,
-   &quot;_version&quot;: 1,
-   &quot;created&quot;: true
-}
-</code></pre><h3 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h3><p>使用自定义id查询文档</p>
-<pre><code>curl -XGET http://127.0.0.1:9200/countries/country/1?pretty
-</code></pre><p>输出:</p>
+   "_index": "countries",
+   "_type": "country",
+   "_id": "1",
+   "_version": 1,
+   "created": true
+}</code></pre>
+<ul>
+<li>使用系统分配的id索引文档</li>
+</ul>
+<pre><code>curl -XPOST http://127.0.0.1:9200/countries/country?pretty -d '
+{
+  "name": "韩国",
+  "capital": "首尔"
+}'</code></pre>
+<p>注意：使用系统分配的id时使用<code>POST</code>方式提交文档，且在<code>索引\类型</code>url格式中不再有id</p>
+<p>输出:</p>
 <pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;1&quot;,
-   &quot;_version&quot;: 1,
-   &quot;found&quot;: true,
-   &quot;_source&quot;: {
-      &quot;name&quot;: &quot;中国&quot;,
-      &quot;capital&quot;: &quot;北京&quot;
+   "_index": "countries",
+   "_type": "country",
+   "_id": "AU-6awteDgxJZYVN-E5I",
+   "_version": 1,
+   "created": true
+}</code></pre>
+<h3 id="查询文档"><a href="#查询文档" class="headerlink" title="查询文档"></a>查询文档</h3><p>使用自定义id查询文档</p>
+<pre><code>curl -XGET http://127.0.0.1:9200/countries/country/1?pretty</code></pre>
+<p>输出:</p>
+<pre><code>{
+   "_index": "countries",
+   "_type": "country",
+   "_id": "1",
+   "_version": 1,
+   "found": true,
+   "_source": {
+      "name": "中国",
+      "capital": "北京"
    }
-}
-</code></pre><p>使用系统分配的id查询</p>
+}</code></pre>
+<p>使用系统分配的id查询</p>
 <pre><code>GET http://127.0.0.1:9200/countries/country/AU-6awteDgxJZYVN-E5I?pretty
-
-</code></pre><p>输出:</p>
+</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;AU-6awteDgxJZYVN-E5I&quot;,
-   &quot;_version&quot;: 1,
-   &quot;found&quot;: true,
-   &quot;_source&quot;: {
-      &quot;name&quot;: &quot;韩国&quot;,
-      &quot;capital&quot;: &quot;首尔&quot;
+   "_index": "countries",
+   "_type": "country",
+   "_id": "AU-6awteDgxJZYVN-E5I",
+   "_version": 1,
+   "found": true,
+   "_source": {
+      "name": "韩国",
+      "capital": "首尔"
    }
-}
-</code></pre><h3 id="查看索引信息"><a href="#查看索引信息" class="headerlink" title="查看索引信息"></a>查看索引信息</h3><pre><code>GET http://127.0.0.1:9200/countries/
-</code></pre><p>输出:</p>
+}</code></pre>
+<h3 id="查看索引信息"><a href="#查看索引信息" class="headerlink" title="查看索引信息"></a>查看索引信息</h3><pre><code>GET http://127.0.0.1:9200/countries/</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;countries&quot;: {
-      &quot;aliases&quot;: {},
-      &quot;mappings&quot;: {
-         &quot;country&quot;: {
-            &quot;properties&quot;: {
-               &quot;capital&quot;: {
-                  &quot;type&quot;: &quot;string&quot;
+   "countries": {
+      "aliases": {},
+      "mappings": {
+         "country": {
+            "properties": {
+               "capital": {
+                  "type": "string"
                },
-               &quot;name&quot;: {
-                  &quot;type&quot;: &quot;string&quot;
+               "name": {
+                  "type": "string"
                }
             }
          }
       },
-      &quot;settings&quot;: {
-         &quot;index&quot;: {
-            &quot;creation_date&quot;: &quot;1441941497754&quot;,
-            &quot;uuid&quot;: &quot;UaoQ_WCATaiy5w736cjw2A&quot;,
-            &quot;number_of_replicas&quot;: &quot;1&quot;,
-            &quot;number_of_shards&quot;: &quot;5&quot;,
-            &quot;version&quot;: {
-               &quot;created&quot;: &quot;1070199&quot;
+      "settings": {
+         "index": {
+            "creation_date": "1441941497754",
+            "uuid": "UaoQ_WCATaiy5w736cjw2A",
+            "number_of_replicas": "1",
+            "number_of_shards": "5",
+            "version": {
+               "created": "1070199"
             }
          }
       },
-      &quot;warmers&quot;: {}
+      "warmers": {}
    }
-}
-</code></pre><h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><p>删除<code>myindex</code>索引</p>
-<pre><code>DELETE http://127.0.0.1:9200/myindex/?pretty
-</code></pre><p>输出:</p>
+}</code></pre>
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><p>删除<code>myindex</code>索引</p>
+<pre><code>DELETE http://127.0.0.1:9200/myindex/?pretty</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;acknowledged&quot;: true
-}
-</code></pre><h3 id="索引或替换一个文档"><a href="#索引或替换一个文档" class="headerlink" title="索引或替换一个文档"></a>索引或替换一个文档</h3><p>根据文档id索引或替换文档，若存在则修改替换，否则索引该文档。</p>
+   "acknowledged": true
+}</code></pre>
+<h3 id="索引或替换一个文档"><a href="#索引或替换一个文档" class="headerlink" title="索引或替换一个文档"></a>索引或替换一个文档</h3><p>根据文档id索引或替换文档，若存在则修改替换，否则索引该文档。</p>
 <ul>
 <li>使用已存在的id</li>
 </ul>
 <p>修改文档id为1的国家信息。</p>
-<pre><code>PUT &#39;http://127.0.0.1:9200/countries/country/1?pretty&#39;
+<pre><code>PUT 'http://127.0.0.1:9200/countries/country/1?pretty'
 {
-    &quot;name&quot;: &quot;日本&quot;,
-    &quot;capital&quot;: &quot;东京&quot;
-}
-</code></pre><p>查询其是否已修改</p>
-<pre><code>GET http://127.0.0.1:9200/countries/country/1?pretty
-</code></pre><p>输出:</p>
+    "name": "日本",
+    "capital": "东京"
+}</code></pre>
+<p>查询其是否已修改</p>
+<pre><code>GET http://127.0.0.1:9200/countries/country/1?pretty</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;1&quot;,
-   &quot;_version&quot;: 2,
-   &quot;found&quot;: true,
-   &quot;_source&quot;: {
-      &quot;name&quot;: &quot;日本&quot;,
-      &quot;capital&quot;: &quot;东京&quot;
+   "_index": "countries",
+   "_type": "country",
+   "_id": "1",
+   "_version": 2,
+   "found": true,
+   "_source": {
+      "name": "日本",
+      "capital": "东京"
    }
-}
-</code></pre><p>可见国家信息已由<code>中国</code>变为<code>日本</code>，其首都信息也发生了变化</p>
+}</code></pre>
+<p>可见国家信息已由<code>中国</code>变为<code>日本</code>，其首都信息也发生了变化</p>
 <ul>
 <li>使用不存在的id则是索引文档</li>
 </ul>
 <pre><code>PUT http://127.0.0.1:9200/countries/country/2?pretty
 {
-    &quot;name&quot;: &quot;澳大利亚&quot;,
-    &quot;capital&quot;: &quot;悉尼&quot;
-}
-</code></pre><p>输出:</p>
+    "name": "澳大利亚",
+    "capital": "悉尼"
+}</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;2&quot;,
-   &quot;_version&quot;: 1,
-   &quot;created&quot;: true
-}
-</code></pre><h3 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h3><ul>
+   "_index": "countries",
+   "_type": "country",
+   "_id": "2",
+   "_version": 1,
+   "created": true
+}</code></pre>
+<h3 id="修改文档"><a href="#修改文档" class="headerlink" title="修改文档"></a>修改文档</h3><ul>
 <li>按doc方式更新文档</li>
 </ul>
 <p>以<code>doc</code>方式修改文档id为1的文档</p>
 <pre><code>POST http://127.0.0.1:9200/countries/country/1/_update?pretty
 {
-  &quot;doc&quot;: { &quot;name&quot;: &quot;美国&quot;,&quot;capital&quot;: &quot;华盛顿&quot;}
-}
-</code></pre><p>其中<code>doc</code>是固定写法,其内容为要修改的文档内容</p>
+  "doc": { "name": "美国","capital": "华盛顿"}
+}</code></pre>
+<p>其中<code>doc</code>是固定写法,其内容为要修改的文档内容</p>
 <ul>
 <li>按script方式更新文档</li>
 </ul>
 <p>以<code>script</code>方式修改文档id为1的文档</p>
 <pre><code>POST http://127.0.0.1:9200/countries/country/1/_update?pretty
 {
-  &quot;script&quot;: &quot;ctx._source.name=\&quot;加拿大\&quot;;ctx._source.capital=\&quot;渥太华\&quot;&quot;
-}
-</code></pre><h3 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h3><ul>
+  "script": "ctx._source.name=\"加拿大\";ctx._source.capital=\"渥太华\""
+}</code></pre>
+<h3 id="删除文档"><a href="#删除文档" class="headerlink" title="删除文档"></a>删除文档</h3><ul>
 <li>按文档id删除</li>
 </ul>
-<pre><code>DELETE http://127.0.0.1:9200/countries/country/1?pretty
-</code></pre><p>输出：</p>
+<pre><code>DELETE http://127.0.0.1:9200/countries/country/1?pretty</code></pre>
+<p>输出：</p>
 <pre><code>{
-   &quot;found&quot;: true,
-   &quot;_index&quot;: &quot;countries&quot;,
-   &quot;_type&quot;: &quot;country&quot;,
-   &quot;_id&quot;: &quot;1&quot;,
-   &quot;_version&quot;: 6
-}
-</code></pre><ul>
+   "found": true,
+   "_index": "countries",
+   "_type": "country",
+   "_id": "1",
+   "_version": 6
+}</code></pre>
+<ul>
 <li>根据查询结果删除</li>
 </ul>
 <pre><code>DELETE http://127.0.0.1:9200/countries/country/_query?pretty
 {
-    &quot;query&quot;: { &quot;match&quot;: { &quot;name&quot;: &quot;美国&quot; } }
+    "query": { "match": { "name": "美国" } }
 }
-
-</code></pre><p>输出：</p>
+</code></pre>
+<p>输出：</p>
 <pre><code>{
-   &quot;_indices&quot;: {
-      &quot;countries&quot;: {
-         &quot;_shards&quot;: {
-            &quot;total&quot;: 5,
-            &quot;successful&quot;: 5,
-            &quot;failed&quot;: 0
+   "_indices": {
+      "countries": {
+         "_shards": {
+            "total": 5,
+            "successful": 5,
+            "failed": 0
          }
       }
    }
-}
-</code></pre><p>查询是否还有name为美国的文档</p>
+}</code></pre>
+<p>查询是否还有name为美国的文档</p>
 <pre><code>GET http://127.0.0.1:9200/countries/country/_query
 {
-    &quot;query&quot;: { &quot;match_all&quot;: { &quot;name&quot;: &quot;美国&quot; } }
-}
-</code></pre><h3 id="批量处理"><a href="#批量处理" class="headerlink" title="批量处理"></a>批量处理</h3><p>_bulk api</p>
-<p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html</a></p>
+    "query": { "match_all": { "name": "美国" } }
+}</code></pre>
+<h3 id="批量处理"><a href="#批量处理" class="headerlink" title="批量处理"></a>批量处理</h3><p>_bulk api</p>
+<p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-bulk.html</a></p>
 <p>遵循格式</p>
 <p>/_bulk, /{index}/_bulk, {index}/{type}/_bulk</p>
 <pre><code>action_and_meta_data\n
 optional_source\n
 action_and_meta_data\n
-optional_source\n
-</code></pre><p>支持的action有<code>index</code>, <code>create</code>, <code>delete</code>, <code>update</code></p>
+optional_source\n</code></pre>
+<p>支持的action有<code>index</code>, <code>create</code>, <code>delete</code>, <code>update</code></p>
 <p><code>index</code>和<code>create</code>在下一行跟上要索引的doc<br><code>delete</code>则不需要<br><code>update</code>在下一行跟上<code>doc</code>或<code>script</code></p>
 <ul>
 <li>批量索引文档</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/country/_bulk?pretty
-{&quot;index&quot;:{&quot;_id&quot;:&quot;1&quot;}}
-{&quot;name&quot;: &quot;中国&quot;,&quot;capital&quot;: &quot;北京&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;2&quot;}}
-{&quot;name&quot;: &quot;美国&quot;,&quot;capital&quot;: &quot;华盛顿&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;3&quot;}}
-{&quot;name&quot;: &quot;日本&quot;,&quot;capital&quot;: &quot;东京&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;4&quot;}}
-{&quot;name&quot;: &quot;澳大利亚&quot;,&quot;capital&quot;: &quot;悉尼&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;5&quot;}}
-{&quot;name&quot;: &quot;印度&quot;,&quot;capital&quot;: &quot;新德里&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;6&quot;}}
-{&quot;name&quot;: &quot;韩国&quot;,&quot;capital&quot;: &quot;首尔&quot;}
-</code></pre><p>以上请求将会批量索引6个文档。</p>
+{"index":{"_id":"1"}}
+{"name": "中国","capital": "北京"}
+{"index":{"_id":"2"}}
+{"name": "美国","capital": "华盛顿"}
+{"index":{"_id":"3"}}
+{"name": "日本","capital": "东京"}
+{"index":{"_id":"4"}}
+{"name": "澳大利亚","capital": "悉尼"}
+{"index":{"_id":"5"}}
+{"name": "印度","capital": "新德里"}
+{"index":{"_id":"6"}}
+{"name": "韩国","capital": "首尔"}</code></pre>
+<p>以上请求将会批量索引6个文档。</p>
 <p>输出：</p>
 <pre><code>{
-   &quot;took&quot;: 4,
-   &quot;errors&quot;: false,
-   &quot;items&quot;: [
+   "took": 4,
+   "errors": false,
+   "items": [
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;1&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "1",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;2&quot;,
-            &quot;_version&quot;: 2,
-            &quot;status&quot;: 200
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "2",
+            "_version": 2,
+            "status": 200
          }
       },
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;3&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "3",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;4&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "4",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;5&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "5",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;6&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "6",
+            "_version": 1,
+            "status": 201
          }
       }
    ]
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>批量执行，含index、create、delete、update</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/country/_bulk?pretty
-{&quot;index&quot;:{&quot;_id&quot;:&quot;7&quot;}}
-{&quot;name&quot;: &quot;新加坡&quot;,&quot;capital&quot;: &quot;渥太华&quot;}
-{&quot;create&quot;:{&quot;_id&quot;:&quot;8&quot;}}
-{&quot;name&quot;: &quot;德国&quot;,&quot;capital&quot;: &quot;柏林&quot;}
-{&quot;update&quot;:{&quot;_id&quot;:&quot;1&quot;}}
-{&quot;doc&quot;: {&quot;name&quot;: &quot;法国&quot;,&quot;capital&quot;: &quot;巴黎&quot; }}
-{&quot;update&quot;:{&quot;_id&quot;:&quot;3&quot;}}
-{&quot;script&quot;: &quot;ctx._source.name = \&quot;法国\&quot;;ctx._source.capital = \&quot;巴黎\&quot;&quot;}
-{&quot;delete&quot;:{&quot;_id&quot;:&quot;2&quot;}}
-</code></pre><p>输出：</p>
+{"index":{"_id":"7"}}
+{"name": "新加坡","capital": "渥太华"}
+{"create":{"_id":"8"}}
+{"name": "德国","capital": "柏林"}
+{"update":{"_id":"1"}}
+{"doc": {"name": "法国","capital": "巴黎" }}
+{"update":{"_id":"3"}}
+{"script": "ctx._source.name = \"法国\";ctx._source.capital = \"巴黎\""}
+{"delete":{"_id":"2"}}</code></pre>
+<p>输出：</p>
 <pre><code>{
-   &quot;took&quot;: 40,
-   &quot;errors&quot;: false,
-   &quot;items&quot;: [
+   "took": 40,
+   "errors": false,
+   "items": [
       {
-         &quot;index&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;7&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "index": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "7",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;create&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;8&quot;,
-            &quot;_version&quot;: 1,
-            &quot;status&quot;: 201
+         "create": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "8",
+            "_version": 1,
+            "status": 201
          }
       },
       {
-         &quot;update&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;1&quot;,
-            &quot;_version&quot;: 2,
-            &quot;status&quot;: 200
+         "update": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "1",
+            "_version": 2,
+            "status": 200
          }
       },
       {
-         &quot;update&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;3&quot;,
-            &quot;_version&quot;: 2,
-            &quot;status&quot;: 200
+         "update": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "3",
+            "_version": 2,
+            "status": 200
          }
       },
       {
-         &quot;delete&quot;: {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;2&quot;,
-            &quot;_version&quot;: 3,
-            &quot;status&quot;: 200,
-            &quot;found&quot;: true
+         "delete": {
+            "_index": "countries",
+            "_type": "country",
+            "_id": "2",
+            "_version": 3,
+            "status": 200,
+            "found": true
          }
       }
    ]
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>导入数据</li>
 </ul>
 <p>countries.json</p>
-<pre><code>{&quot;index&quot;:{&quot;_id&quot;:&quot;1&quot;}}
-{&quot;name&quot;: &quot;新加坡&quot;,&quot;capital&quot;: &quot;渥太华&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;2&quot;}}
-{&quot;name&quot;: &quot;韩国&quot;,&quot;capital&quot;: &quot;首尔&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;3&quot;}}
-{&quot;name&quot;: &quot;朝鲜&quot;,&quot;capital&quot;: &quot;平壤&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;4&quot;}}
-{&quot;name&quot;: &quot;日本&quot;,&quot;capital&quot;: &quot;东京&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;5&quot;}}
-{&quot;name&quot;: &quot;马来西亚&quot;,&quot;capital&quot;: &quot;吉隆坡&quot;}
-</code></pre><p>使用curl的<code>--data-binary</code>参数导入数据</p>
-<pre><code>curl XPOST http://127.0.0.1:9200/countries/country/_bulk?pretty --data-binary @countries.json
-</code></pre><p>或者使用postman导入</p>
+<pre><code>{"index":{"_id":"1"}}
+{"name": "新加坡","capital": "渥太华"}
+{"index":{"_id":"2"}}
+{"name": "韩国","capital": "首尔"}
+{"index":{"_id":"3"}}
+{"name": "朝鲜","capital": "平壤"}
+{"index":{"_id":"4"}}
+{"name": "日本","capital": "东京"}
+{"index":{"_id":"5"}}
+{"name": "马来西亚","capital": "吉隆坡"}</code></pre>
+<p>使用curl的<code>--data-binary</code>参数导入数据</p>
+<pre><code>curl XPOST http://127.0.0.1:9200/countries/country/_bulk?pretty --data-binary @countries.json</code></pre>
+<p>或者使用postman导入</p>
 <pre><code>http://127.0.0.1:9200/countries/country/_bulk?pretty
-{&quot;index&quot;:{&quot;_id&quot;:&quot;1&quot;}}
-{&quot;name&quot;: &quot;新加坡&quot;,&quot;capital&quot;: &quot;渥太华&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;2&quot;}}
-{&quot;name&quot;: &quot;韩国&quot;,&quot;capital&quot;: &quot;首尔&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;3&quot;}}
-{&quot;name&quot;: &quot;朝鲜&quot;,&quot;capital&quot;: &quot;平壤&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;4&quot;}}
-{&quot;name&quot;: &quot;日本&quot;,&quot;capital&quot;: &quot;东京&quot;}
-{&quot;index&quot;:{&quot;_id&quot;:&quot;5&quot;}}
-{&quot;name&quot;: &quot;马来西亚&quot;,&quot;capital&quot;: &quot;吉隆坡&quot;}
-</code></pre><h3 id="search-api"><a href="#search-api" class="headerlink" title="search api"></a>search api</h3><ul>
+{"index":{"_id":"1"}}
+{"name": "新加坡","capital": "渥太华"}
+{"index":{"_id":"2"}}
+{"name": "韩国","capital": "首尔"}
+{"index":{"_id":"3"}}
+{"name": "朝鲜","capital": "平壤"}
+{"index":{"_id":"4"}}
+{"name": "日本","capital": "东京"}
+{"index":{"_id":"5"}}
+{"name": "马来西亚","capital": "吉隆坡"}</code></pre>
+<h3 id="search-api"><a href="#search-api" class="headerlink" title="search api"></a>search api</h3><ul>
 <li>GET方式搜索(queryString)</li>
 </ul>
-<pre><code>GET http://127.0.0.1:9200/countries/_search?q=*&amp;pretty
-</code></pre><p>注:<code>q=*</code>将匹配索引中的所有文档</p>
+<pre><code>GET http://127.0.0.1:9200/countries/_search?q=*&amp;pretty</code></pre>
+<p>注:<code>q=*</code>将匹配索引中的所有文档</p>
 <p>输出:</p>
 <pre><code>{
-   &quot;took&quot;: 1,
-   &quot;timed_out&quot;: false,
-   &quot;_shards&quot;: {
-      &quot;total&quot;: 5,
-      &quot;successful&quot;: 5,
-      &quot;failed&quot;: 0
+   "took": 1,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
    },
-   &quot;hits&quot;: {
-      &quot;total&quot;: 10,
-      &quot;max_score&quot;: 1,
-      &quot;hits&quot;: [
+   "hits": {
+      "total": 10,
+      "max_score": 1,
+      "hits": [
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;4&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;日本&quot;,
-               &quot;capital&quot;: &quot;东京&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "4",
+            "_score": 1,
+            "_source": {
+               "name": "日本",
+               "capital": "东京"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;_query&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;query&quot;: {
-                  &quot;match_all&quot;: {
-                     &quot;name&quot;: &quot;美国&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "_query",
+            "_score": 1,
+            "_source": {
+               "query": {
+                  "match_all": {
+                     "name": "美国"
                   }
                }
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;5&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;印度&quot;,
-               &quot;capital&quot;: &quot;新德里&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "5",
+            "_score": 1,
+            "_source": {
+               "name": "印度",
+               "capital": "新德里"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;6&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "6",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;1&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;新加坡&quot;,
-               &quot;capital&quot;: &quot;渥太华&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "1",
+            "_score": 1,
+            "_source": {
+               "name": "新加坡",
+               "capital": "渥太华"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;7&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;新加坡&quot;,
-               &quot;capital&quot;: &quot;渥太华&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "7",
+            "_score": 1,
+            "_source": {
+               "name": "新加坡",
+               "capital": "渥太华"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;2&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "2",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;AU-6awteDgxJZYVN-E5I&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "AU-6awteDgxJZYVN-E5I",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;8&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;德国&quot;,
-               &quot;capital&quot;: &quot;柏林&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "8",
+            "_score": 1,
+            "_source": {
+               "name": "德国",
+               "capital": "柏林"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;3&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;朝鲜&quot;,
-               &quot;capital&quot;: &quot;平壤&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "3",
+            "_score": 1,
+            "_source": {
+               "name": "朝鲜",
+               "capital": "平壤"
             }
          }
       ]
    }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>POST方式搜索(含请求体query)</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     }
-}
-</code></pre><p>输出:</p>
+}</code></pre>
+<p>输出:</p>
 <pre><code>{
-   &quot;took&quot;: 1,
-   &quot;timed_out&quot;: false,
-   &quot;_shards&quot;: {
-      &quot;total&quot;: 5,
-      &quot;successful&quot;: 5,
-      &quot;failed&quot;: 0
+   "took": 1,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
    },
-   &quot;hits&quot;: {
-      &quot;total&quot;: 10,
-      &quot;max_score&quot;: 1,
-      &quot;hits&quot;: [
+   "hits": {
+      "total": 10,
+      "max_score": 1,
+      "hits": [
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;4&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;日本&quot;,
-               &quot;capital&quot;: &quot;东京&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "4",
+            "_score": 1,
+            "_source": {
+               "name": "日本",
+               "capital": "东京"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;_query&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;query&quot;: {
-                  &quot;match_all&quot;: {
-                     &quot;name&quot;: &quot;美国&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "_query",
+            "_score": 1,
+            "_source": {
+               "query": {
+                  "match_all": {
+                     "name": "美国"
                   }
                }
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;5&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;印度&quot;,
-               &quot;capital&quot;: &quot;新德里&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "5",
+            "_score": 1,
+            "_source": {
+               "name": "印度",
+               "capital": "新德里"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;6&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "6",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;1&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;新加坡&quot;,
-               &quot;capital&quot;: &quot;渥太华&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "1",
+            "_score": 1,
+            "_source": {
+               "name": "新加坡",
+               "capital": "渥太华"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;7&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;新加坡&quot;,
-               &quot;capital&quot;: &quot;渥太华&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "7",
+            "_score": 1,
+            "_source": {
+               "name": "新加坡",
+               "capital": "渥太华"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;2&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "2",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;AU-6awteDgxJZYVN-E5I&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;韩国&quot;,
-               &quot;capital&quot;: &quot;首尔&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "AU-6awteDgxJZYVN-E5I",
+            "_score": 1,
+            "_source": {
+               "name": "韩国",
+               "capital": "首尔"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;8&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;德国&quot;,
-               &quot;capital&quot;: &quot;柏林&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "8",
+            "_score": 1,
+            "_source": {
+               "name": "德国",
+               "capital": "柏林"
             }
          },
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;3&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;朝鲜&quot;,
-               &quot;capital&quot;: &quot;平壤&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "3",
+            "_score": 1,
+            "_source": {
+               "name": "朝鲜",
+               "capital": "平壤"
             }
          }
       ]
    }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>限定返回条目</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     },
-    &quot;size&quot;: 1
-}
-</code></pre><p><code>size</code>控制返回条目，默认为10</p>
+    "size": 1
+}</code></pre>
+<p><code>size</code>控制返回条目，默认为10</p>
 <p>输出:</p>
 <pre><code>{
-   &quot;took&quot;: 1,
-   &quot;timed_out&quot;: false,
-   &quot;_shards&quot;: {
-      &quot;total&quot;: 5,
-      &quot;successful&quot;: 5,
-      &quot;failed&quot;: 0
+   "took": 1,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
    },
-   &quot;hits&quot;: {
-      &quot;total&quot;: 10,
-      &quot;max_score&quot;: 1,
-      &quot;hits&quot;: [
+   "hits": {
+      "total": 10,
+      "max_score": 1,
+      "hits": [
          {
-            &quot;_index&quot;: &quot;countries&quot;,
-            &quot;_type&quot;: &quot;country&quot;,
-            &quot;_id&quot;: &quot;4&quot;,
-            &quot;_score&quot;: 1,
-            &quot;_source&quot;: {
-               &quot;name&quot;: &quot;日本&quot;,
-               &quot;capital&quot;: &quot;东京&quot;
+            "_index": "countries",
+            "_type": "country",
+            "_id": "4",
+            "_score": 1,
+            "_source": {
+               "name": "日本",
+               "capital": "东京"
             }
          }
       ]
    }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>分页(form,size)</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     },
-    &quot;from&quot;: 2,
-    &quot;size&quot;: 2
-}
-</code></pre><p>使用<code>from</code>和<code>size</code>来翻页。其中<code>form</code>默认为<code>0</code>,<code>size</code>默认为<code>10</code></p>
+    "from": 2,
+    "size": 2
+}</code></pre>
+<p>使用<code>from</code>和<code>size</code>来翻页。其中<code>form</code>默认为<code>0</code>,<code>size</code>默认为<code>10</code></p>
 <ul>
 <li>排序(sort)</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     },
-    &quot;sort&quot;: [
+    "sort": [
        {
-          &quot;name&quot;: {
-             &quot;order&quot;: &quot;desc&quot;
+          "name": {
+             "order": "desc"
           }
        }
     ]
-}
-</code></pre><p>其中<code>name</code>为排序字段</p>
+}</code></pre>
+<p>其中<code>name</code>为排序字段</p>
 <h3 id="限定返回字段"><a href="#限定返回字段" class="headerlink" title="限定返回字段"></a>限定返回字段</h3><pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     },
-    &quot;_source&quot;: [&quot;name&quot;]
-}
-</code></pre><p>使用<code>_source</code>来限定返回的字段。这里只返回<code>name</code></p>
+    "_source": ["name"]
+}</code></pre>
+<p>使用<code>_source</code>来限定返回的字段。这里只返回<code>name</code></p>
 <h3 id="高级查询"><a href="#高级查询" class="headerlink" title="高级查询"></a>高级查询</h3><ul>
 <li>match_phrase</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_phrase&quot;: {
-           &quot;name&quot;: &quot;韩国&quot;
+    "query": {
+        "match_phrase": {
+           "name": "韩国"
         }
     }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>must</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;bool&quot;: {
-            &quot;must&quot;: [
-               {&quot;match&quot;: {
-                  &quot;name&quot;: &quot;日本&quot;
+    "query": {
+        "bool": {
+            "must": [
+               {"match": {
+                  "name": "日本"
                }},
-               {&quot;match&quot;: {
-                  &quot;capital&quot;: &quot;东京&quot;
+               {"match": {
+                  "capital": "东京"
                }}
             ]
         }
     }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>should</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;bool&quot;: {
-            &quot;should&quot;: [
-               {&quot;match&quot;: {
-                  &quot;name&quot;: &quot;日本&quot;
+    "query": {
+        "bool": {
+            "should": [
+               {"match": {
+                  "name": "日本"
                }},
-               {&quot;match&quot;: {
-                  &quot;name&quot;: &quot;韩国&quot;
+               {"match": {
+                  "name": "韩国"
                }}
             ]
         }
     }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li><p>must_not</p>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-  &quot;query&quot;: {
-      &quot;bool&quot;: {
-          &quot;must_not&quot;: [
-             {&quot;match&quot;: {
-                &quot;name&quot;: &quot;日本&quot;
+  "query": {
+      "bool": {
+          "must_not": [
+             {"match": {
+                "name": "日本"
              }},
-             {&quot;match&quot;: {
-                &quot;name&quot;: &quot;韩国&quot;
+             {"match": {
+                "name": "韩国"
              }}
           ]
       }
   }
-}
-</code></pre></li>
+}</code></pre>
+</li>
 <li><p>filter</p>
 </li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-    &quot;query&quot;: {
-        &quot;match_all&quot;: {}
+    "query": {
+        "match_all": {}
     },
-    &quot;filter&quot;: {
-        &quot;term&quot;: {
-           &quot;capital&quot;: &quot;东京&quot;
+    "filter": {
+        "term": {
+           "capital": "东京"
         }
     }
-}
-</code></pre><ul>
+}</code></pre>
+<ul>
 <li>聚合(aggs)</li>
 </ul>
 <pre><code>POST http://127.0.0.1:9200/countries/_search?pretty
 {
-  &quot;size&quot;: 0,
-  &quot;aggs&quot;: {
-    &quot;group_by_name&quot;: {
-      &quot;terms&quot;: {
-        &quot;field&quot;: &quot;name&quot;
+  "size": 0,
+  "aggs": {
+    "group_by_name": {
+      "terms": {
+        "field": "name"
       }
     }
   }
-}
-</code></pre><p>按<code>name</code>统计分组文档数</p>
+}</code></pre>
+<p>按<code>name</code>统计分组文档数</p>
 <p>输出:</p>
 <pre><code>{
-   &quot;took&quot;: 1,
-   &quot;timed_out&quot;: false,
-   &quot;_shards&quot;: {
-      &quot;total&quot;: 5,
-      &quot;successful&quot;: 5,
-      &quot;failed&quot;: 0
+   "took": 1,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 5,
+      "failed": 0
    },
-   &quot;hits&quot;: {
-      &quot;total&quot;: 10,
-      &quot;max_score&quot;: 0,
-      &quot;hits&quot;: []
+   "hits": {
+      "total": 10,
+      "max_score": 0,
+      "hits": []
    },
-   &quot;aggregations&quot;: {
-      &quot;group_by_name&quot;: {
-         &quot;doc_count_error_upper_bound&quot;: 0,
-         &quot;sum_other_doc_count&quot;: 0,
-         &quot;buckets&quot;: [
+   "aggregations": {
+      "group_by_name": {
+         "doc_count_error_upper_bound": 0,
+         "sum_other_doc_count": 0,
+         "buckets": [
             {
-               &quot;key&quot;: &quot;韩国&quot;,
-               &quot;doc_count&quot;: 3
+               "key": "韩国",
+               "doc_count": 3
             },
             {
-               &quot;key&quot;: &quot;新加坡&quot;,
-               &quot;doc_count&quot;: 2
+               "key": "新加坡",
+               "doc_count": 2
             },
             {
-               &quot;key&quot;: &quot;印度&quot;,
-               &quot;doc_count&quot;: 1
+               "key": "印度",
+               "doc_count": 1
             },
             {
-               &quot;key&quot;: &quot;德国&quot;,
-               &quot;doc_count&quot;: 1
+               "key": "德国",
+               "doc_count": 1
             },
             {
-               &quot;key&quot;: &quot;日本&quot;,
-               &quot;doc_count&quot;: 1
+               "key": "日本",
+               "doc_count": 1
             },
             {
-               &quot;key&quot;: &quot;朝鲜&quot;,
-               &quot;doc_count&quot;: 1
+               "key": "朝鲜",
+               "doc_count": 1
             }
          ]
       }
    }
-}
-</code></pre><h3 id="高亮查询-highlight"><a href="#高亮查询-highlight" class="headerlink" title="高亮查询(highlight)"></a>高亮查询(highlight)</h3><pre><code>POST http://127.0.0.1:9200/news/_search?q=李克强
+}</code></pre>
+<h3 id="高亮查询-highlight"><a href="#高亮查询-highlight" class="headerlink" title="高亮查询(highlight)"></a>高亮查询(highlight)</h3><pre><code>POST http://127.0.0.1:9200/news/_search?q=李克强
 {
-    &quot;query&quot; : {
+    "query" : {
         match_all:{}
     },
-    &quot;highlight&quot; : {
-        &quot;pre_tags&quot; : [&quot;&lt;font color=&#39;red&#39;&gt;&quot;, &quot;&lt;b&gt;&quot;, &quot;&lt;em&gt;&quot;],
-        &quot;post_tags&quot; : [&quot;&lt;/font&gt;&quot;, &quot;&lt;b&gt;&quot;, &quot;&lt;/em&gt;&quot;],
-        &quot;fields&quot; : [
-            {&quot;title&quot; : {}},
-            {&quot;content&quot; : {
-                &quot;fragment_size&quot; : 350,
-                &quot;number_of_fragments&quot; : 3,
-                &quot;no_match_size&quot;: 150
+    "highlight" : {
+        "pre_tags" : ["&lt;font color='red'&gt;", "&lt;b&gt;", "&lt;em&gt;"],
+        "post_tags" : ["&lt;/font&gt;", "&lt;b&gt;", "&lt;/em&gt;"],
+        "fields" : [
+            {"title" : {}},
+            {"content" : {
+                "fragment_size" : 350,
+                "number_of_fragments" : 3,
+                "no_match_size": 150
             }}
         ]
     }
-}
-</code></pre><pre><code>POST http://127.0.0.1:9200/news/_search?q=李克强
+}</code></pre>
+<pre><code>POST http://127.0.0.1:9200/news/_search?q=李克强
 {
-    &quot;query&quot; : {
+    "query" : {
         match_all:{}
     },
-    &quot;highlight&quot; : {
-        &quot;pre_tags&quot; : [&quot;&lt;font color=&#39;red&#39;&gt;&lt;b&gt;&lt;em&gt;&quot;],
-        &quot;post_tags&quot; : [&quot;&lt;/font&gt;&lt;b&gt;&lt;/em&gt;&quot;],
-        &quot;fields&quot; : [
-            {&quot;title&quot; : {}},
-            {&quot;content&quot; : {
-                &quot;fragment_size&quot; : 350,
-                &quot;number_of_fragments&quot; : 3,
-                &quot;no_match_size&quot;: 150
+    "highlight" : {
+        "pre_tags" : ["&lt;font color='red'&gt;&lt;b&gt;&lt;em&gt;"],
+        "post_tags" : ["&lt;/font&gt;&lt;b&gt;&lt;/em&gt;"],
+        "fields" : [
+            {"title" : {}},
+            {"content" : {
+                "fragment_size" : 350,
+                "number_of_fragments" : 3,
+                "no_match_size": 150
             }}
         ]
     }
-}
-</code></pre><h3 id="删除索引-1"><a href="#删除索引-1" class="headerlink" title="删除索引"></a>删除索引</h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html</a></p>
-<pre><code>DELETE http://127.0.0.1:9200/news
-</code></pre><h3 id="创建索引-1"><a href="#创建索引-1" class="headerlink" title="创建索引"></a>创建索引</h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html</a></p>
-<pre><code>PUT http://127.0.0.1:9200/news
-</code></pre><h3 id="创建或修改mapping"><a href="#创建或修改mapping" class="headerlink" title="创建或修改mapping"></a>创建或修改mapping</h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html</a></p>
-<pre><code>PUT /{index}/_mapping/{type}
-</code></pre><pre><code>PUT http://127.0.0.1:9200/news/_mapping/article
+}</code></pre>
+<h3 id="删除索引-1"><a href="#删除索引-1" class="headerlink" title="删除索引"></a>删除索引</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-index.html</a></p>
+<pre><code>DELETE http://127.0.0.1:9200/news</code></pre>
+<h3 id="创建索引-1"><a href="#创建索引-1" class="headerlink" title="创建索引"></a>创建索引</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-create-index.html</a></p>
+<pre><code>PUT http://127.0.0.1:9200/news</code></pre>
+<h3 id="创建或修改mapping"><a href="#创建或修改mapping" class="headerlink" title="创建或修改mapping"></a>创建或修改mapping</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html</a></p>
+<pre><code>PUT /{index}/_mapping/{type}</code></pre>
+<pre><code>PUT http://127.0.0.1:9200/news/_mapping/article
 {
-  &quot;article&quot;: {
-    &quot;properties&quot;: {
-      &quot;pubdate&quot;: {
-        &quot;type&quot;: &quot;date&quot;,
-        &quot;format&quot;: &quot;dateOptionalTime&quot;
+  "article": {
+    "properties": {
+      "pubdate": {
+        "type": "date",
+        "format": "dateOptionalTime"
       },
-      &quot;author&quot;: {
-        &quot;type&quot;: &quot;string&quot;
+      "author": {
+        "type": "string"
       },
-      &quot;content&quot;: {
-        &quot;type&quot;: &quot;string&quot;
+      "content": {
+        "type": "string"
       },
-      &quot;id&quot;: {
-        &quot;type&quot;: &quot;long&quot;
+      "id": {
+        "type": "long"
       },
-      &quot;source&quot;: {
-        &quot;type&quot;: &quot;string&quot;
+      "source": {
+        "type": "string"
       },
-      &quot;title&quot;: {
-        &quot;type&quot;: &quot;string&quot;
+      "title": {
+        "type": "string"
       },
-      &quot;url&quot;: {
-        &quot;type&quot;: &quot;string&quot;
+      "url": {
+        "type": "string"
       }
     }
   }
-}
-</code></pre><h3 id="查看mapping"><a href="#查看mapping" class="headerlink" title="查看mapping"></a>查看mapping</h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html</a></p>
+}</code></pre>
+<h3 id="查看mapping"><a href="#查看mapping" class="headerlink" title="查看mapping"></a>查看mapping</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html</a></p>
 <pre><code>GET http://127.0.0.1:9200/_all/_mapping
 
-GET http://127.0.0.1:9200/_mapping
-</code></pre><pre><code>GET http://127.0.0.1:9200/news/_mapping/article
-</code></pre><p>输出:</p>
+GET http://127.0.0.1:9200/_mapping</code></pre>
+<pre><code>GET http://127.0.0.1:9200/news/_mapping/article</code></pre>
+<p>输出:</p>
 <pre><code>{
-  &quot;news&quot;: {
-    &quot;mappings&quot;: {
-      &quot;article&quot;: {
-        &quot;properties&quot;: {
-          &quot;author&quot;: {
-            &quot;type&quot;: &quot;string&quot;
+  "news": {
+    "mappings": {
+      "article": {
+        "properties": {
+          "author": {
+            "type": "string"
           },
-          &quot;content&quot;: {
-            &quot;type&quot;: &quot;string&quot;
+          "content": {
+            "type": "string"
           },
-          &quot;id&quot;: {
-            &quot;type&quot;: &quot;long&quot;
+          "id": {
+            "type": "long"
           },
-          &quot;pubdate&quot;: {
-            &quot;type&quot;: &quot;date&quot;,
-            &quot;store&quot;: true,
-            &quot;format&quot;: &quot;yyyy-MM-dd HH:mm:ss&quot;
+          "pubdate": {
+            "type": "date",
+            "store": true,
+            "format": "yyyy-MM-dd HH:mm:ss"
           },
-          &quot;source&quot;: {
-            &quot;type&quot;: &quot;string&quot;
+          "source": {
+            "type": "string"
           },
-          &quot;title&quot;: {
-            &quot;type&quot;: &quot;string&quot;
+          "title": {
+            "type": "string"
           },
-          &quot;url&quot;: {
-            &quot;type&quot;: &quot;string&quot;
+          "url": {
+            "type": "string"
           }
         }
       }
     }
   }
-}
-</code></pre><h3 id="删除mapping"><a href="#删除mapping" class="headerlink" title="删除mapping"></a>删除mapping</h3><p><a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-mapping.html" target="_blank" rel="noopener">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-mapping.html</a></p>
+}</code></pre>
+<h3 id="删除mapping"><a href="#删除mapping" class="headerlink" title="删除mapping"></a>删除mapping</h3><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-delete-mapping.html</a></p>
 <pre><code>[DELETE] /{index}/{type}
 
 [DELETE] /{index}/{type}/_mapping
 
-[DELETE] /{index}/_mapping/{type}
-</code></pre><pre><code>DELETE http://127.0.0.1:9200/news/_mapping/article
-</code></pre><p>文章转自:<a href="https://github.com/ameizi/elasticsearch-jest-example/blob/master/elasticsearch%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B.md" target="_blank" rel="noopener"><strong>elasticsearch快速上手.md</strong></a></p>
+[DELETE] /{index}/_mapping/{type}</code></pre>
+<pre><code>DELETE http://127.0.0.1:9200/news/_mapping/article</code></pre>
+<p>文章转自:<a target="_blank" rel="noopener" href="https://github.com/ameizi/elasticsearch-jest-example/blob/master/elasticsearch%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B.md"><strong>elasticsearch快速上手.md</strong></a></p>
 
             </div>
             <hr/>
@@ -1964,7 +1966,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

@@ -3,7 +3,7 @@
   <title>小张哥blog</title>
   
   <subtitle>维尼熊</subtitle>
-  <link href="/atom.xml" rel="self"/>
+  <link href="http://xiaomozhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaomozhang.github.io/"/>
   <updated>2020-12-18T12:56:13.000Z</updated>
@@ -23,24 +23,22 @@
     <published>2021-01-11T01:59:07.600Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;orm框架的本质是简化编程中操作数据库的编码，发展到现在基本上就剩两家了，一个是宣称可以不用写一句SQL的hibernate，一个是可以灵活调试动态sql的mybatis,两者各有特点，在企业级系统开发中可以根据需求灵活使用。&lt;/p&gt;
-&lt;h1 id=&quot;使用注解版&quot;&gt;&lt;a
+    <summary type="html">&lt;p&gt;orm框架的本质是简化编程中操作数据库的编码，发展到现在基本上就剩两家了，一个是宣称可以不用写一句SQL的hibernate，一个是可以灵活调试动态sql的mybatis,两者各有特点，在企业级系统开发中可以根据需求灵活使用。&lt;/p&gt;
+&lt;h1 id=&quot;使用注解版&quot;&gt;&lt;a</summary>
         
       
     
-    </summary>
     
     
-      <category term="Spring Boot" scheme="http://xiaomozhang.github.io/categories/Spring-Boot/"/>
+    <category term="Spring Boot" scheme="http://xiaomozhang.github.io/categories/Spring-Boot/"/>
     
     
-      <category term="Spring Boot" scheme="http://xiaomozhang.github.io/tags/Spring-Boot/"/>
+    <category term="Spring Boot" scheme="http://xiaomozhang.github.io/tags/Spring-Boot/"/>
     
   </entry>
   
@@ -51,21 +49,19 @@
     <published>2020-12-18T08:01:58.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;最近项目上遇到时间为纳秒的情况，用到logstash解析时是不支持纳秒的，这里提供一个思路就是自己修改logstash的日期插件，让他支持纳秒，具体涉及的插件是&lt;a
+    <summary type="html">&lt;p&gt;最近项目上遇到时间为纳秒的情况，用到logstash解析时是不支持纳秒的，这里提供一个思路就是自己修改logstash的日期插件，让他支持纳秒，具体涉及的插件是&lt;a</summary>
         
       
     
-    </summary>
     
     
     
-      <category term="logstash" scheme="http://xiaomozhang.github.io/tags/logstash/"/>
+    <category term="logstash" scheme="http://xiaomozhang.github.io/tags/logstash/"/>
     
   </entry>
   
@@ -76,24 +72,22 @@
     <published>2020-12-09T06:42:09.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;ul&gt;
+    <summary type="html">&lt;ul&gt;
 &lt;li&gt;logstash 通用启动脚本&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang
+&lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token shebang</summary>
         
       
     
-    </summary>
     
     
     
-      <category term="Logstash" scheme="http://xiaomozhang.github.io/tags/Logstash/"/>
+    <category term="Logstash" scheme="http://xiaomozhang.github.io/tags/Logstash/"/>
     
   </entry>
   
@@ -104,24 +98,22 @@
     <published>2020-09-01T08:27:13.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;安装必要依赖&lt;/p&gt;
-&lt;pre class=&quot; language-shell&quot;&gt;&lt;code
+    <summary type="html">&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;p&gt;安装必要依赖&lt;/p&gt;
+&lt;pre class=&quot; language-shell&quot;&gt;&lt;code</summary>
         
       
     
-    </summary>
     
     
-      <category term="Git" scheme="http://xiaomozhang.github.io/categories/Git/"/>
+    <category term="Git" scheme="http://xiaomozhang.github.io/categories/Git/"/>
     
     
-      <category term="Git" scheme="http://xiaomozhang.github.io/tags/Git/"/>
+    <category term="Git" scheme="http://xiaomozhang.github.io/tags/Git/"/>
     
   </entry>
   
@@ -132,23 +124,21 @@
     <published>2020-08-20T14:15:07.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;DskipTests&quot;&gt;&lt;a href=&quot;#DskipTests&quot; class=&quot;headerlink&quot;
+    <summary type="html">&lt;h2 id=&quot;DskipTests&quot;&gt;&lt;a href=&quot;#DskipTests&quot; class=&quot;headerlink&quot;</summary>
         
       
     
-    </summary>
     
     
-      <category term="Maven" scheme="http://xiaomozhang.github.io/categories/Maven/"/>
+    <category term="Maven" scheme="http://xiaomozhang.github.io/categories/Maven/"/>
     
     
-      <category term="Maven" scheme="http://xiaomozhang.github.io/tags/Maven/"/>
+    <category term="Maven" scheme="http://xiaomozhang.github.io/tags/Maven/"/>
     
   </entry>
   
@@ -159,26 +149,24 @@
     <published>2020-08-17T14:41:29.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;&lt;a href=&quot;http://blog.seasedge.cn/archives/8.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Spring Kafka（一）Kafka，你好&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;http://blog.seasedge.cn/archives/8.html&quot;&gt;Spring Kafka（一）Kafka，你好&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
         
       
     
-    </summary>
     
     
-      <category term="Kafka" scheme="http://xiaomozhang.github.io/categories/Kafka/"/>
+    <category term="Kafka" scheme="http://xiaomozhang.github.io/categories/Kafka/"/>
     
-      <category term="Spring" scheme="http://xiaomozhang.github.io/categories/Kafka/Spring/"/>
+    <category term="Spring" scheme="http://xiaomozhang.github.io/categories/Kafka/Spring/"/>
     
     
-      <category term="Kafka" scheme="http://xiaomozhang.github.io/tags/Kafka/"/>
+    <category term="Kafka" scheme="http://xiaomozhang.github.io/tags/Kafka/"/>
     
   </entry>
   
@@ -189,23 +177,21 @@
     <published>2020-08-03T09:44:57.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;一、HADOOP集群启动&quot;&gt;&lt;a href=&quot;#一、HADOOP集群启动&quot; class=&quot;headerlink&quot; title=&quot;一、HADOOP集群启动&quot;&gt;&lt;/a&gt;一、HADOOP集群启动&lt;/h2&gt;&lt;h3 id=&quot;1-格式化zk&quot;&gt;&lt;a
+    <summary type="html">&lt;h2 id=&quot;一、HADOOP集群启动&quot;&gt;&lt;a href=&quot;#一、HADOOP集群启动&quot; class=&quot;headerlink&quot; title=&quot;一、HADOOP集群启动&quot;&gt;&lt;/a&gt;一、HADOOP集群启动&lt;/h2&gt;&lt;h3 id=&quot;1-格式化zk&quot;&gt;&lt;a</summary>
         
       
     
-    </summary>
     
     
-      <category term="Hadoop" scheme="http://xiaomozhang.github.io/categories/Hadoop/"/>
+    <category term="Hadoop" scheme="http://xiaomozhang.github.io/categories/Hadoop/"/>
     
     
-      <category term="Hadoop" scheme="http://xiaomozhang.github.io/tags/Hadoop/"/>
+    <category term="Hadoop" scheme="http://xiaomozhang.github.io/tags/Hadoop/"/>
     
   </entry>
   
@@ -216,23 +202,21 @@
     <published>2020-07-29T08:08:34.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;进入redis集群&quot;&gt;&lt;a href=&quot;#进入redis集群&quot; class=&quot;headerlink&quot; title=&quot;进入redis集群&quot;&gt;&lt;/a&gt;进入redis集群&lt;/h2&gt;&lt;pre class=&quot; language-shell&quot;&gt;&lt;code
+    <summary type="html">&lt;h2 id=&quot;进入redis集群&quot;&gt;&lt;a href=&quot;#进入redis集群&quot; class=&quot;headerlink&quot; title=&quot;进入redis集群&quot;&gt;&lt;/a&gt;进入redis集群&lt;/h2&gt;&lt;pre class=&quot; language-shell&quot;&gt;&lt;code</summary>
         
       
     
-    </summary>
     
     
-      <category term="Redis" scheme="http://xiaomozhang.github.io/categories/Redis/"/>
+    <category term="Redis" scheme="http://xiaomozhang.github.io/categories/Redis/"/>
     
     
-      <category term="Redis" scheme="http://xiaomozhang.github.io/tags/Redis/"/>
+    <category term="Redis" scheme="http://xiaomozhang.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -243,23 +227,21 @@
     <published>2020-07-25T05:47:19.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;在数据库中，按照阿里巴巴java开发手册，数据库字段全部小写并且按照&lt;code&gt;_&lt;/code&gt;进行单词之间的分割，但是我们&lt;code&gt;Java&lt;/code&gt;中的命名风格又是按照驼峰方式，一般返回给前端的&lt;code&gt;DTO&lt;/code&gt;对象也按照驼峰方式，前端同学在对所有列
+    <summary type="html">&lt;p&gt;在数据库中，按照阿里巴巴java开发手册，数据库字段全部小写并且按照&lt;code&gt;_&lt;/code&gt;进行单词之间的分割，但是我们&lt;code&gt;Java&lt;/code&gt;中的命名风格又是按照驼峰方式，一般返回给前端的&lt;code&gt;DTO&lt;/code&gt;对象也按照驼峰方式，前端同学在对所有列</summary>
         
       
     
-    </summary>
     
     
-      <category term="Guava" scheme="http://xiaomozhang.github.io/categories/Guava/"/>
+    <category term="Guava" scheme="http://xiaomozhang.github.io/categories/Guava/"/>
     
     
-      <category term="Guava" scheme="http://xiaomozhang.github.io/tags/Guava/"/>
+    <category term="Guava" scheme="http://xiaomozhang.github.io/tags/Guava/"/>
     
   </entry>
   
@@ -270,24 +252,22 @@
     <published>2020-07-25T04:21:58.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;开发中偶尔会遇到一些比较特殊的需求，比如对一个map进行排序，并且是对key或者value进行排序，那么我们可以用Java8中提供的&lt;code&gt;stream&lt;/code&gt;来进行实现&lt;/p&gt;
-&lt;h2 id=&quot;排序工具类&quot;&gt;&lt;a href=&quot;#排序工具类&quot;
+    <summary type="html">&lt;p&gt;开发中偶尔会遇到一些比较特殊的需求，比如对一个map进行排序，并且是对key或者value进行排序，那么我们可以用Java8中提供的&lt;code&gt;stream&lt;/code&gt;来进行实现&lt;/p&gt;
+&lt;h2 id=&quot;排序工具类&quot;&gt;&lt;a href=&quot;#排序工具类&quot;</summary>
         
       
     
-    </summary>
     
     
-      <category term="Java" scheme="http://xiaomozhang.github.io/categories/Java/"/>
+    <category term="Java" scheme="http://xiaomozhang.github.io/categories/Java/"/>
     
     
-      <category term="map" scheme="http://xiaomozhang.github.io/tags/map/"/>
+    <category term="map" scheme="http://xiaomozhang.github.io/tags/map/"/>
     
   </entry>
   
@@ -298,23 +278,21 @@
     <published>2020-07-19T14:37:38.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;在使用MyBatis查询数据库时，经常会有一对多的情况，那么在一对多的情况时，如果是一个&lt;code&gt;Collection&amp;lt;String&amp;gt;&lt;/code&gt;或者&lt;code&gt;Collection&amp;lt;Integer&amp;gt;&lt;/code&gt; 
+    <summary type="html">&lt;p&gt;在使用MyBatis查询数据库时，经常会有一对多的情况，那么在一对多的情况时，如果是一个&lt;code&gt;Collection&amp;lt;String&amp;gt;&lt;/code&gt;或者&lt;code&gt;Collection&amp;lt;Integer&amp;gt;&lt;/code&gt; </summary>
         
       
     
-    </summary>
     
     
-      <category term="MyBatis" scheme="http://xiaomozhang.github.io/categories/MyBatis/"/>
+    <category term="MyBatis" scheme="http://xiaomozhang.github.io/categories/MyBatis/"/>
     
     
-      <category term="MyBatis" scheme="http://xiaomozhang.github.io/tags/MyBatis/"/>
+    <category term="MyBatis" scheme="http://xiaomozhang.github.io/tags/MyBatis/"/>
     
   </entry>
   
@@ -325,24 +303,22 @@
     <published>2020-06-29T05:54:14.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;有时候我们需要查看当前的mysql数据库中， 有哪些客户端保持了连接， 每个客户端分别保持了多少连接，可以使用下面的语句查询结果，可以直观的看到连接数。&lt;/p&gt;
-&lt;pre class=&quot; language-sql&quot;&gt;&lt;code
+    <summary type="html">&lt;p&gt;有时候我们需要查看当前的mysql数据库中， 有哪些客户端保持了连接， 每个客户端分别保持了多少连接，可以使用下面的语句查询结果，可以直观的看到连接数。&lt;/p&gt;
+&lt;pre class=&quot; language-sql&quot;&gt;&lt;code</summary>
         
       
     
-    </summary>
     
     
-      <category term="MySQL" scheme="http://xiaomozhang.github.io/categories/MySQL/"/>
+    <category term="MySQL" scheme="http://xiaomozhang.github.io/categories/MySQL/"/>
     
     
-      <category term="MySQL" scheme="http://xiaomozhang.github.io/tags/MySQL/"/>
+    <category term="MySQL" scheme="http://xiaomozhang.github.io/tags/MySQL/"/>
     
   </entry>
   
@@ -353,24 +329,22 @@
     <published>2020-06-28T02:17:53.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;处理Gson中，json转换map造成的int变double的问题。&lt;/p&gt;
-&lt;p&gt;&lt;a
+    <summary type="html">&lt;p&gt;处理Gson中，json转换map造成的int变double的问题。&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
         
       
     
-    </summary>
     
     
-      <category term="Gson" scheme="http://xiaomozhang.github.io/categories/Gson/"/>
+    <category term="Gson" scheme="http://xiaomozhang.github.io/categories/Gson/"/>
     
     
-      <category term="Gson" scheme="http://xiaomozhang.github.io/tags/Gson/"/>
+    <category term="Gson" scheme="http://xiaomozhang.github.io/tags/Gson/"/>
     
   </entry>
   
@@ -381,25 +355,23 @@
     <published>2020-06-23T13:45:00.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;&amp;emsp;Java8开始，JDK中提供了一组新的日期&lt;code&gt;API&lt;/code&gt;，当我们需要序列化数据成json时，经常会用到&lt;code&gt;Gson&lt;/code&gt;。当&lt;code&gt;Java8&lt;/code&gt;中的日期&lt;code&gt;API&lt;/code&gt;遇上&lt;code&gt;Gson&lt;/
+    <summary type="html">&lt;p&gt; Java8开始，JDK中提供了一组新的日期&lt;code&gt;API&lt;/code&gt;，当我们需要序列化数据成json时，经常会用到&lt;code&gt;Gson&lt;/code&gt;。当&lt;code&gt;Java8&lt;/code&gt;中的日期&lt;code&gt;API&lt;/code&gt;遇上&lt;code&gt;Gson&lt;/code&gt;</summary>
         
       
     
-    </summary>
     
     
-      <category term="Gson" scheme="http://xiaomozhang.github.io/categories/Gson/"/>
+    <category term="Gson" scheme="http://xiaomozhang.github.io/categories/Gson/"/>
     
     
-      <category term="Gson" scheme="http://xiaomozhang.github.io/tags/Gson/"/>
+    <category term="Gson" scheme="http://xiaomozhang.github.io/tags/Gson/"/>
     
-      <category term="Java8" scheme="http://xiaomozhang.github.io/tags/Java8/"/>
+    <category term="Java8" scheme="http://xiaomozhang.github.io/tags/Java8/"/>
     
   </entry>
   
@@ -410,22 +382,20 @@
     <published>2020-06-18T11:54:43.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;在server节点下新增如下内容，开启gzip压缩。注意后端需要保证返回的 &lt;strong&gt;Content-Type: application/json;charset=UTF-8&lt;/strong&gt;&lt;/p&gt;
-&lt;pre class=&quot;
+    <summary type="html">&lt;p&gt;在server节点下新增如下内容，开启gzip压缩。注意后端需要保证返回的 &lt;strong&gt;Content-Type: application/json;charset=UTF-8&lt;/strong&gt;&lt;/p&gt;
+&lt;pre class=&quot;</summary>
         
       
     
-    </summary>
     
     
     
-      <category term="Nginx" scheme="http://xiaomozhang.github.io/tags/Nginx/"/>
+    <category term="Nginx" scheme="http://xiaomozhang.github.io/tags/Nginx/"/>
     
   </entry>
   
@@ -436,20 +406,18 @@
     <published>2020-03-18T14:20:22.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;h3 id=&quot;元字符&quot;&gt;&lt;a href=&quot;#元字符&quot; class=&quot;headerlink&quot;
+    <summary type="html">&lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;h3 id=&quot;元字符&quot;&gt;&lt;a href=&quot;#元字符&quot; class=&quot;headerlink&quot;</summary>
         
       
     
-    </summary>
     
     
-      <category term="正则表达式" scheme="http://xiaomozhang.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <category term="正则表达式" scheme="http://xiaomozhang.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
     
   </entry>
@@ -461,23 +429,21 @@
     <published>2020-03-12T07:07:01.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;vertica默认批量插入是关闭的，需要手动设置&lt;code&gt;DataSourceProperties&lt;/code&gt;开启，详细参考&lt;code&gt;JDBC Connection
+    <summary type="html">&lt;p&gt;vertica默认批量插入是关闭的，需要手动设置&lt;code&gt;DataSourceProperties&lt;/code&gt;开启，详细参考&lt;code&gt;JDBC Connection</summary>
         
       
     
-    </summary>
     
     
-      <category term="Vertica" scheme="http://xiaomozhang.github.io/categories/Vertica/"/>
+    <category term="Vertica" scheme="http://xiaomozhang.github.io/categories/Vertica/"/>
     
     
-      <category term="Vertica" scheme="http://xiaomozhang.github.io/tags/Vertica/"/>
+    <category term="Vertica" scheme="http://xiaomozhang.github.io/tags/Vertica/"/>
     
   </entry>
   
@@ -488,24 +454,22 @@
     <published>2020-02-28T02:40:52.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;p&gt;日常开发中都是maven加载在远程仓库的jar文件，如果远程仓库没有相应的jar文件，一般做法就是自己传到一个特定的nexus服务器上，但是本地开发测试的时候可能nexus服务器不太方便，那么我们可以使用maven加载本地的jar文件&lt;/p&gt;
-&lt;pre class=&quot;
+    <summary type="html">&lt;p&gt;日常开发中都是maven加载在远程仓库的jar文件，如果远程仓库没有相应的jar文件，一般做法就是自己传到一个特定的nexus服务器上，但是本地开发测试的时候可能nexus服务器不太方便，那么我们可以使用maven加载本地的jar文件&lt;/p&gt;
+&lt;pre class=&quot;</summary>
         
       
     
-    </summary>
     
     
-      <category term="maven" scheme="http://xiaomozhang.github.io/categories/maven/"/>
+    <category term="maven" scheme="http://xiaomozhang.github.io/categories/maven/"/>
     
     
-      <category term="maven" scheme="http://xiaomozhang.github.io/tags/maven/"/>
+    <category term="maven" scheme="http://xiaomozhang.github.io/tags/maven/"/>
     
   </entry>
   
@@ -516,25 +480,23 @@
     <published>2020-02-26T14:51:03.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;IntelliJ-IDEA-2019-创建maven-web项目&quot;&gt;&lt;a href=&quot;#IntelliJ-IDEA-2019-创建maven-web项目&quot; class=&quot;headerlink&quot; title=&quot;IntelliJ IDEA 2019 创建maven
+    <summary type="html">&lt;h2 id=&quot;IntelliJ-IDEA-2019-创建maven-web项目&quot;&gt;&lt;a href=&quot;#IntelliJ-IDEA-2019-创建maven-web项目&quot; class=&quot;headerlink&quot; title=&quot;IntelliJ IDEA 2019 创建maven</summary>
         
       
     
-    </summary>
     
     
-      <category term="工具使用" scheme="http://xiaomozhang.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    <category term="工具使用" scheme="http://xiaomozhang.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
     
     
-      <category term="Maven" scheme="http://xiaomozhang.github.io/tags/Maven/"/>
+    <category term="Maven" scheme="http://xiaomozhang.github.io/tags/Maven/"/>
     
-      <category term="IDEA" scheme="http://xiaomozhang.github.io/tags/IDEA/"/>
+    <category term="IDEA" scheme="http://xiaomozhang.github.io/tags/IDEA/"/>
     
   </entry>
   
@@ -545,26 +507,24 @@
     <published>2020-02-16T06:42:08.000Z</published>
     <updated>2020-12-18T12:56:13.000Z</updated>
     
-    <summary type="html">
     
       
       
         
         
-          &lt;h2 id=&quot;什么是事务&quot;&gt;&lt;a href=&quot;#什么是事务&quot; class=&quot;headerlink&quot; title=&quot;什么是事务&quot;&gt;&lt;/a&gt;什么是事务&lt;/h2&gt;&lt;p&gt;事务是逻辑上的一组操作，要么都执行，要么都不执行。&lt;/p&gt;
-&lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot;
+    <summary type="html">&lt;h2 id=&quot;什么是事务&quot;&gt;&lt;a href=&quot;#什么是事务&quot; class=&quot;headerlink&quot; title=&quot;什么是事务&quot;&gt;&lt;/a&gt;什么是事务&lt;/h2&gt;&lt;p&gt;事务是逻辑上的一组操作，要么都执行，要么都不执行。&lt;/p&gt;
+&lt;h3 id=&quot;原子性&quot;&gt;&lt;a href=&quot;#原子性&quot;</summary>
         
       
     
-    </summary>
     
     
-      <category term="Spring" scheme="http://xiaomozhang.github.io/categories/Spring/"/>
+    <category term="Spring" scheme="http://xiaomozhang.github.io/categories/Spring/"/>
     
     
-      <category term="spring" scheme="http://xiaomozhang.github.io/tags/spring/"/>
+    <category term="spring" scheme="http://xiaomozhang.github.io/tags/spring/"/>
     
-      <category term="transaction" scheme="http://xiaomozhang.github.io/tags/transaction/"/>
+    <category term="transaction" scheme="http://xiaomozhang.github.io/tags/transaction/"/>
     
   </entry>
   

@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Spring Boot 使用jpa和H2数据库, 小张哥blog">
     <meta name="description" content="日常测试时没有数据库可用时，使用H2不失为一种解决方案，而且H2也经常用在持久层的单元测试，Spring Boot中使用H2也很简单，只要一些配置即可。
@@ -28,6 +28,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -476,20 +478,20 @@
 ├── pom.xml
 └── src
     ├── main
-    │   ├── java
-    │   │   └── com
-    │   │       └── example
-    │   │           └── h2
-    │   │               ├── H2DbApplication.java
-    │   │               ├── entity
-    │   │               │   └── UserEntity.java
-    │   │               └── repository
-    │   │                   └── UserRepository.java
-    │   └── resources
-    │       ├── application.yml
-    │       └── db
-    │           ├── data.sql
-    │           └── schema.sql
+    │&nbsp;&nbsp; ├── java
+    │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
+    │&nbsp;&nbsp; │&nbsp;&nbsp;     └── example
+    │&nbsp;&nbsp; │&nbsp;&nbsp;         └── h2
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── H2DbApplication.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── entity
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             │&nbsp;&nbsp; └── UserEntity.java
+    │&nbsp;&nbsp; │&nbsp;&nbsp;             └── repository
+    │&nbsp;&nbsp; │&nbsp;&nbsp;                 └── UserRepository.java
+    │&nbsp;&nbsp; └── resources
+    │&nbsp;&nbsp;     ├── application.yml
+    │&nbsp;&nbsp;     └── db
+    │&nbsp;&nbsp;         ├── data.sql
+    │&nbsp;&nbsp;         └── schema.sql
     └── test
         └── java
             └── com
@@ -497,8 +499,7 @@
                     └── h2
                         └── H2DbApplicationTests.java
 
-15 directories, 9 files
-</code></pre>
+15 directories, 9 files</code></pre>
 <p>这里使用H2数据，为了方便测试也使用jpa进行数据库操作，第一步肯定是需要引入maven依赖</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -508,8 +509,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.h2database<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>h2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scope</span><span class="token punctuation">></span></span>runtime<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scope</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="创建数据库脚本与初始化数据脚本"><a href="#创建数据库脚本与初始化数据脚本" class="headerlink" title="创建数据库脚本与初始化数据脚本"></a>创建数据库脚本与初始化数据脚本</h2><ul>
 <li>schema.sql</li>
 </ul>
@@ -520,14 +520,12 @@
   birthday <span class="token keyword">datetime</span>                          <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
   remark   <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">2048</span><span class="token punctuation">)</span> <span class="token keyword">default</span> <span class="token boolean">null</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
-
 </code></pre>
 <ul>
 <li>data.sql</li>
 </ul>
 <pre class=" language-sql"><code class="language-sql"><span class="token keyword">insert</span> <span class="token keyword">into</span> user_info
-<span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'阿牛'</span><span class="token punctuation">,</span> <span class="token string">'2020-01-05 15:40:00'</span><span class="token punctuation">,</span> <span class="token string">'哈哈哈'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">values</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">'阿牛'</span><span class="token punctuation">,</span> <span class="token string">'2020-01-05 15:40:00'</span><span class="token punctuation">,</span> <span class="token string">'哈哈哈'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
   <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">8081</span>
 <span class="token key atrule">spring</span><span class="token punctuation">:</span>
@@ -566,10 +564,9 @@
       <span class="token key atrule">settings</span><span class="token punctuation">:</span>
         <span class="token key atrule">trace</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
         <span class="token comment" spellcheck="true"># 进行该配置后，h2 web console 就可以在远程访问了。否则只能在本机访问。</span>
-        <span class="token key atrule">web-allow-others</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-</code></pre>
+        <span class="token key atrule">web-allow-others</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
 <p><code>application.yml</code>中，分别有datasource、jpa、h2等配置</p>
-<h3 id="datasouce"><a href="#datasouce" class="headerlink" title="datasouce"></a>datasouce</h3><p>其中<code>url</code>使用了h2的配置连接字符串，并且使用了<code>hikari</code>数据库连接池，详细信息请查看<a href="http://blog.didispace.com/Springboot-2-0-HikariCP-default-reason/" target="_blank" rel="noopener">Springboot 2.0选择HikariCP作为默认数据库连接池的五大理由</a></p>
+<h3 id="datasouce"><a href="#datasouce" class="headerlink" title="datasouce"></a>datasouce</h3><p>其中<code>url</code>使用了h2的配置连接字符串，并且使用了<code>hikari</code>数据库连接池，详细信息请查看<a target="_blank" rel="noopener" href="http://blog.didispace.com/Springboot-2-0-HikariCP-default-reason/">Springboot 2.0选择HikariCP作为默认数据库连接池的五大理由</a></p>
 <h3 id="jpa"><a href="#jpa" class="headerlink" title="jpa"></a>jpa</h3><p>jpa中配置了数据库方言<code>database-platform</code>，显示sql等配置</p>
 <h3 id="h2"><a href="#h2" class="headerlink" title="h2"></a>h2</h3><p><code>spring.datasource.schema=classpath:db/schema.sql</code>进行该配置后，每次启动程序，程序都会运行<code>resources/db/schema.sql</code>文件，对数据库的结构进行操作。</p>
 <p><code>spring.datasource.data=classpath:db/data.sql</code>进行该配置后，每次启动程序，程序都会运行<code>resources/db/data.sql</code>文件，对数据库的数据操作。</p>
@@ -619,7 +616,6 @@
         <span class="token keyword">this</span><span class="token punctuation">.</span>remark <span class="token operator">=</span> remark<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h2 id="repository"><a href="#repository" class="headerlink" title="repository"></a>repository</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>example<span class="token punctuation">.</span>h2<span class="token punctuation">.</span>repository<span class="token punctuation">;</span>
 
@@ -631,7 +627,6 @@
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>UserEntity<span class="token punctuation">,</span> Long<span class="token operator">></span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>为了方便查看结果，写一个测试类查看结果</p>
 <pre class=" language-java"><code class="language-java">
@@ -694,7 +689,6 @@
         iterable<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-</span><span class="token operator">></span> log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"item:{}"</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <p>测试结果如下</p>
 <pre class=" language-shell"><code class="language-shell">2020-01-05 18:07:40.499  INFO 28214 --- [           main] com.iogogogo.h2.H2DbApplicationTests     : 新增结果:UserEntity(id=2, name=阿牛33dc0a6d-29cd-4e79-9ae4-ad64b1588e69, birthday=2020-01-05T18:07:40.383, remark=新增测试)
@@ -709,9 +703,8 @@
 
 2020-01-05 18:07:40.602  INFO 28214 --- [           main] com.iogogogo.h2.H2DbApplicationTests     : 删除id=1的数据以后
 2020-01-05 18:07:40.604  INFO 28214 --- [           main] com.iogogogo.h2.H2DbApplicationTests     : item:UserEntity(id=2, name=阿牛33dc0a6d-29cd-4e79-9ae4-ad64b1588e69, birthday=2020-01-05T18:07:40.383, remark=新增测试)
-
 </code></pre>
-<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a href="https://github.com/iogogogo/life-example/tree/master/example-h2" target="_blank" rel="noopener">https://github.com/iogogogo/life-example/tree/master/example-h2</a></p>
+<h2 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h2><p><a target="_blank" rel="noopener" href="https://github.com/iogogogo/life-example/tree/master/example-h2">https://github.com/iogogogo/life-example/tree/master/example-h2</a></p>
 
             </div>
             <hr/>
@@ -1212,7 +1205,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

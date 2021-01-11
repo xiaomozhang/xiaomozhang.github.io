@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Java拆分shell命令成数组, 小张哥blog">
     <meta name="description" content="命令行拆分成string数组
@@ -10,11 +10,10 @@
 
 -p /path -d &#34;here&#39;s my description&#34; --verbose other args
 
-
 需要的拆分结果如下
 
 Array[0] = -p
-Array[1] = /p">
+Array[1] = /pa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -35,6 +34,8 @@ Array[1] = /p">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -452,7 +453,7 @@ Array[1] = /p">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    293
+                    292
                 </div>
                 
 
@@ -478,20 +479,19 @@ Array[1] = /p">
                 <h1 id="命令行拆分成string数组"><a href="#命令行拆分成string数组" class="headerlink" title="命令行拆分成string数组"></a>命令行拆分成string数组</h1><ul>
 <li>原始命令如下</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">-p /path -d "here's my description" --verbose other args
-</code></pre>
+<pre class=" language-shell"><code class="language-shell">-p /path -d "here's my description" --verbose other args</code></pre>
 <ul>
 <li>需要的拆分结果如下</li>
 </ul>
 <pre><code>Array[0] = -p
 Array[1] = /path
 Array[2] = -d
-Array[3] = here&#39;s my description
+Array[3] = here's my description
 Array[4] = --verbose
 Array[5] = other
-Array[6] = args
-</code></pre><p><a href="https://stackoverflow.com/questions/3259143/split-a-string-containing-command-line-parameters-into-a-string-in-java#" target="_blank" rel="noopener">stackoverflow上的问题以及解决方案</a></p>
-<p><a href="https://mvnrepository.com/artifact/org.apache.ant/ant" target="_blank" rel="noopener">依赖的ant jar</a></p>
+Array[6] = args</code></pre>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3259143/split-a-string-containing-command-line-parameters-into-a-string-in-java#">stackoverflow上的问题以及解决方案</a></p>
+<p><a target="_blank" rel="noopener" href="https://mvnrepository.com/artifact/org.apache.ant/ant">依赖的ant jar</a></p>
 <p>scala 可以直接使用scala.tools.cmd提供的api</p>
 <ul>
 <li>解决方案</li>
@@ -562,8 +562,7 @@ Array[6] = args
         <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">"unbalanced quotes in "</span> <span class="token operator">+</span> toProcess<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 
             </div>
             <hr/>
@@ -836,7 +835,7 @@ Array[6] = args
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            配置 Jenkins Job 的时候，after mvn package 用命令行 nohup java -jar project-1.0-SNAPSHOT.jar &gt; /dev/null 2&gt;&amp;1 &amp;起一个 s
+                            配置 Jenkins Job 的时候，after mvn package 用命令行 nohup java -jar project-1.0-SNAPSHOT.jar &gt; /dev/null 2&gt;&amp;1 &amp; 起一个 
                         
                     </div>
                     <div class="publish-info">
@@ -1059,7 +1058,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

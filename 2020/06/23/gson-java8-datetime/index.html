@@ -2,11 +2,12 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="当Gson遇上Java8中的日期API, 小张哥blog">
-    <meta name="description" content="&amp;emsp;Java8开始，JDK中提供了一组新的日期API，当我们需要序列化数据成json时，经常会用到Gson。当Java8中的日期API遇上Gson时，能否按照预期的想法正常的处理我们的数据呢？
-使用Gson序列化与反序列化@Test">
+    <meta name="description" content=" Java8开始，JDK中提供了一组新的日期API，当我们需要序列化数据成json时，经常会用到Gson。当Java8中的日期API遇上Gson时，能否按照预期的想法正常的处理我们的数据呢？
+使用Gson序列化与反序列化@Test
+publ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -27,6 +28,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -471,7 +474,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>&emsp;Java8开始，JDK中提供了一组新的日期<code>API</code>，当我们需要序列化数据成json时，经常会用到<code>Gson</code>。当<code>Java8</code>中的日期<code>API</code>遇上<code>Gson</code>时，能否按照预期的想法正常的处理我们的数据呢？</p>
+                <p> Java8开始，JDK中提供了一组新的日期<code>API</code>，当我们需要序列化数据成json时，经常会用到<code>Gson</code>。当<code>Java8</code>中的日期<code>API</code>遇上<code>Gson</code>时，能否按照预期的想法正常的处理我们的数据呢？</p>
 <h2 id="使用Gson序列化与反序列化"><a href="#使用Gson序列化与反序列化" class="headerlink" title="使用Gson序列化与反序列化"></a>使用Gson序列化与反序列化</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   LocalDateTime dateTime <span class="token operator">=</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -489,28 +492,23 @@
   json <span class="token operator">=</span> gson<span class="token punctuation">.</span><span class="token function">toJson</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"date Serialization:{}"</span><span class="token punctuation">,</span> json<span class="token punctuation">)</span><span class="token punctuation">;</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"date Deserialization:{}"</span><span class="token punctuation">,</span> gson<span class="token punctuation">.</span><span class="token function">fromJson</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> LocalDate<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="LocalDateTime"><a href="#LocalDateTime" class="headerlink" title="LocalDateTime"></a>LocalDateTime</h3><ul>
 <li>序列化的结果</li>
 </ul>
-<pre class=" language-verilog"><code class="language-verilog">dateTime Serialization<span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"date"</span><span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"year"</span><span class="token punctuation">:</span><span class="token number">2020</span><span class="token punctuation">,</span><span class="token string">"month"</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token string">"day"</span><span class="token punctuation">:</span><span class="token number">23</span><span class="token operator">}</span><span class="token punctuation">,</span><span class="token string">"time"</span><span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"hour"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token string">"minute"</span><span class="token punctuation">:</span><span class="token number">58</span><span class="token punctuation">,</span><span class="token string">"second"</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token string">"nano"</span><span class="token punctuation">:</span><span class="token number">987000000</span><span class="token operator">}}</span>
-</code></pre>
+<pre class=" language-verilog"><code class="language-verilog">dateTime Serialization<span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"date"</span><span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"year"</span><span class="token punctuation">:</span><span class="token number">2020</span><span class="token punctuation">,</span><span class="token string">"month"</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token string">"day"</span><span class="token punctuation">:</span><span class="token number">23</span><span class="token operator">}</span><span class="token punctuation">,</span><span class="token string">"time"</span><span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"hour"</span><span class="token punctuation">:</span><span class="token number">21</span><span class="token punctuation">,</span><span class="token string">"minute"</span><span class="token punctuation">:</span><span class="token number">58</span><span class="token punctuation">,</span><span class="token string">"second"</span><span class="token punctuation">:</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token string">"nano"</span><span class="token punctuation">:</span><span class="token number">987000000</span><span class="token operator">}}</span></code></pre>
 <ul>
 <li>反序列化结果</li>
 </ul>
-<pre class=" language-verilog"><code class="language-verilog">dateTime Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>T21<span class="token punctuation">:</span><span class="token number">58</span><span class="token punctuation">:</span><span class="token number">20.987</span>
-</code></pre>
+<pre class=" language-verilog"><code class="language-verilog">dateTime Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>T21<span class="token punctuation">:</span><span class="token number">58</span><span class="token punctuation">:</span><span class="token number">20.987</span></code></pre>
 <h3 id="LocalDate"><a href="#LocalDate" class="headerlink" title="LocalDate"></a>LocalDate</h3><ul>
 <li>序列化的结果</li>
 </ul>
-<pre class=" language-verilog"><code class="language-verilog">date Serialization<span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"year"</span><span class="token punctuation">:</span><span class="token number">2020</span><span class="token punctuation">,</span><span class="token string">"month"</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token string">"day"</span><span class="token punctuation">:</span><span class="token number">23</span><span class="token operator">}</span>
-</code></pre>
+<pre class=" language-verilog"><code class="language-verilog">date Serialization<span class="token punctuation">:</span><span class="token operator">{</span><span class="token string">"year"</span><span class="token punctuation">:</span><span class="token number">2020</span><span class="token punctuation">,</span><span class="token string">"month"</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token string">"day"</span><span class="token punctuation">:</span><span class="token number">23</span><span class="token operator">}</span></code></pre>
 <ul>
 <li>反序列化结果</li>
 </ul>
-<pre class=" language-verilog"><code class="language-verilog">date Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>
-</code></pre>
+<pre class=" language-verilog"><code class="language-verilog">date Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span></code></pre>
 <p>我们会发现，序列化的结果不是我们想要的，正常应该是一个<code>ISO</code>格式的时间才对，但是却成了一个<code>JsonObject</code>。很显然这是不满足我们需求的。</p>
 <h2 id="分析序列化结果不是ISO格式的原因"><a href="#分析序列化结果不是ISO格式的原因" class="headerlink" title="分析序列化结果不是ISO格式的原因"></a>分析序列化结果不是<code>ISO</code>格式的原因</h2><p>通过源码分析，<code>LocalDateTime</code>中引用了<code>LocalDate</code></p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
@@ -520,8 +518,7 @@
 <span class="token comment" spellcheck="true">/**
 * The time part.
 */</span>
-<span class="token keyword">private</span> <span class="token keyword">final</span> LocalTime time<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">private</span> <span class="token keyword">final</span> LocalTime time<span class="token punctuation">;</span></code></pre>
 <p>其中<code>LocalDate</code>和<code>LocalTime</code>的部分源码如下</p>
 <ul>
 <li>LocalDate</li>
@@ -537,8 +534,7 @@
 <span class="token comment" spellcheck="true">/**
 * The day-of-month.
 */</span>
-<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">short</span> day<span class="token punctuation">;</span>
-</code></pre>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">short</span> day<span class="token punctuation">;</span></code></pre>
 <ul>
 <li>LocalTime</li>
 </ul>
@@ -557,9 +553,8 @@
 <span class="token comment" spellcheck="true">/**
 * The nanosecond.
 */</span>
-<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">int</span> nano<span class="token punctuation">;</span>
-</code></pre>
-<p>&emsp;可以看到，<code>LocalDate</code>和<code>LocalTime</code>，我们序列化<code>Java8</code>中的日期<code>API</code>，实际上是把成员变量序列化，是正常的一个序列化对象的逻辑。但是我们肯定是不希望这样的结果，对我们来说并不是特别友好。那么怎么解决这个问题呢？</p>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">int</span> nano<span class="token punctuation">;</span></code></pre>
+<p> 可以看到，<code>LocalDate</code>和<code>LocalTime</code>，我们序列化<code>Java8</code>中的日期<code>API</code>，实际上是把成员变量序列化，是正常的一个序列化对象的逻辑。但是我们肯定是不希望这样的结果，对我们来说并不是特别友好。那么怎么解决这个问题呢？</p>
 <h2 id="自定义Gson的Adapter解决该问题"><a href="#自定义Gson的Adapter解决该问题" class="headerlink" title="自定义Gson的Adapter解决该问题"></a>自定义<code>Gson</code>的<code>Adapter</code>解决该问题</h2><p><code>Gson</code>本身给我们提供了各种各样的配置，其中有一个就是可以自定义序列化或者反序列化的<code>Adapter</code>，那么既然现在我们序列化不是我们想要的结果，就可以通过自定义<code>Adapter</code>来解决这个问题，废话不说，直接上代码演示。</p>
 <h3 id="自定义LocalDateAdapter"><a href="#自定义LocalDateAdapter" class="headerlink" title="自定义LocalDateAdapter"></a>自定义LocalDateAdapter</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
 * Created by tao.zeng on 2020/6/23.
@@ -578,8 +573,7 @@
         String timestamp <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAsJsonPrimitive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> LocalDate<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>timestamp<span class="token punctuation">,</span> DateTimeFormatter<span class="token punctuation">.</span>ISO_LOCAL_DATE<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="自定义LocalDateTimeAdapter"><a href="#自定义LocalDateTimeAdapter" class="headerlink" title="自定义LocalDateTimeAdapter"></a>自定义LocalDateTimeAdapter</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
 * Created by tao.zeng on 2020/6/23.
 * &lt;p>
@@ -597,15 +591,13 @@
         String timestamp <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAsJsonPrimitive</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getAsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>timestamp<span class="token punctuation">,</span> DateTimeFormatter<span class="token punctuation">.</span>ISO_LOCAL_DATE_TIME<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h3 id="使用自定义Adapter"><a href="#使用自定义Adapter" class="headerlink" title="使用自定义Adapter"></a>使用自定义Adapter</h3><p>既然我们现在自定义了<code>Adapter</code>，那么在使用时就需要将它注册到<code>gson</code>对象中去。在创建<code>gson</code>对象时就不能直接使用<code>Gson gson = new Gson()</code>，而是要使用<code>GsonBuilder</code>去进行构建。</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 实例化gson对象时注册Adapter</span>
 Gson gson <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GsonBuilder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">registerTypeAdapter</span><span class="token punctuation">(</span>LocalDate<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JsonParse<span class="token punctuation">.</span>LocalDateAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
                 <span class="token punctuation">.</span><span class="token function">registerTypeAdapter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JsonParse<span class="token punctuation">.</span>LocalDateTimeAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+                <span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>上面我们的代码序列化与反序列时就使用注册了Adapter的gson对象即可</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -627,14 +619,11 @@ Gson gson <span class="token operator">=</span> <span class="token keyword">new<
   json <span class="token operator">=</span> gson<span class="token punctuation">.</span><span class="token function">toJson</span><span class="token punctuation">(</span>date<span class="token punctuation">)</span><span class="token punctuation">;</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"date Serialization:{}"</span><span class="token punctuation">,</span> json<span class="token punctuation">)</span><span class="token punctuation">;</span>
   log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"date Deserialization:{}"</span><span class="token punctuation">,</span> gson<span class="token punctuation">.</span><span class="token function">fromJson</span><span class="token punctuation">(</span>json<span class="token punctuation">,</span> LocalDate<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h4 id="LocalDateTime-1"><a href="#LocalDateTime-1" class="headerlink" title="LocalDateTime"></a>LocalDateTime</h4><pre class=" language-verilog"><code class="language-verilog">dateTime Serialization<span class="token punctuation">:</span><span class="token string">"2020-06-23T22:22:10.816"</span>
-dateTime Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>T22<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">:</span><span class="token number">10.816</span>
-</code></pre>
+dateTime Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>T22<span class="token punctuation">:</span><span class="token number">22</span><span class="token punctuation">:</span><span class="token number">10.816</span></code></pre>
 <h4 id="LocalDate-1"><a href="#LocalDate-1" class="headerlink" title="LocalDate"></a>LocalDate</h4><pre class=" language-verilog"><code class="language-verilog">date Serialization<span class="token punctuation">:</span><span class="token string">"2020-06-23"</span>
-date Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span>
-</code></pre>
+date Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span></code></pre>
 <p>可以看到，在自定义Adapter以后，序列化的结果就是我们想要的<code>ISO</code>类型，当然你也可以根据自己的需求将日期格式序列话成自己想要的任意格式。</p>
 <h2 id="Json序列化与反序列化工具类"><a href="#Json序列化与反序列化工具类" class="headerlink" title="Json序列化与反序列化工具类"></a>Json序列化与反序列化工具类</h2><p>分享一个日常使用工具类，除了上文说到的关于日期处理的解决方案，还有另外一个问题的解决方案。这个留着下一篇文章讲。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
@@ -846,7 +835,6 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 
             </div>
@@ -1352,7 +1340,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

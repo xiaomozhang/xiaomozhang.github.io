@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="docker-compose-基础, 小张哥blog">
     <meta name="description" content="docker-compose介绍Docker-Compose 是 Docker 的一种编排服务，是一个用于在 Docker 上定义并运行复杂应用的工具，可以让用户在集群中部署分布式应用。
@@ -29,6 +29,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -485,15 +487,13 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.20.0/docker-c
 chmod +x /usr/local/bin/docker-compose
 
 # 显示docker-compose版本
-docker-compose version
-</code></pre>
+docker-compose version</code></pre>
 <p>docker-compose补全工具安装</p>
 <pre class=" language-shell"><code class="language-shell">#安装
 yum install bash-completion
 
 #下载docker-compose脚本
-curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose
-</code></pre>
+curl -L https://raw.githubusercontent.com/docker/compose/$(docker-compose version --short)/contrib/completion/bash/docker-compose > /etc/bash_completion.d/docker-compose</code></pre>
 <p>docker-compose常用命令</p>
 <pre class=" language-shell"><code class="language-shell">#查看帮助
 docker-compose -h
@@ -535,10 +535,9 @@ docker-compose scale web=3 db=2
 docker-compose start
 
 #停止已经处于运行状态的容器，但不删除它。通过 docker-compose start 可以再次启动这些容器。
-docker-compose stop
-</code></pre>
+docker-compose stop</code></pre>
 <p>本篇全是基本的安装和命令，下篇通过docker和docker-compose构建一些常用的软件运行环境</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://www.ityouknow.com/docker/2018/03/22/docker-compose.html" target="_blank" rel="noopener">Docker(四)：Docker 三剑客之 Docker Compose</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="http://www.ityouknow.com/docker/2018/03/22/docker-compose.html">Docker(四)：Docker 三剑客之 Docker Compose</a></p>
 
             </div>
             <hr/>
@@ -811,8 +810,8 @@ docker-compose stop
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            &emsp;&emsp;上篇说到了docker-compose的一些基本命令，这次使用docker-compose构建kafka集群。在说kafka之前，先简单了解一下kafka是什么东西。
-Kafka创建背景Kafka是一个消息系统，原本
+                              上篇说到了docker-compose的一些基本命令，这次使用docker-compose构建kafka集群。在说kafka之前，先简单了解一下kafka是什么东西。
+Kafka创建背景Kafka是一个消息系统，原本开发自LinkedI
                         
                     </div>
                     <div class="publish-info">
@@ -1038,7 +1037,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

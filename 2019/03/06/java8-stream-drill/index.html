@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Java8 stream-实战, 小张哥blog">
     <meta name="description" content="Java8在日常编码中感触最深的无非就是steam和lambda表达式以及新的时间api，在此之前，集合处理一直是不太方便且性能较低，第二个是时间api不好用，一般配合joda-time这个库配合使用，下面介绍一些在Java8中常用的str">
@@ -26,6 +26,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -474,9 +476,8 @@
   */</span>
 Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Model<span class="token operator">></span> modelMap <span class="token operator">=</span> modelList
                 <span class="token punctuation">.</span><span class="token function">parallelStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-                <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toMap</span><span class="token punctuation">(</span>Model<span class="token operator">:</span><span class="token operator">:</span>getId<span class="token punctuation">,</span> x <span class="token operator">-</span><span class="token operator">></span> x<span class="token punctuation">,</span> <span class="token punctuation">(</span>m1<span class="token punctuation">,</span> m2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> m1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="groupBy以后求最大值或者最小值"><a href="#groupBy以后求最大值或者最小值" class="headerlink" title="groupBy以后求最大值或者最小值"></a>groupBy以后求最大值或者最小值</h2><p><a href="http://www.java2s.com/Tutorials/Java_Streams/Example/Group/Get_max_value_in_each_group.htm" target="_blank" rel="noopener">http://www.java2s.com/Tutorials/Java_Streams/Example/Group/Get_max_value_in_each_group.htm</a></p>
+                <span class="token punctuation">.</span><span class="token function">collect</span><span class="token punctuation">(</span>Collectors<span class="token punctuation">.</span><span class="token function">toMap</span><span class="token punctuation">(</span>Model<span class="token operator">:</span><span class="token operator">:</span>getId<span class="token punctuation">,</span> x <span class="token operator">-</span><span class="token operator">></span> x<span class="token punctuation">,</span> <span class="token punctuation">(</span>m1<span class="token punctuation">,</span> m2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> m1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="groupBy以后求最大值或者最小值"><a href="#groupBy以后求最大值或者最小值" class="headerlink" title="groupBy以后求最大值或者最小值"></a>groupBy以后求最大值或者最小值</h2><p><a target="_blank" rel="noopener" href="http://www.java2s.com/Tutorials/Java_Streams/Example/Group/Get_max_value_in_each_group.htm">http://www.java2s.com/Tutorials/Java_Streams/Example/Group/Get_max_value_in_each_group.htm</a></p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@NoArgsConstructor</span>
 <span class="token annotation punctuation">@AllArgsConstructor</span>
@@ -524,8 +525,7 @@ Map<span class="token operator">&lt;</span>String<span class="token punctuation"
     <span class="token punctuation">(</span>Model d1<span class="token punctuation">,</span> Model d2<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> d1<span class="token punctuation">.</span><span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> d2<span class="token punctuation">.</span><span class="token function">getOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> d1 <span class="token operator">:</span> d2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"map:{}"</span><span class="token punctuation">,</span> map<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <h2 id="Scala中使用group求出最大值或者最小值"><a href="#Scala中使用group求出最大值或者最小值" class="headerlink" title="Scala中使用group求出最大值或者最小值"></a>Scala中使用group求出最大值或者最小值</h2><pre class=" language-scala"><code class="language-scala"><span class="token keyword">object</span> CollectionApp <span class="token punctuation">{</span>
 
   <span class="token keyword">def</span> main<span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Unit</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -570,8 +570,7 @@ Map<span class="token operator">&lt;</span>String<span class="token punctuation"
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">case</span> <span class="token keyword">class</span> Model<span class="token punctuation">(</span>hostname<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> ip<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> order<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
-</code></pre>
+<span class="token keyword">case</span> <span class="token keyword">class</span> Model<span class="token punctuation">(</span>hostname<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> ip<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> order<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span></code></pre>
 <h2 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogog<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span>
@@ -615,7 +614,6 @@ Map<span class="token operator">&lt;</span>String<span class="token punctuation"
         <span class="token keyword">void</span> <span class="token function">onProcess</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span> list<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 
             </div>
@@ -1116,7 +1114,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

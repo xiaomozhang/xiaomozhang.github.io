@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="CentOS 升级安装最新版git, 小张哥blog">
     <meta name="description" content="准备安装必要依赖
@@ -28,6 +28,8 @@ yum install -y gcc perl-E">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -470,34 +472,27 @@ yum install -y gcc perl-E">
             <div id="articleContent">
                 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>安装必要依赖</p>
 <pre class=" language-shell"><code class="language-shell">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc
-yum install -y gcc perl-ExtUtils-MakeMaker
-</code></pre>
+yum install -y gcc perl-ExtUtils-MakeMaker</code></pre>
 <h2 id="卸载旧版本Git"><a href="#卸载旧版本Git" class="headerlink" title="卸载旧版本Git"></a>卸载旧版本Git</h2><p>如果旧版本不存在，此步可忽略</p>
-<pre class=" language-shell"><code class="language-shell">yum remove -y git
-</code></pre>
+<pre class=" language-shell"><code class="language-shell">yum remove -y git</code></pre>
 <h2 id="下载最新版Git"><a href="#下载最新版Git" class="headerlink" title="下载最新版Git"></a>下载最新版Git</h2><ul>
 <li>切换目录</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">cd /usr/local/src
-</code></pre>
+<pre class=" language-shell"><code class="language-shell">cd /usr/local/src</code></pre>
 <ul>
 <li>git release版本地址</li>
 </ul>
-<pre class=" language-shell"><code class="language-shell">https://mirrors.edge.kernel.org/pub/software/scm/git/
-</code></pre>
+<pre class=" language-shell"><code class="language-shell">https://mirrors.edge.kernel.org/pub/software/scm/git/</code></pre>
 <ul>
 <li>下载并解压</li>
 </ul>
 <pre class=" language-shell"><code class="language-shell">wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
 tar -xvf git-2.9.5.tar.gz
-cd /usr/local/src/git-2.9.5
-</code></pre>
+cd /usr/local/src/git-2.9.5</code></pre>
 <h2 id="编译安装Git"><a href="#编译安装Git" class="headerlink" title="编译安装Git"></a>编译安装Git</h2><pre class=" language-shell"><code class="language-shell">make prefix=/usr/local/git all
-make prefix=/usr/local/git install
-</code></pre>
+make prefix=/usr/local/git install</code></pre>
 <h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><pre class=" language-shell"><code class="language-shell">echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/profile 
-source /etc/profile
-</code></pre>
+source /etc/profile</code></pre>
 
             </div>
             <hr/>
@@ -1001,7 +996,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

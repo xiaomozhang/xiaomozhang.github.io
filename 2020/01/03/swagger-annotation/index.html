@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Swagger2 常用注解, 小张哥blog">
     <meta name="description" content="Spring Boot 开发restful接口时，往往会有很多RESTful API，一般会选择swagger对接口进行管理
@@ -28,6 +28,8 @@ Spring Boot添加swagger支持&amp;lt;dependency&gt;
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -478,8 +480,7 @@ Spring Boot添加swagger支持&amp;lt;dependency&gt;
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.springfox<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>springfox-swagger-ui<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>2.9.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
 <h2 id="配置类"><a href="#配置类" class="headerlink" title="配置类"></a>配置类</h2><pre class=" language-java"><code class="language-java">
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span>
@@ -531,69 +532,66 @@ Spring Boot添加swagger支持&amp;lt;dependency&gt;
                 <span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-
 </code></pre>
 <h2 id="注解详细说明"><a href="#注解详细说明" class="headerlink" title="注解详细说明"></a>注解详细说明</h2><table>
 <thead>
 <tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left"><strong>取值</strong></th>
+<th align="left">属性</th>
+<th align="left"><strong>取值</strong></th>
 <th><strong>作用</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">作用范围</td>
-<td style="text-align:left">@API</td>
+<tbody><tr>
+<td align="left">作用范围</td>
+<td align="left">@API</td>
 <td>使用位置</td>
 </tr>
 <tr>
-<td style="text-align:left">对象属性</td>
-<td style="text-align:left">@ApiModelProperty</td>
+<td align="left">对象属性</td>
+<td align="left">@ApiModelProperty</td>
 <td>用在出入参数对象的字段上</td>
 </tr>
 <tr>
-<td style="text-align:left">协议集描述</td>
-<td style="text-align:left">@Api</td>
+<td align="left">协议集描述</td>
+<td align="left">@Api</td>
 <td>用于controller类上</td>
 </tr>
 <tr>
-<td style="text-align:left">协议描述</td>
-<td style="text-align:left">@ApiOperation</td>
+<td align="left">协议描述</td>
+<td align="left">@ApiOperation</td>
 <td>用在controller的方法上</td>
 </tr>
 <tr>
-<td style="text-align:left">Response集</td>
-<td style="text-align:left">@ApiResponses</td>
+<td align="left">Response集</td>
+<td align="left">@ApiResponses</td>
 <td>用在controller的方法上</td>
 </tr>
 <tr>
-<td style="text-align:left">Response</td>
-<td style="text-align:left">@ApiResponse</td>
+<td align="left">Response</td>
+<td align="left">@ApiResponse</td>
 <td>用在 @ApiResponses里边</td>
 </tr>
 <tr>
-<td style="text-align:left">非对象参数集</td>
-<td style="text-align:left">@ApiImplicitParams</td>
+<td align="left">非对象参数集</td>
+<td align="left">@ApiImplicitParams</td>
 <td>用在controller的方法上</td>
 </tr>
 <tr>
-<td style="text-align:left">非对象参数描述</td>
-<td style="text-align:left">@ApiImplicitParam</td>
+<td align="left">非对象参数描述</td>
+<td align="left">@ApiImplicitParam</td>
 <td>用在@ApiImplicitParams的方法里边</td>
 </tr>
 <tr>
-<td style="text-align:left">描述返回对象的意义</td>
-<td style="text-align:left">@ApiModel</td>
+<td align="left">描述返回对象的意义</td>
+<td align="left">@ApiModel</td>
 <td>用在返回对象类上</td>
 </tr>
 <tr>
-<td style="text-align:left">标记@RequestBody</td>
-<td style="text-align:left">@ApiParam</td>
+<td align="left">标记@RequestBody</td>
+<td align="left">@ApiParam</td>
 <td>用在方法参数</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="ApiImplicitParam"><a href="#ApiImplicitParam" class="headerlink" title="@ApiImplicitParam"></a>@ApiImplicitParam</h2><table>
 <thead>
 <tr>
@@ -602,8 +600,7 @@ Spring Boot添加swagger支持&amp;lt;dependency&gt;
 <th><strong>作用</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>paramType</td>
 <td>查询参数类型</td>
 <td></td>
@@ -683,8 +680,7 @@ Spring Boot添加swagger支持&amp;lt;dependency&gt;
 <td></td>
 <td>默认值</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
             </div>
             <hr/>
@@ -1182,7 +1178,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             

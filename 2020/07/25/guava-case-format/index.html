@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="Guava中的CaseFormat, 小张哥blog">
     <meta name="description" content="在数据库中，按照阿里巴巴java开发手册，数据库字段全部小写并且按照_进行单词之间的分割，但是我们Java中的命名风格又是按照驼峰方式，一般返回给前端的DTO对象也按照驼峰方式，前端同学在对所有列进行排序时，会按照我们返回给他的props发">
@@ -26,6 +26,8 @@
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
+<meta name="generator" content="Hexo 5.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="小张哥blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -471,8 +473,7 @@
 <p> com.google.common.base.CaseFormat是一种实用工具类，以提供不同的ASCII字符格式之间的转换。</p>
 <h2 id="类声明"><a href="#类声明" class="headerlink" title="类声明"></a>类声明</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@GwtCompatible</span>
 <span class="token keyword">public</span> <span class="token keyword">enum</span> CaseFormat
-   <span class="token keyword">extends</span> <span class="token class-name">Enum</span><span class="token operator">&lt;</span>CaseFormat<span class="token operator">></span>
-</code></pre>
+   <span class="token keyword">extends</span> <span class="token class-name">Enum</span><span class="token operator">&lt;</span>CaseFormat<span class="token operator">></span></code></pre>
 <h2 id="枚举常量"><a href="#枚举常量" class="headerlink" title="枚举常量"></a>枚举常量</h2><table>
 <thead>
 <tr>
@@ -480,8 +481,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>LOWER_CAMEL</td>
 <td>Java变量的命名规则，如 <code>lowerCamel</code></td>
 </tr>
@@ -501,8 +501,7 @@
 <td>UPPER_UNDERSCORE</td>
 <td>Java和C++常量的命名规则，如 <code>UPPER_UNDERSCORE</code></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><table>
 <thead>
 <tr>
@@ -510,8 +509,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Converter&lt;String,String&gt; converterTo(CaseFormat targetFormat)</td>
 <td>返回一个转换，从这个格式转换targetFormat字符串。</td>
 </tr>
@@ -527,8 +525,7 @@
 <td>static CaseFormat[] values()</td>
 <td>返回一个包含该枚举类型的常量数组中的顺序被声明。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
 <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     String appCiNum <span class="token operator">=</span> CaseFormat<span class="token punctuation">.</span>LOWER_CAMEL<span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span>CaseFormat<span class="token punctuation">.</span>LOWER_UNDERSCORE<span class="token punctuation">,</span> <span class="token string">"appCiNum"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -538,8 +535,7 @@
     appCiNum <span class="token operator">=</span> CaseFormat<span class="token punctuation">.</span>LOWER_UNDERSCORE<span class="token punctuation">.</span><span class="token function">to</span><span class="token punctuation">(</span>CaseFormat<span class="token punctuation">.</span>LOWER_CAMEL<span class="token punctuation">,</span> <span class="token string">"app_ci_num"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>appCiNum<span class="token punctuation">)</span><span class="token punctuation">;</span>
     Assert<span class="token punctuation">.</span><span class="token function">assertEquals</span><span class="token punctuation">(</span>appCiNum<span class="token punctuation">,</span> <span class="token string">"appCiNum"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>只要我们自己定的<code>DTO</code>是标准的，那么排序是前端同学就按照我们返回给他的字段在传回来，我们只需要用<code>CaseFormat</code>进行转换即可，不然还得依次进行match匹配</p>
 
             </div>
@@ -814,13 +810,9 @@
                     <div class="summary block-with-text">
                         
                             进入redis集群redis-cli -h ip -p port -c
-
 查看集群节点cluster nodes
-
 查看key对应的slotcluster keyslot key
-
 查看slot和节点的对应关系cluster slots
-
 
                         
                     </div>
@@ -1046,7 +1038,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">84.8k</span>&nbsp;字
+                class="white-color">83.4k</span>&nbsp;字
             
             
             
