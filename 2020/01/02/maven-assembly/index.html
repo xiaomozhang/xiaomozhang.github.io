@@ -439,14 +439,14 @@ assembly插件主要用于对打包以后的文件进行归档处理，比如项
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    921
+                    922
                 </div>
                 
 
@@ -472,7 +472,7 @@ assembly插件主要用于对打包以后的文件进行归档处理，比如项
                 <p>2020年的第一篇文章，祝大家新年快乐！</p>
 <p>assembly插件主要用于对打包以后的文件进行归档处理，比如项目中的jar，配置文件，脚本…. 打包需要归档到一起时，就可以使用maven-assembly-plugin。assembly使用很简单，第一是需要添加对应的maven插件，第二就是添加assembly需要归档的描述文件</p>
 <h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><p>这里用之前的一个介绍的maven多模块项目配置来进行配置</p>
-<pre class=" language-shell"><code class="language-shell">➜  life-multi-module git:(master) ✗ tree
+<pre class=" language-shell"><code class="language-shell">➜  personal-life-multi-module git:(master) ✗ tree
 .
 ├── HELP.md
 ├── life-multi-module.iml
@@ -485,11 +485,11 @@ assembly插件主要用于对打包以后的文件进行归档处理，比如项
 │&nbsp;&nbsp;     ├── main
 │&nbsp;&nbsp;     │&nbsp;&nbsp; ├── java
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
-│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── iogogogo
+│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── xiaozhangge
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;         └── MainApplication.java
 │&nbsp;&nbsp;     │&nbsp;&nbsp; ├── java-templates
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
-│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── iogogogo
+│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── xiaozhangge
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;         └── Version.java
 │&nbsp;&nbsp;     │&nbsp;&nbsp; └── resources
 │&nbsp;&nbsp;     │&nbsp;&nbsp;     └── git.properties
@@ -502,7 +502,7 @@ assembly插件主要用于对打包以后的文件进行归档处理，比如项
 │&nbsp;&nbsp;     ├── main
 │&nbsp;&nbsp;     │&nbsp;&nbsp; ├── java
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
-│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── iogogogo
+│&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;     └── xiaozhangge
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;         └── common
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── CommonApplication.java
 │&nbsp;&nbsp;     │&nbsp;&nbsp; │&nbsp;&nbsp;             └── util
