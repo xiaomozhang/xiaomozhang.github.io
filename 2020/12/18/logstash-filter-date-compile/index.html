@@ -432,7 +432,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-14
                 </div>
                 
 
@@ -474,11 +474,10 @@
 </ul>
 <h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><pre class=" language-shell"><code class="language-shell">cd ~/share/tmp
 
-# 如果下载太慢，可以先用gitee同步该仓库，然后在使用gitee地址下载
+# 如果下载太慢,可以直接将代码包download下载导入开发工具或在idea中使用token登陆github账户,然后在使用idea工具clone代码会跟快一些,
+# 教程地址: https://blog.csdn.net/SR02020/article/details/106882205
 git clone https://github.com/logstash-plugins/logstash-filter-date.git
 
-# gitee地址
-git clone https://gitee.com/iogogogo/logstash-filter-date.git
 
 # 切换到最新的tag分支，目前是v3.1.9
 git checkout -b v3.1.9 v3.1.9</code></pre>
@@ -525,7 +524,7 @@ wget https://artifacts.elastic.co/downloads/logstash/logstash-7.9.3.tar.gz</code
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>math<span class="token punctuation">.</span>BigDecimal<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2020/12/12.
+ * Created by xiaozhangge on 2020/12/12.
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UnixNanosecondParser</span> <span class="token keyword">implements</span> <span class="token class-name">TimestampParser</span> <span class="token punctuation">{</span>
 
@@ -656,14 +655,14 @@ testCompile <span class="token function">fileTree</span><span class="token punct
 compileOnly <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> logstashCoreGemPath<span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'**/*.jar'</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">// 修改为下载的logstash/logstash-core的绝对路径</span>
-testCompile <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'/Users/tao.zeng/share/software/logstash-7.9.3/logstash-core'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'**/*.jar'</span><span class="token punctuation">)</span>
-compileOnly <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'/Users/tao.zeng/share/software/logstash-7.9.3/logstash-core'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'**/*.jar'</span><span class="token punctuation">)</span></code></pre>
+testCompile <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'/Users/xiaozhangge/share/software/logstash-7.9.3/logstash-core'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'**/*.jar'</span><span class="token punctuation">)</span>
+compileOnly <span class="token function">fileTree</span><span class="token punctuation">(</span>dir<span class="token punctuation">:</span> <span class="token string">'/Users/xiaozhangge/share/software/logstash-7.9.3/logstash-core'</span><span class="token punctuation">,</span> include<span class="token punctuation">:</span> <span class="token string">'**/*.jar'</span><span class="token punctuation">)</span></code></pre>
 <h4 id="Rakefile"><a href="#Rakefile" class="headerlink" title="Rakefile"></a>Rakefile</h4><p>修改Rakefile文件的lsc_path配置为<code>logstash/logstash-core</code>目录</p>
 <pre class=" language-groovy"><code class="language-groovy"><span class="token comment" spellcheck="true">// 默认配置</span>
 lsc_path <span class="token operator">=</span> `bundle show logstash<span class="token operator">-</span>core`
 
 <span class="token comment" spellcheck="true">// 修改为下载的logstash/logstash-core的绝对路径</span>
-lsc_path <span class="token operator">=</span> `<span class="token string">/Users/</span>tao<span class="token operator">.</span>zeng<span class="token string">/share/</span>software<span class="token string">/logstash-7.9.3/</span>logstash<span class="token operator">-</span>core`</code></pre>
+lsc_path <span class="token operator">=</span> `<span class="token string">/Users/</span>xiaozhangge<span class="token string">/share/</span>software<span class="token string">/logstash-7.9.3/</span>logstash<span class="token operator">-</span>core`</code></pre>
 <h2 id="打包编译"><a href="#打包编译" class="headerlink" title="打包编译"></a>打包编译</h2><p>执行gradle的build任务，生成新的<code>logstash-date-filter-{version}.jar</code>，新生成文件目录如下：</p>
 <pre class=" language-shell"><code class="language-shell"># 有个好奇的是明明是3.1.9的tag包，但是在源码里面确实3.1.6的版本，所以打包出来也是3.1.6的版本号，解压logstash发现也是该版本号，所以不用在意版本号
 build/libs/logstash-filter-date-3.1.6.jar</code></pre>
@@ -716,26 +715,26 @@ tar -zxvf logstash-7.9.3.tar.gz</code></pre>
 ./vendor/bundle/jruby/2.5.0/gems/logstash-filter-date-3.1.9/vendor/jar-dependencies/org/logstash/filters/logstash-filter-date
 ./vendor/bundle/jruby/2.5.0/gems/logstash-filter-date-3.1.9/vendor/jar-dependencies/org/logstash/filters/logstash-filter-date/3.1.6/logstash-filter-date-3.1.6.jar</code></pre>
 <p>可以看到原先的jar在<code>./vendor/bundle/jruby/2.5.0/gems/logstash-filter-date-3.1.9/vendor/jar-dependencies/org/logstash/filters/logstash-filter-date/3.1.6/</code>这个目录下面，我们只需要用修改过的jar替换掉就可以了。</p>
-<h2 id="测试纳秒解析"><a href="#测试纳秒解析" class="headerlink" title="测试纳秒解析"></a>测试纳秒解析</h2><p>为了方便测试，我们将<a target="_blank" rel="noopener" href="https://iogogogo.github.io/2020/12/09/lsboot/">上一篇文章</a>的启动脚本复制过来，并且新建一个配置文件<code>conf/test.conf</code></p>
+<h2 id="测试纳秒解析"><a href="#测试纳秒解析" class="headerlink" title="测试纳秒解析"></a>测试纳秒解析</h2><p>为了方便测试，我们将<a href="https://xiaomozhang.github.io/2020/12/09/lsboot/">上一篇文章</a>的启动脚本复制过来，并且新建一个配置文件<code>conf/test.conf</code></p>
 <pre class=" language-shell"><code class="language-shell">➜  logstash-7.9.3 ll
 total 1280
--rw-r--r--   1 tao.zeng  staff   2.2K 10 16 20:23 CONTRIBUTORS
--rw-r--r--   1 tao.zeng  staff   3.9K 10 16 20:24 Gemfile
--rw-r--r--   1 tao.zeng  staff    22K 10 16 20:25 Gemfile.lock
--rw-r--r--   1 tao.zeng  staff    13K 10 16 20:23 LICENSE.txt
--rw-r--r--   1 tao.zeng  staff   587K 10 16 20:23 NOTICE.TXT
-drwxr-xr-x  22 tao.zeng  staff   704B 10 16 21:35 bin
-drwxr-xr-x   3 tao.zeng  staff    96B 12 18 20:00 conf
-drwxr-xr-x   8 tao.zeng  staff   256B 10 16 21:35 config
-drwxr-xr-x   2 tao.zeng  staff    64B 10 16 20:23 data
-drwxr-xr-x   6 tao.zeng  staff   192B 10 16 21:35 lib
-drwxr-xr-x   6 tao.zeng  staff   192B 10 16 21:35 logstash-core
-drwxr-xr-x   5 tao.zeng  staff   160B 10 16 21:35 logstash-core-plugin-api
--rwxr-xr-x@  1 tao.zeng  staff   1.3K 12 18 20:00 lsboot
-drwxr-xr-x   5 tao.zeng  staff   160B 10 16 21:35 modules
-drwxr-xr-x   3 tao.zeng  staff    96B 10 16 21:35 tools
-drwxr-xr-x   4 tao.zeng  staff   128B 10 16 21:35 vendor
-drwxr-xr-x  14 tao.zeng  staff   448B 10 16 21:35 x-pack</code></pre>
+-rw-r--r--   1 xiaozhangge  staff   2.2K 10 16 20:23 CONTRIBUTORS
+-rw-r--r--   1 xiaozhangge  staff   3.9K 10 16 20:24 Gemfile
+-rw-r--r--   1 xiaozhangge  staff    22K 10 16 20:25 Gemfile.lock
+-rw-r--r--   1 xiaozhangge  staff    13K 10 16 20:23 LICENSE.txt
+-rw-r--r--   1 xiaozhangge  staff   587K 10 16 20:23 NOTICE.TXT
+drwxr-xr-x  22 xiaozhangge  staff   704B 10 16 21:35 bin
+drwxr-xr-x   3 xiaozhangge  staff    96B 12 18 20:00 conf
+drwxr-xr-x   8 xiaozhangge  staff   256B 10 16 21:35 config
+drwxr-xr-x   2 xiaozhangge  staff    64B 10 16 20:23 data
+drwxr-xr-x   6 xiaozhangge  staff   192B 10 16 21:35 lib
+drwxr-xr-x   6 xiaozhangge  staff   192B 10 16 21:35 logstash-core
+drwxr-xr-x   5 xiaozhangge  staff   160B 10 16 21:35 logstash-core-plugin-api
+-rwxr-xr-x@  1 xiaozhangge  staff   1.3K 12 18 20:00 lsboot
+drwxr-xr-x   5 xiaozhangge  staff   160B 10 16 21:35 modules
+drwxr-xr-x   3 xiaozhangge  staff    96B 10 16 21:35 tools
+drwxr-xr-x   4 xiaozhangge  staff   128B 10 16 21:35 vendor
+drwxr-xr-x  14 xiaozhangge  staff   448B 10 16 21:35 x-pack</code></pre>
 <h3 id="编写测试配置conf-test-conf"><a href="#编写测试配置conf-test-conf" class="headerlink" title="编写测试配置conf/test.conf"></a>编写测试配置conf/test.conf</h3><pre class=" language-shell"><code class="language-shell">input {
      stdin { 
          codec => "json"
@@ -770,7 +769,7 @@ Sending Logstash logs to logs/test which is now configured via log4j2.properties
 [2020-12-18T20:13:20,029][WARN ][logstash.config.source.multilocal] Ignoring the 'pipelines.yml' file because modules or command line options are specified
 [2020-12-18T20:13:20,061][INFO ][logstash.agent           ] No persistent UUID file found. Generating new UUID {:uuid=>"e4188c10-0621-4967-a957-8aa14f1a2945", :path=>"data/test/uuid"}
 [2020-12-18T20:13:21,802][INFO ][org.reflections.Reflections] Reflections took 33 ms to scan 1 urls, producing 22 keys and 45 values
-[2020-12-18T20:13:23,160][INFO ][logstash.javapipeline    ][main] Starting pipeline {:pipeline_id=>"main", "pipeline.workers"=>8, "pipeline.batch.size"=>125, "pipeline.batch.delay"=>50, "pipeline.max_inflight"=>1000, "pipeline.sources"=>["/Users/tao.zeng/share/tmp/logstash-7.9.3/conf/test.conf"], :thread=>"#<Thread:0x49b901aa run>"}
+[2020-12-18T20:13:23,160][INFO ][logstash.javapipeline    ][main] Starting pipeline {:pipeline_id=>"main", "pipeline.workers"=>8, "pipeline.batch.size"=>125, "pipeline.batch.delay"=>50, "pipeline.max_inflight"=>1000, "pipeline.sources"=>["/Users/xiaozhangge/share/tmp/logstash-7.9.3/conf/test.conf"], :thread=>"#<Thread:0x49b901aa run>"}
 [2020-12-18T20:13:23,871][INFO ][logstash.javapipeline    ][main] Pipeline Java execution initialization time {"seconds"=>0.7}
 [2020-12-18T20:13:23,922][INFO ][logstash.inputs.stdin    ][main] Automatically switching from json to json_lines codec {:plugin=>"stdin"}
 [2020-12-18T20:13:23,962][INFO ][logstash.javapipeline    ][main] Pipeline started {"pipeline.id"=>"main"}
