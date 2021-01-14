@@ -438,7 +438,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-14
                 </div>
                 
 
@@ -504,7 +504,7 @@
 <p>通过<code>update1-n</code>方法，可以实现元组内容的更新，更新结果</p>
 <pre class=" language-verilog"><code class="language-verilog"><span class="token punctuation">(</span>TupleTests<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span>
 <span class="token punctuation">(</span>哈哈哈哈<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span></code></pre>
-<h3 id="方法多个返回值使用元组接收"><a href="#方法多个返回值使用元组接收" class="headerlink" title="方法多个返回值使用元组接收"></a>方法多个返回值使用元组接收</h3><p>这个需求其实之前在<a target="_blank" rel="noopener" href="https://iogogogo.github.io/2020/01/04/java8-date-cycle/">Java8 处理常见的日期周期</a>这篇文章已经用过了，比如我们需要获取一个周期数据，有开始和结束，那么元组无疑是最好的选择。比如我们需要封装一个方法获取今天的最小时间和最大时间，那么这里就需要两个返回值，虽然我们可以用<code>Object[]</code>或者<code>Map</code>之类的容器达到我们的效果，但是如果我返回值得类型都不尽想同，那么在获取的时候就要进行类型转换，加到了转换出错的概率，但是使用元组就不会有这个问题。</p>
+<h3 id="方法多个返回值使用元组接收"><a href="#方法多个返回值使用元组接收" class="headerlink" title="方法多个返回值使用元组接收"></a>方法多个返回值使用元组接收</h3><p>这个需求其实之前在<a href="https://xiaomozhang.github.io/2020/01/04/java8-date-cycle/">Java8 处理常见的日期周期</a>这篇文章已经用过了，比如我们需要获取一个周期数据，有开始和结束，那么元组无疑是最好的选择。比如我们需要封装一个方法获取今天的最小时间和最大时间，那么这里就需要两个返回值，虽然我们可以用<code>Object[]</code>或者<code>Map</code>之类的容器达到我们的效果，但是如果我返回值得类型都不尽想同，那么在获取的时候就要进行类型转换，加到了转换出错的概率，但是使用元组就不会有这个问题。</p>
 <ul>
 <li><p>获取一天的开始和结束时间</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Tuple2<span class="token operator">&lt;</span>LocalDateTime<span class="token punctuation">,</span> LocalDateTime<span class="token operator">></span> <span class="token function">getNowRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
