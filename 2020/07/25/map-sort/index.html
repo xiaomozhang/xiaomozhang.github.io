@@ -7,7 +7,7 @@
     <meta name="keywords" content="Map对key或者value进行排序, 小张哥blog">
     <meta name="description" content="开发中偶尔会遇到一些比较特殊的需求，比如对一个map进行排序，并且是对key或者value进行排序，那么我们可以用Java8中提供的stream来进行实现
 排序工具类封装排序工具类
-package com.iogogogo.common.u">
+package com.xiaozhangge.commo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -440,14 +440,14 @@ package com.iogogogo.common.u">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    936
+                    934
                 </div>
                 
 
@@ -472,7 +472,7 @@ package com.iogogogo.common.u">
             <div id="articleContent">
                 <p>开发中偶尔会遇到一些比较特殊的需求，比如对一个map进行排序，并且是对key或者value进行排序，那么我们可以用Java8中提供的<code>stream</code>来进行实现</p>
 <h2 id="排序工具类"><a href="#排序工具类" class="headerlink" title="排序工具类"></a>排序工具类</h2><p>封装排序工具类</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>common<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>common<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>common<span class="token punctuation">.</span>collect<span class="token punctuation">.</span>Lists<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>common<span class="token punctuation">.</span>collect<span class="token punctuation">.</span>Maps<span class="token punctuation">;</span>
@@ -483,7 +483,7 @@ package com.iogogogo.common.u">
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2020/5/25.
+ * Created by xiaozhangge on 2020/5/25.
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MapSortUtils</span> <span class="token punctuation">{</span>
 
@@ -610,9 +610,9 @@ package com.iogogogo.common.u">
         <span class="token keyword">return</span> <span class="token punctuation">(</span>Map<span class="token punctuation">.</span>Entry<span class="token operator">&lt;</span>K<span class="token punctuation">,</span> V<span class="token operator">></span><span class="token punctuation">)</span> tail<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>common<span class="token punctuation">.</span>tests<span class="token punctuation">;</span>
+<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>common<span class="token punctuation">.</span>tests<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>common<span class="token punctuation">.</span>util<span class="token punctuation">.</span>MapSortUtils<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>common<span class="token punctuation">.</span>util<span class="token punctuation">.</span>MapSortUtils<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>common<span class="token punctuation">.</span>collect<span class="token punctuation">.</span>Maps<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>Assert<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>Before<span class="token punctuation">;</span>
@@ -621,7 +621,7 @@ package com.iogogogo.common.u">
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2020/7/25.
+ * Created by xiaozhangge on 2020/7/25.
  */</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MapSortTest</span> <span class="token punctuation">{</span>
 

@@ -444,7 +444,7 @@ publ">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-14
                 </div>
                 
 
@@ -557,7 +557,7 @@ publ">
 <p> 可以看到，<code>LocalDate</code>和<code>LocalTime</code>，我们序列化<code>Java8</code>中的日期<code>API</code>，实际上是把成员变量序列化，是正常的一个序列化对象的逻辑。但是我们肯定是不希望这样的结果，对我们来说并不是特别友好。那么怎么解决这个问题呢？</p>
 <h2 id="自定义Gson的Adapter解决该问题"><a href="#自定义Gson的Adapter解决该问题" class="headerlink" title="自定义Gson的Adapter解决该问题"></a>自定义<code>Gson</code>的<code>Adapter</code>解决该问题</h2><p><code>Gson</code>本身给我们提供了各种各样的配置，其中有一个就是可以自定义序列化或者反序列化的<code>Adapter</code>，那么既然现在我们序列化不是我们想要的结果，就可以通过自定义<code>Adapter</code>来解决这个问题，废话不说，直接上代码演示。</p>
 <h3 id="自定义LocalDateAdapter"><a href="#自定义LocalDateAdapter" class="headerlink" title="自定义LocalDateAdapter"></a>自定义LocalDateAdapter</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
-* Created by tao.zeng on 2020/6/23.
+* Created by xiaozhangge on 2020/6/23.
 * &lt;p>
 * 处理LocalDate的序列化与反序列化
 */</span>
@@ -575,7 +575,7 @@ publ">
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <h3 id="自定义LocalDateTimeAdapter"><a href="#自定义LocalDateTimeAdapter" class="headerlink" title="自定义LocalDateTimeAdapter"></a>自定义LocalDateTimeAdapter</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
-* Created by tao.zeng on 2020/6/23.
+* Created by xiaozhangge on 2020/6/23.
 * &lt;p>
 * 处理LocalDateTime序列化与反序列化
 */</span>
@@ -626,7 +626,7 @@ dateTime Deserialization<span class="token punctuation">:</span><span class="tok
 date Deserialization<span class="token punctuation">:</span><span class="token number">2020</span><span class="token operator">-</span><span class="token number">06</span><span class="token operator">-</span><span class="token number">23</span></code></pre>
 <p>可以看到，在自定义Adapter以后，序列化的结果就是我们想要的<code>ISO</code>类型，当然你也可以根据自己的需求将日期格式序列话成自己想要的任意格式。</p>
 <h2 id="Json序列化与反序列化工具类"><a href="#Json序列化与反序列化工具类" class="headerlink" title="Json序列化与反序列化工具类"></a>Json序列化与反序列化工具类</h2><p>分享一个日常使用工具类，除了上文说到的关于日期处理的解决方案，还有另外一个问题的解决方案。这个留着下一篇文章讲。</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>gson<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>google<span class="token punctuation">.</span>gson<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>LinkedTreeMap<span class="token punctuation">;</span>
@@ -644,7 +644,7 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Set<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2020/6/23.
+ * Created by xiaozhangge on 2020/6/23.
  */</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JsonParse</span> <span class="token punctuation">{</span>
@@ -742,7 +742,7 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
 
 
     <span class="token comment" spellcheck="true">/**
-     * Created by tao.zeng on 2020/6/4.
+     * Created by xiaozhangge on 2020/6/4.
      * &lt;p>
      * 处理LocalDate的序列化与反序列化
      */</span>
@@ -761,7 +761,7 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
-     * Created by tao.zeng on 2020/6/4.
+     * Created by xiaozhangge on 2020/6/4.
      * &lt;p>
      * 处理LocalDateTime序列化与反序列化
      */</span>
@@ -780,7 +780,7 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
-     * Created by tao.zeng on 2020/6/4.
+     * Created by xiaozhangge on 2020/6/4.
      * &lt;p>
      * https://gist.github.com/xingstarx/5ddc14ff6ca68ba4097815c90d1c47cc
      * &lt;p>
