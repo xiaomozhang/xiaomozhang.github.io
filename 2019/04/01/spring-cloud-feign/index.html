@@ -439,7 +439,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-31
                 </div>
                 
 
@@ -496,7 +496,7 @@
 <span class="token attr-name">eureka.client.service-url.defaultZone</span><span class="token punctuation">=</span><span class="token attr-value">http://localhost:8761/eureka/</span>
 <span class="token comment" spellcheck="true"># 这个配置是为了后面测试负载均衡</span>
 <span class="token attr-name">service.instance.name</span><span class="token punctuation">=</span><span class="token attr-value">这是服务器1</span></code></pre>
-<h3 id="启动类"><a href="#启动类" class="headerlink" title="启动类"></a>启动类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>producer<span class="token punctuation">;</span>
+<h3 id="启动类"><a href="#启动类" class="headerlink" title="启动类"></a>启动类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>producer<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> feign<span class="token punctuation">.</span>Retryer<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplication<span class="token punctuation">;</span>
@@ -506,7 +506,7 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@EnableHystrix</span>
 <span class="token annotation punctuation">@EnableEurekaClient</span>
@@ -523,7 +523,7 @@
         <span class="token keyword">return</span> Retryer<span class="token punctuation">.</span>NEVER_RETRY<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>producer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
+<h3 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>producer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>GetMapping<span class="token punctuation">;</span>
@@ -533,7 +533,7 @@
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>UUID<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api"</span><span class="token punctuation">)</span>
@@ -575,7 +575,7 @@
 <span class="token attr-name">eureka.client.service-url.defaultZone</span><span class="token punctuation">=</span><span class="token attr-value">http://localhost:8761/eureka/</span>
 <span class="token comment" spellcheck="true"># 开启熔断</span>
 <span class="token attr-name">feign.hystrix.enabled</span><span class="token punctuation">=</span><span class="token attr-value">true</span></code></pre>
-<h3 id="启动类-1"><a href="#启动类-1" class="headerlink" title="启动类"></a>启动类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">;</span>
+<h3 id="启动类-1"><a href="#启动类-1" class="headerlink" title="启动类"></a>启动类</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplication<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>SpringBootApplication<span class="token punctuation">;</span>
@@ -585,7 +585,7 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>openfeign<span class="token punctuation">.</span>EnableFeignClients<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@EnableHystrix</span>
 <span class="token annotation punctuation">@EnableFeignClients</span>
@@ -599,10 +599,10 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Feign是一个声明式Web Service客户端。使用Feign能让编写Web Service客户端更加简单, 它的使用方法是定义一个接口，然后在上面添加注解，同时也支持JAX-RS标准的注解。Feign也支持可拔插式的编码器和解码器。Spring Cloud对Feign进行了封装，使其支持了Spring MVC标准注解和HttpMessageConverters。Feign可以与Eureka和Ribbon组合使用以支持负载均衡。</p>
-<h3 id="feign调用实现"><a href="#feign调用实现" class="headerlink" title="feign调用实现"></a>feign调用实现</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">;</span>
+<h3 id="feign调用实现"><a href="#feign调用实现" class="headerlink" title="feign调用实现"></a>feign调用实现</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>FeignConfig<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">.</span>ProducerFallback<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>FeignConfig<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">.</span>ProducerFallback<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>openfeign<span class="token punctuation">.</span>FeignClient<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestMapping<span class="token punctuation">;</span>
@@ -614,7 +614,7 @@
  * fallback = 熔断降级处理类
  * configuration = 熔断降级配置
  * &lt;p>
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"life-example-producer"</span><span class="token punctuation">,</span> fallback <span class="token operator">=</span> ProducerFallback<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> configuration <span class="token operator">=</span> FeignConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
@@ -630,15 +630,15 @@
     String <span class="token function">index</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> String name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">}</span></code></pre>
-<h3 id="消费者调用远程服务"><a href="#消费者调用远程服务" class="headerlink" title="消费者调用远程服务"></a>消费者调用远程服务</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
+<h3 id="消费者调用远程服务"><a href="#消费者调用远程服务" class="headerlink" title="消费者调用远程服务"></a>消费者调用远程服务</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>ProducerService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>ProducerService<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestMapping<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RestController<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api/consumer"</span><span class="token punctuation">)</span>
@@ -698,13 +698,13 @@ java -jar service-producer-0.0.1.jar --server.port=8082 --service.instance.name=
 <p>在Hystrix中, 主要通过线程池来实现资源隔离. 通常在使用的时候我们会根据调用的远程服务划分出多个线程池. 例如调用产品服务的Command放入A线程池, 调用账户服务的Command放入B线程池. 这样做的主要优点是运行环境被隔离开了. 这样就算调用服务的代码存在bug或者由于其他原因导致自己所在线程池被耗尽时, 不会对系统的其他服务造成影响. 但是带来的代价就是维护多个线程池会对系统带来额外的性能开销. 如果是对性能有严格要求而且确信自己调用服务的客户端代码不会出问题的话, 可以使用Hystrix的信号模式(Semaphores)来隔离资源.</p>
 <h3 id="Feign-Hystrix"><a href="#Feign-Hystrix" class="headerlink" title="Feign Hystrix"></a>Feign Hystrix</h3><p>因为熔断只是作用在服务调用这一端，因此我们根据上一篇的示例代码只需要改动service-consumer项目相关代码就可以。因为，Feign中已经依赖了Hystrix所以在maven配置上不用做任何改动。</p>
 <h4 id="配置文件-2"><a href="#配置文件-2" class="headerlink" title="配置文件"></a>配置文件</h4><pre class=" language-properties"><code class="language-properties"><span class="token attr-name">feign.hystrix.enabled</span><span class="token punctuation">=</span><span class="token attr-value">true</span></code></pre>
-<h4 id="熔断降级处理类"><a href="#熔断降级处理类" class="headerlink" title="熔断降级处理类"></a>熔断降级处理类</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">;</span>
+<h4 id="熔断降级处理类"><a href="#熔断降级处理类" class="headerlink" title="熔断降级处理类"></a>熔断降级处理类</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>ProducerService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>ProducerService<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@Component</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProducerFallback</span> <span class="token keyword">implements</span> <span class="token class-name">ProducerService</span> <span class="token punctuation">{</span>
@@ -714,10 +714,10 @@ java -jar service-producer-0.0.1.jar --server.port=8082 --service.instance.name=
         <span class="token keyword">return</span> String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span><span class="token string">"life-example-producer 服务不可用 param:%s"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h4 id="fallback属性"><a href="#fallback属性" class="headerlink" title="fallback属性"></a>fallback属性</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">;</span>
+<h4 id="fallback属性"><a href="#fallback属性" class="headerlink" title="fallback属性"></a>fallback属性</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>FeignConfig<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">.</span>ProducerFallback<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>FeignConfig<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>consumer<span class="token punctuation">.</span>feign<span class="token punctuation">.</span>fallback<span class="token punctuation">.</span>ProducerFallback<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>openfeign<span class="token punctuation">.</span>FeignClient<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Component<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestMapping<span class="token punctuation">;</span>
@@ -729,7 +729,7 @@ java -jar service-producer-0.0.1.jar --server.port=8082 --service.instance.name=
  * fallback = 熔断降级处理类
  * configuration = 熔断降级配置
  * &lt;p>
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@Component</span>
 <span class="token annotation punctuation">@FeignClient</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"life-example-producer"</span><span class="token punctuation">,</span> fallback <span class="token operator">=</span> ProducerFallback<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> configuration <span class="token operator">=</span> FeignConfig<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>

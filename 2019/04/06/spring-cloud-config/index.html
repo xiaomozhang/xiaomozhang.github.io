@@ -438,7 +438,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-01-31
                 </div>
                 
 
@@ -509,7 +509,7 @@ life-example-producer-pro.properties</code></pre>
 <span class="token attr-name">spring.cloud.config.server.git.password</span><span class="token punctuation">=</span>
 <span class="token comment" spellcheck="true"># 如果有分支 可以在这里配置分支名称</span>
 <span class="token attr-name">spring.cloud.config.server.git.default-label</span><span class="token punctuation">=</span></code></pre>
-<h4 id="启动类配置"><a href="#启动类配置" class="headerlink" title="启动类配置"></a>启动类配置</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<h4 id="启动类配置"><a href="#启动类配置" class="headerlink" title="启动类配置"></a>启动类配置</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>SpringApplication<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>autoconfigure<span class="token punctuation">.</span>SpringBootApplication<span class="token punctuation">;</span>
@@ -517,7 +517,7 @@ life-example-producer-pro.properties</code></pre>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>cloud<span class="token punctuation">.</span>netflix<span class="token punctuation">.</span>eureka<span class="token punctuation">.</span>EnableEurekaClient<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-16.
+ * Created by xiaozhangge on 2019-03-16.
  */</span>
 <span class="token annotation punctuation">@EnableConfigServer</span>
 <span class="token annotation punctuation">@EnableEurekaClient</span>
@@ -583,7 +583,7 @@ http://localhost:8899/life-example-producer/pro</code></pre>
 <li>无需变更</li>
 </ul>
 <h4 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h4><p>为了方便测试，还是使用接口访问形式，新建ConfigApi</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>producer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>producer<span class="token punctuation">.</span>api<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Value<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>GetMapping<span class="token punctuation">;</span>
@@ -591,7 +591,7 @@ http://localhost:8899/life-example-producer/pro</code></pre>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RestController<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-17.
+ * Created by xiaozhangge on 2019-03-17.
  */</span>
 <span class="token annotation punctuation">@RestController</span>
 <span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api/config"</span><span class="token punctuation">)</span>
