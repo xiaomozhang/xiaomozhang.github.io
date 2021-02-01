@@ -630,7 +630,7 @@
     ├── main
     │&nbsp;&nbsp; ├── java
     │&nbsp;&nbsp; │&nbsp;&nbsp; └── com
-    │&nbsp;&nbsp; │&nbsp;&nbsp;     └── iogogogo
+    │&nbsp;&nbsp; │&nbsp;&nbsp;     └── xiaozhangge
     │&nbsp;&nbsp; │&nbsp;&nbsp;         └── transfer
     │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── TransferApplication.java
     │&nbsp;&nbsp; │&nbsp;&nbsp;             ├── entity
@@ -649,7 +649,7 @@
     └── test
         └── java
             └── com
-                └── iogogogo
+                └── xiaozhangge
                     └── transfer
                         └── TransferApplicationTests.java</code></pre>
 <h3 id="新建数据库表"><a href="#新建数据库表" class="headerlink" title="新建数据库表"></a>新建数据库表</h3><pre class=" language-sql"><code class="language-sql"><span class="token keyword">drop</span> <span class="token keyword">table</span> <span class="token keyword">if</span> <span class="token keyword">exists</span> transfer_account<span class="token punctuation">;</span>
@@ -712,9 +712,9 @@
         <span class="token key atrule">format_sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
 <span class="token key atrule">logging</span><span class="token punctuation">:</span>
   <span class="token key atrule">level</span><span class="token punctuation">:</span>
-    <span class="token key atrule">com.iogogogo.transfer.mapper</span><span class="token punctuation">:</span> debug
+    <span class="token key atrule">com.xiaozhangge.transfer.mapper</span><span class="token punctuation">:</span> debug
 </code></pre>
-<h3 id="Jpa操作数据库"><a href="#Jpa操作数据库" class="headerlink" title="Jpa操作数据库"></a>Jpa操作数据库</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>jpa<span class="token punctuation">;</span>
+<h3 id="Jpa操作数据库"><a href="#Jpa操作数据库" class="headerlink" title="Jpa操作数据库"></a>Jpa操作数据库</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>jpa<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>transfer<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>TransferAccount<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>JpaRepository<span class="token punctuation">;</span>
