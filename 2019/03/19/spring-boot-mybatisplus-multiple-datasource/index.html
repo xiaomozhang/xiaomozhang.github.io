@@ -438,7 +438,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-12-18
+                    2021-02-01
                 </div>
                 
 
@@ -478,7 +478,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
 <span class="token comment" spellcheck="true">&lt;!-- jdbc driver 这是是官网下载，自己传到内网服务器的jdbc驱动 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.iogogogo.vertica<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.xiaozhangge.vertica<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>vertica-jdbc<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>9.2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
@@ -527,14 +527,14 @@
 <span class="token key atrule">mybatis-plus</span><span class="token punctuation">:</span>
   <span class="token key atrule">configuration</span><span class="token punctuation">:</span>
     <span class="token key atrule">map-underscore-to-camel-case</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">type-aliases-package</span><span class="token punctuation">:</span> com.iogogogo.entity
+  <span class="token key atrule">type-aliases-package</span><span class="token punctuation">:</span> com.xiaozhangge.entity
 </code></pre>
-<h2 id="HikariCP-配置"><a href="#HikariCP-配置" class="headerlink" title="HikariCP 配置"></a>HikariCP 配置</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<h2 id="HikariCP-配置"><a href="#HikariCP-配置" class="headerlink" title="HikariCP 配置"></a>HikariCP 配置</h2><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-20.
+ * Created by xiaozhangge on 2019-03-20.
  */</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HikariConfig</span> <span class="token punctuation">{</span>
@@ -555,7 +555,7 @@
 
     <span class="token keyword">private</span> String connectionTestQuery<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="MySQL数据源配置"><a href="#MySQL数据源配置" class="headerlink" title="MySQL数据源配置"></a>MySQL数据源配置</h2><h3 id="连接池配置"><a href="#连接池配置" class="headerlink" title="连接池配置"></a>连接池配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<h2 id="MySQL数据源配置"><a href="#MySQL数据源配置" class="headerlink" title="MySQL数据源配置"></a>MySQL数据源配置</h2><h3 id="连接池配置"><a href="#连接池配置" class="headerlink" title="连接池配置"></a>连接池配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>EqualsAndHashCode<span class="token punctuation">;</span>
@@ -563,7 +563,7 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-20.
+ * Created by xiaozhangge on 2019-03-20.
  */</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Configuration</span>
@@ -571,10 +571,10 @@
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource.mysql.hikari"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HikariMySQLConfig</span> <span class="token keyword">extends</span> <span class="token class-name">HikariConfig</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="DataSource配置"><a href="#DataSource配置" class="headerlink" title="DataSource配置"></a>DataSource配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">;</span>
+<h3 id="DataSource配置"><a href="#DataSource配置" class="headerlink" title="DataSource配置"></a>DataSource配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>MybatisSqlSessionFactoryBean<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>HikariMySQLConfig<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>HikariMySQLConfig<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>zaxxer<span class="token punctuation">.</span>hikari<span class="token punctuation">.</span>HikariDataSource<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session<span class="token punctuation">.</span>SqlSessionFactory<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>SqlSessionTemplate<span class="token punctuation">;</span>
@@ -589,10 +589,10 @@
 <span class="token keyword">import</span> javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataSource<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-19.
+ * Created by xiaozhangge on 2019-03-19.
  */</span>
 <span class="token annotation punctuation">@Configuration</span>
-<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.iogogogo.mapper.mysql"</span><span class="token punctuation">,</span> sqlSessionTemplateRef <span class="token operator">=</span> <span class="token string">"mysqlSqlSessionTemplate"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.xiaozhangge.mapper.mysql"</span><span class="token punctuation">,</span> sqlSessionTemplateRef <span class="token operator">=</span> <span class="token string">"mysqlSqlSessionTemplate"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MySQLDataSourceConfigure</span> <span class="token punctuation">{</span>
 
     <span class="token keyword">private</span> HikariMySQLConfig mysqlConfig<span class="token punctuation">;</span>
@@ -640,7 +640,7 @@
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">(</span>sqlSessionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="Vertica数据源配置"><a href="#Vertica数据源配置" class="headerlink" title="Vertica数据源配置"></a>Vertica数据源配置</h2><h3 id="连接池配置-1"><a href="#连接池配置-1" class="headerlink" title="连接池配置"></a>连接池配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+<h2 id="Vertica数据源配置"><a href="#Vertica数据源配置" class="headerlink" title="Vertica数据源配置"></a>Vertica数据源配置</h2><h3 id="连接池配置-1"><a href="#连接池配置-1" class="headerlink" title="连接池配置"></a>连接池配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Data<span class="token punctuation">;</span>
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>EqualsAndHashCode<span class="token punctuation">;</span>
@@ -648,7 +648,7 @@
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-20.
+ * Created by xiaozhangge on 2019-03-20.
  */</span>
 <span class="token annotation punctuation">@Data</span>
 <span class="token annotation punctuation">@Configuration</span>
@@ -656,10 +656,10 @@
 <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource.vertica.hikari"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HikariVerticaConfig</span> <span class="token keyword">extends</span> <span class="token class-name">HikariConfig</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id="DataSource配置-1"><a href="#DataSource配置-1" class="headerlink" title="DataSource配置"></a>DataSource配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">;</span>
+<h3 id="DataSource配置-1"><a href="#DataSource配置-1" class="headerlink" title="DataSource配置"></a>DataSource配置</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>extension<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>MybatisSqlSessionFactoryBean<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>HikariVerticaConfig<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>datasource<span class="token punctuation">.</span>configure<span class="token punctuation">.</span>HikariVerticaConfig<span class="token punctuation">;</span>
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>zaxxer<span class="token punctuation">.</span>hikari<span class="token punctuation">.</span>HikariDataSource<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>session<span class="token punctuation">.</span>SqlSessionFactory<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>mybatis<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>SqlSessionTemplate<span class="token punctuation">;</span>
@@ -674,10 +674,10 @@
 <span class="token keyword">import</span> javax<span class="token punctuation">.</span>sql<span class="token punctuation">.</span>DataSource<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-19.
+ * Created by xiaozhangge on 2019-03-19.
  */</span>
 <span class="token annotation punctuation">@Configuration</span>
-<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.iogogogo.mapper.vertica"</span><span class="token punctuation">,</span> sqlSessionTemplateRef <span class="token operator">=</span> <span class="token string">"verticaSqlSessionTemplate"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.xiaozhangge.mapper.vertica"</span><span class="token punctuation">,</span> sqlSessionTemplateRef <span class="token operator">=</span> <span class="token string">"verticaSqlSessionTemplate"</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VerticaDataSourceConfigure</span> <span class="token punctuation">{</span>
 
     <span class="token keyword">private</span> HikariVerticaConfig verticaConfig<span class="token punctuation">;</span>
@@ -725,10 +725,10 @@
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionTemplate</span><span class="token punctuation">(</span>sqlSessionFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="Mapper"><a href="#Mapper" class="headerlink" title="Mapper"></a>Mapper</h2><h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>mysql<span class="token punctuation">;</span>
+<h2 id="Mapper"><a href="#Mapper" class="headerlink" title="Mapper"></a>Mapper</h2><h3 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>mysql<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>BaseMapper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>SysUser<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>SysUser<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Insert<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Param<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Select<span class="token punctuation">;</span>
@@ -737,7 +737,7 @@
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-19.
+ * Created by xiaozhangge on 2019-03-19.
  */</span>
 <span class="token annotation punctuation">@Repository</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">SysUserMapper</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token operator">&lt;</span>SysUser<span class="token operator">></span> <span class="token punctuation">{</span>
@@ -749,17 +749,17 @@
     List<span class="token operator">&lt;</span>SysUser<span class="token operator">></span> <span class="token function">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="Vertica"><a href="#Vertica" class="headerlink" title="Vertica"></a>Vertica</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>vertica<span class="token punctuation">;</span>
+<h3 id="Vertica"><a href="#Vertica" class="headerlink" title="Vertica"></a>Vertica</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>vertica<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> com<span class="token punctuation">.</span>baomidou<span class="token punctuation">.</span>mybatisplus<span class="token punctuation">.</span>core<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>BaseMapper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Select<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Repository<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-15.
+ * Created by xiaozhangge on 2019-03-15.
  */</span>
 <span class="token annotation punctuation">@Repository</span>
 <span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">UserMapper</span> <span class="token keyword">extends</span> <span class="token class-name">BaseMapper</span><span class="token operator">&lt;</span>User<span class="token operator">></span> <span class="token punctuation">{</span>
@@ -769,13 +769,13 @@
 <span class="token punctuation">}</span></code></pre>
 <p>可以发现只要数据源配置成功以后，两者已经没有任何区别了，就可以像正常写代码一样，需要注意的就是不同数据库的mapper需要放在指定的包下面，否则spring容器无法扫描。</p>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>为了方便，直接就在项目启动以后查询两个数据库的数据就好了</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">;</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>SysUser<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>SysUserMapper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>vertica<span class="token punctuation">.</span>UserMapper<span class="token punctuation">;</span>
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>iogogogo<span class="token punctuation">.</span>util<span class="token punctuation">.</span>IdHelper<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>SysUser<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>entity<span class="token punctuation">.</span>User<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>mysql<span class="token punctuation">.</span>SysUserMapper<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>vertica<span class="token punctuation">.</span>UserMapper<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>xiaozhangge<span class="token punctuation">.</span>util<span class="token punctuation">.</span>IdHelper<span class="token punctuation">;</span>
 <span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>CommandLineRunner<span class="token punctuation">;</span>
@@ -786,7 +786,7 @@
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
- * Created by tao.zeng on 2019-03-15.
+ * Created by xiaozhangge on 2019-03-15.
  */</span>
 <span class="token annotation punctuation">@Slf4j</span>
 <span class="token annotation punctuation">@SpringBootApplication</span>
@@ -828,14 +828,14 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.1.3.RELEASE)
 
-2019-03-20 10:33:18.233  INFO 21123 --- [  restartedMain] c.iogogogo.DynamicDataSourceApplication  : Starting DynamicDataSourceApplication on iogogogo.local with PID 21123 (/Users/tao.zeng/share/life-example/example-dynamic-datasource/target/classes started by tao.zeng in /Users/tao.zeng/share/life-example)
-2019-03-20 10:33:18.237  INFO 21123 --- [  restartedMain] c.iogogogo.DynamicDataSourceApplication  : No active profile set, falling back to default profiles: default
+2019-03-20 10:33:18.233  INFO 21123 --- [  restartedMain] c.xiaozhangge.DynamicDataSourceApplication  : Starting DynamicDataSourceApplication on xiaozhangge.local with PID 21123 (/Users/xiaozhangge/share/life-example/example-dynamic-datasource/target/classes started by xiaozhangge in /Users/xiaozhangge/share/life-example)
+2019-03-20 10:33:18.237  INFO 21123 --- [  restartedMain] c.xiaozhangge.DynamicDataSourceApplication  : No active profile set, falling back to default profiles: default
 2019-03-20 10:33:18.360  INFO 21123 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
 2019-03-20 10:33:18.360  INFO 21123 --- [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2019-03-20 10:33:20.341  INFO 21123 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
 2019-03-20 10:33:20.374  INFO 21123 --- [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
 2019-03-20 10:33:20.375  INFO 21123 --- [  restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
-2019-03-20 10:33:20.391  INFO 21123 --- [  restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/tao.zeng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-03-20 10:33:20.391  INFO 21123 --- [  restartedMain] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/xiaozhangge/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
 2019-03-20 10:33:20.497  INFO 21123 --- [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
 2019-03-20 10:33:20.497  INFO 21123 --- [  restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2136 ms
  _ _   |_  _ _|_. ___ _ |    _ 
@@ -855,8 +855,8 @@
 2019-03-20 10:33:23.516  INFO 21123 --- [  restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
 2019-03-20 10:33:23.804  INFO 21123 --- [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
 2019-03-20 10:33:23.887  INFO 21123 --- [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2019-03-20 10:33:23.892  INFO 21123 --- [  restartedMain] c.iogogogo.DynamicDataSourceApplication  : Started DynamicDataSourceApplication in 6.41 seconds (JVM running for 7.001)</code></pre>
-<p>以上完整<a target="_blank" rel="noopener" href="https://github.com/iogogogo/life-example">代码</a></p>
+2019-03-20 10:33:23.892  INFO 21123 --- [  restartedMain] c.xiaozhangge.DynamicDataSourceApplication  : Started DynamicDataSourceApplication in 6.41 seconds (JVM running for 7.001)</code></pre>
+<p>以上完整<a target="_blank" rel="noopener" href="https://github.com/xiaomozhang/personal-life-example">代码</a></p>
 
             </div>
             <hr/>
@@ -1354,7 +1354,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">83.3k</span>&nbsp;字
+                class="white-color">83.2k</span>&nbsp;字
             
             
             
