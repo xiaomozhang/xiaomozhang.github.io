@@ -6,7 +6,7 @@
   <link href="http://xiaomozhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaomozhang.github.io/"/>
-  <updated>2021-02-07T06:17:49.828Z</updated>
+  <updated>2021-06-05T05:01:18.948Z</updated>
   <id>http://xiaomozhang.github.io/</id>
   
   <author>
@@ -17,11 +17,94 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>自定义nacos ribbon负载均衡</title>
+    <link href="http://xiaomozhang.github.io/2021/06/04/nacos-ribbon-custom-loadbalancer-rule/"/>
+    <id>http://xiaomozhang.github.io/2021/06/04/nacos-ribbon-custom-loadbalancer-rule/</id>
+    <published>2021-06-04T11:37:49.000Z</published>
+    <updated>2021-06-05T05:01:18.948Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、ribbon入门&quot;&gt;&lt;a href=&quot;#一、ribbon入门&quot; class=&quot;headerlink&quot; title=&quot;一、ribbon入门&quot;&gt;&lt;/a&gt;一、ribbon入门&lt;/h2&gt;&lt;h3 id=&quot;1、ribbon在微服务中是什么-起到了什么作用&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="SpringBoot Nacos" scheme="http://xiaomozhang.github.io/categories/SpringBoot-Nacos/"/>
+    
+    
+    <category term="SpringBoot" scheme="http://xiaomozhang.github.io/tags/SpringBoot/"/>
+    
+    <category term="nacos" scheme="http://xiaomozhang.github.io/tags/nacos/"/>
+    
+    <category term="custom nacos ribbon rule" scheme="http://xiaomozhang.github.io/tags/custom-nacos-ribbon-rule/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redisTemplate常规Jackson2Json Serializer介绍及使用区别</title>
+    <link href="http://xiaomozhang.github.io/2021/02/07/spring-boot-redis-serializer-problems/"/>
+    <id>http://xiaomozhang.github.io/2021/02/07/spring-boot-redis-serializer-problems/</id>
+    <published>2021-02-07T14:18:57.000Z</published>
+    <updated>2021-06-04T11:40:51.853Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、使用Jackson2JsonRedisSerializer序列化反序列化带泛型的List数据&quot;&gt;&lt;a href=&quot;#一、使用Jackson2JsonRedisSerializer序列化反序列化带泛型的List数据&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="SpringBoot" scheme="http://xiaomozhang.github.io/categories/SpringBoot/"/>
+    
+    
+    <category term="SpringBoot" scheme="http://xiaomozhang.github.io/tags/SpringBoot/"/>
+    
+    <category term="RedisTemplate Serializer" scheme="http://xiaomozhang.github.io/tags/RedisTemplate-Serializer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo Matery 常见问题及解决</title>
+    <link href="http://xiaomozhang.github.io/2021/02/07/hexo-matery-problems/"/>
+    <id>http://xiaomozhang.github.io/2021/02/07/hexo-matery-problems/</id>
+    <published>2021-02-07T08:54:57.000Z</published>
+    <updated>2021-06-04T11:40:51.817Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文章非 Hexo + Matery Theme 教程，详细教程见&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Hexo" scheme="http://xiaomozhang.github.io/categories/Hexo/"/>
+    
+    
+    <category term="Hexo" scheme="http://xiaomozhang.github.io/tags/Hexo/"/>
+    
+    <category term="Matery" scheme="http://xiaomozhang.github.io/tags/Matery/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot2.X使用Lettuce设置多个RedisTemplate实例</title>
     <link href="http://xiaomozhang.github.io/2021/02/07/spring-boot-lettuce-multi-instance/"/>
     <id>http://xiaomozhang.github.io/2021/02/07/spring-boot-lettuce-multi-instance/</id>
     <published>2021-02-07T05:04:42.000Z</published>
-    <updated>2021-02-07T06:17:49.828Z</updated>
+    <updated>2021-06-04T11:40:51.834Z</updated>
     
     
       
@@ -450,84 +533,6 @@
     
     <category term="正则表达式" scheme="http://xiaomozhang.github.io/categories/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>vertica开启ROS</title>
-    <link href="http://xiaomozhang.github.io/2020/03/12/vertica-enable-ros/"/>
-    <id>http://xiaomozhang.github.io/2020/03/12/vertica-enable-ros/</id>
-    <published>2020-03-12T07:07:01.000Z</published>
-    <updated>2020-12-18T12:56:13.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;vertica默认批量插入是关闭的，需要手动设置&lt;code&gt;DataSourceProperties&lt;/code&gt;开启，详细参考&lt;code&gt;JDBC Connection</summary>
-        
-      
-    
-    
-    
-    <category term="Vertica" scheme="http://xiaomozhang.github.io/categories/Vertica/"/>
-    
-    
-    <category term="Vertica" scheme="http://xiaomozhang.github.io/tags/Vertica/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Maven加载本地jar文件</title>
-    <link href="http://xiaomozhang.github.io/2020/02/28/maven-install-local-jar/"/>
-    <id>http://xiaomozhang.github.io/2020/02/28/maven-install-local-jar/</id>
-    <published>2020-02-28T02:40:52.000Z</published>
-    <updated>2020-12-18T12:56:13.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;日常开发中都是maven加载在远程仓库的jar文件，如果远程仓库没有相应的jar文件，一般做法就是自己传到一个特定的nexus服务器上，但是本地开发测试的时候可能nexus服务器不太方便，那么我们可以使用maven加载本地的jar文件&lt;/p&gt;
-&lt;pre class=&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="maven" scheme="http://xiaomozhang.github.io/categories/maven/"/>
-    
-    
-    <category term="maven" scheme="http://xiaomozhang.github.io/tags/maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IntelliJ IDEA 2019 创建maven web项目</title>
-    <link href="http://xiaomozhang.github.io/2020/02/26/idea-web-project/"/>
-    <id>http://xiaomozhang.github.io/2020/02/26/idea-web-project/</id>
-    <published>2020-02-26T14:51:03.000Z</published>
-    <updated>2021-02-01T07:56:50.692Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;IntelliJ-IDEA-2019-创建maven-web项目&quot;&gt;&lt;a href=&quot;#IntelliJ-IDEA-2019-创建maven-web项目&quot; class=&quot;headerlink&quot; title=&quot;IntelliJ IDEA 2019 创建maven</summary>
-        
-      
-    
-    
-    
-    <category term="工具使用" scheme="http://xiaomozhang.github.io/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
-    
-    
-    <category term="Maven" scheme="http://xiaomozhang.github.io/tags/Maven/"/>
-    
-    <category term="IDEA" scheme="http://xiaomozhang.github.io/tags/IDEA/"/>
     
   </entry>
   
