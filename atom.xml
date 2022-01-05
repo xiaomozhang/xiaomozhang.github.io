@@ -6,7 +6,7 @@
   <link href="http://xiaomozhang.github.io/atom.xml" rel="self"/>
   
   <link href="http://xiaomozhang.github.io/"/>
-  <updated>2021-10-21T08:40:30.506Z</updated>
+  <updated>2022-01-05T13:14:40.233Z</updated>
   <id>http://xiaomozhang.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac操作系统安装多版本JDK</title>
+    <link href="http://xiaomozhang.github.io/2022/01/15/mac-os-install-mutiple-java-jdk/"/>
+    <id>http://xiaomozhang.github.io/2022/01/15/mac-os-install-mutiple-java-jdk/</id>
+    <published>2022-01-15T12:49:40.000Z</published>
+    <updated>2022-01-05T13:14:40.233Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Mac安装多版本JDK&quot;&gt;&lt;a href=&quot;#Mac安装多版本JDK&quot; class=&quot;headerlink&quot; title=&quot;Mac安装多版本JDK&quot;&gt;&lt;/a&gt;Mac安装多版本JDK&lt;/h2&gt;&lt;h3 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="MacBook" scheme="http://xiaomozhang.github.io/categories/MacBook/"/>
+    
+    
+    <category term="Mac" scheme="http://xiaomozhang.github.io/tags/Mac/"/>
+    
+    <category term="JDK runtime install" scheme="http://xiaomozhang.github.io/tags/JDK-runtime-install/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式六大原则(一)-单一职责原则</title>
@@ -538,33 +565,6 @@
     <category term="SpringBoot" scheme="http://xiaomozhang.github.io/tags/SpringBoot/"/>
     
     <category term="RedisTemplate Serializer" scheme="http://xiaomozhang.github.io/tags/RedisTemplate-Serializer/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo Matery 常见问题及解决</title>
-    <link href="http://xiaomozhang.github.io/2021/02/07/hexo-matery-problems/"/>
-    <id>http://xiaomozhang.github.io/2021/02/07/hexo-matery-problems/</id>
-    <published>2021-02-07T08:54:57.000Z</published>
-    <updated>2021-02-07T14:03:36.368Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;本文章非 Hexo + Matery Theme 教程，详细教程见&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Hexo" scheme="http://xiaomozhang.github.io/categories/Hexo/"/>
-    
-    
-    <category term="Hexo" scheme="http://xiaomozhang.github.io/tags/Hexo/"/>
-    
-    <category term="Matery" scheme="http://xiaomozhang.github.io/tags/Matery/"/>
     
   </entry>
   
