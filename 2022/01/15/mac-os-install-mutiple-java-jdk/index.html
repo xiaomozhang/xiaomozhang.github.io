@@ -449,14 +449,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    484
+                    418
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -474,9 +474,9 @@
             <div id="articleContent">
                 <h2 id="Mac安装多版本JDK"><a href="#Mac安装多版本JDK" class="headerlink" title="Mac安装多版本JDK"></a>Mac安装多版本JDK</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>作为 Java 开发，JDK 必然不可或缺。<br>目前使用的主流版本还是 JDK 8,但偶尔会想体验下新版本（或者旧版本），如果能装多个版本的 JDK，而且很方便的切换就好了。<br>是的！本文就是要记录下 Mac 系统下如何这样操作。</p>
 <blockquote>
-<p>操作系统：macOS Mojave 10.14.5</p>
+<p>操作系统：macOS Catalina 10.15.7</p>
 </blockquote>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>首先要下载多个版本的 JDK，这里以 JDK 7、JDK 8、JDK 11、JDK 15 为例，分别下载他们的解压版。</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>首先要下载多个版本的 JDK，这里以 JDK 7、JDK 8、JDK 11、JDK 17 为例，分别下载他们的解压版。</p>
 <p>解压后将文件夹移动到目录 <code>/Library/Java/JavaVirtualMachines</code>(非必须，后面配置环境变量需要)。</p>
 <p>然后配置多个环境变量如下：</p>
 <pre class=" language-shell"><code class="language-shell"># JDK 配置
@@ -493,7 +493,7 @@ alias jdk7="export JAVA_HOME=$JAVA_7_HOME"
 alias jdk8="export JAVA_HOME=$JAVA_8_HOME"
 alias jdk11="export JAVA_HOME=$JAVA_11_HOME"
 alias jdk17="export JAVA_HOME=$JAVA_17_HOME"</code></pre>
-<p>配置完之后，查看默认 <code>JDK</code> 版本(前面配置了默认JDK8):</p>
+<p>配置完之后,查看默认<code>JDK</code>版本(前面配置了默认JDK8):</p>
 <pre class=" language-shell"><code class="language-shell">$ java -version
 java version "1.8.0_271"
 Java(TM) SE Runtime Environment (build 1.8.0_271-b09)
@@ -504,7 +504,8 @@ $ java -version
 java version "17.0.1" 2021-10-19 LTS
 Java(TM) SE Runtime Environment (build 17.0.1+12-LTS-39)
 Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)</code></pre>
-<p>OK,收工！<br>喜欢小张哥的教程就多买几本书吧,送给自己的小baby,爱他(她)不妨就让他(她)多读书,从小就遨游在知识的海洋(*￣︶￣)<br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7725.jpeg">摩比爱识字</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7726.jpeg">美国双语分级阅读</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7727.jpeg">美国双语分级阅读套装</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7728.jpeg">学而思智能学习机</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7729.jpeg">美国科学分级阅读图书馆套装</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7730.jpeg">美国科学分级阅读图书馆250本套装-启蒙-基础-提高-进阶-飞跃</a></p>
+<p>OK,收工！</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>喜欢小张哥的教程就多买几本书吧,送给自己的小baby,爱他(她)不妨就让他(她)多读书,从小就遨游在知识的海洋🙂<br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7725.jpeg" alt="摩比爱识字"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7726.jpeg" alt="美国双语分级阅读"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7727.jpeg" alt="美国双语分级阅读套装"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7728.jpeg" alt="学而思智能学习机"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7729.jpeg" alt="美国科学分级阅读图书馆套装"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7730.jpeg" alt="美国科学分级阅读图书馆250本套装-启蒙-基础-提高-进阶-飞跃"></p>
 
             </div>
             <hr/>
@@ -1013,7 +1014,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">163.5k</span>&nbsp;字
+                class="white-color">163.4k</span>&nbsp;字
             
             
             

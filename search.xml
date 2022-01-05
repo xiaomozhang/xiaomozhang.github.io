@@ -1653,6 +1653,35 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
       </tags>
   </entry>
   <entry>
+    <title>Hexo Matery 常见问题及解决</title>
+    <url>/2021/02/07/hexo-matery-problems/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章非 Hexo + Matery Theme 教程，详细教程见<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md"><code>blinkfox hexo-theme-matery</code></a>，主要记录一些使用中的问题，希望能帮到进来的同学，避免踩坑。</p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h4 id="1blog检索不生效"><a href="#1blog检索不生效" class="headerlink" title="1blog检索不生效"></a>1blog检索不生效</h4><p>我本地的情况是这样的,在主页面通过检索输入框搜索文章检索是好用的,但是点击进入自己搜索的指定文章之后,在此点击搜索框进行检索,发现搜索到的文章路劲后面多加了一层路径信息,比如<br>我的这篇文章 <a href="https://xiaomozhang.github.io/2021/02/07/spring-boot-lettuce-multi-instance/"><code>SpringBoot2.X使用Lettuce设置多个RedisTemplate实例</code></a>, 点击检索连接跳转到<br>新的tab地址栏发现在地址栏后面多拼接了一层连接信息 <code>/2021/02/07/spring-boot-lettuce-multi-instance/</code> 出现这样的情况我的解决办法是这样的</p>
+<h4 id="step1-运行下面命令安装-searchdb"><a href="#step1-运行下面命令安装-searchdb" class="headerlink" title="step1:运行下面命令安装 searchdb"></a>step1:运行下面命令安装 <code>searchdb</code></h4><pre class=" language-shell"><code class="language-shell">cnpm install hexo-generator-search –-save
+cnpm install hexo-generator-searchdb --save</code></pre>
+<p>这两个都需要安装,只安装第一个不能全文搜索。<br>但是我在 <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md"><code>Mastery github源码教程</code></a> 只看到了安装<code>hexo-generator-search</code>即可,<br>但实际的情况是这样install并配置完成之后只对主页的搜索检索是生效的,进入具体的blog中是不生效的。看来实践还是检验真理的唯一标准啊<br><img src="/images/hexo-matery-problems/hexo-generator-search.jpg" alt="hexo-generator-search"></p>
+<h4 id="step2-在themes-hexo-theme-matery-config-yml中添加下面配置"><a href="#step2-在themes-hexo-theme-matery-config-yml中添加下面配置" class="headerlink" title="step2: 在themes/hexo-theme-matery/_config.yml中添加下面配置"></a>step2: 在<code>themes/hexo-theme-matery/_config.yml</code>中添加下面配置</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Local search</span>
+<span class="token key atrule">local_search</span><span class="token punctuation">:</span>
+  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">trigger</span><span class="token punctuation">:</span> auto
+  <span class="token key atrule">top_n_per_article</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">unescape</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
+<h4 id="step3-在项目的根目录-config-yml中添加下面配置"><a href="#step3-在项目的根目录-config-yml中添加下面配置" class="headerlink" title="step3: 在项目的根目录_config.yml中添加下面配置"></a>step3: 在项目的根目录<code>_config.yml</code>中添加下面配置</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#搜索插件</span>
+<span class="token key atrule">search</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> search.xml
+  <span class="token key atrule">field</span><span class="token punctuation">:</span> post
+  <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
+<p><img src="/images/hexo-matery-problems/hexo-search-config.png" alt="hexo-search-config"></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>Matery</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IntelliJ IDEA 2019 创建maven web项目</title>
     <url>/2020/02/26/idea-web-project/</url>
     <content><![CDATA[<h2 id="IntelliJ-IDEA-2019-创建maven-web项目"><a href="#IntelliJ-IDEA-2019-创建maven-web项目" class="headerlink" title="IntelliJ IDEA 2019 创建maven web项目"></a>IntelliJ IDEA 2019 创建maven web项目</h2><p>本文介绍使用IDEA创建不使用模板的web项目。</p>
@@ -1738,35 +1767,6 @@ date Deserialization<span class="token punctuation">:</span><span class="token n
       <tags>
         <tag>Maven</tag>
         <tag>IDEA</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo Matery 常见问题及解决</title>
-    <url>/2021/02/07/hexo-matery-problems/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章非 Hexo + Matery Theme 教程，详细教程见<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md"><code>blinkfox hexo-theme-matery</code></a>，主要记录一些使用中的问题，希望能帮到进来的同学，避免踩坑。</p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h4 id="1blog检索不生效"><a href="#1blog检索不生效" class="headerlink" title="1blog检索不生效"></a>1blog检索不生效</h4><p>我本地的情况是这样的,在主页面通过检索输入框搜索文章检索是好用的,但是点击进入自己搜索的指定文章之后,在此点击搜索框进行检索,发现搜索到的文章路劲后面多加了一层路径信息,比如<br>我的这篇文章 <a href="https://xiaomozhang.github.io/2021/02/07/spring-boot-lettuce-multi-instance/"><code>SpringBoot2.X使用Lettuce设置多个RedisTemplate实例</code></a>, 点击检索连接跳转到<br>新的tab地址栏发现在地址栏后面多拼接了一层连接信息 <code>/2021/02/07/spring-boot-lettuce-multi-instance/</code> 出现这样的情况我的解决办法是这样的</p>
-<h4 id="step1-运行下面命令安装-searchdb"><a href="#step1-运行下面命令安装-searchdb" class="headerlink" title="step1:运行下面命令安装 searchdb"></a>step1:运行下面命令安装 <code>searchdb</code></h4><pre class=" language-shell"><code class="language-shell">cnpm install hexo-generator-search –-save
-cnpm install hexo-generator-searchdb --save</code></pre>
-<p>这两个都需要安装,只安装第一个不能全文搜索。<br>但是我在 <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md"><code>Mastery github源码教程</code></a> 只看到了安装<code>hexo-generator-search</code>即可,<br>但实际的情况是这样install并配置完成之后只对主页的搜索检索是生效的,进入具体的blog中是不生效的。看来实践还是检验真理的唯一标准啊<br><img src="/images/hexo-matery-problems/hexo-generator-search.jpg" alt="hexo-generator-search"></p>
-<h4 id="step2-在themes-hexo-theme-matery-config-yml中添加下面配置"><a href="#step2-在themes-hexo-theme-matery-config-yml中添加下面配置" class="headerlink" title="step2: 在themes/hexo-theme-matery/_config.yml中添加下面配置"></a>step2: 在<code>themes/hexo-theme-matery/_config.yml</code>中添加下面配置</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true"># Local search</span>
-<span class="token key atrule">local_search</span><span class="token punctuation">:</span>
-  <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-  <span class="token key atrule">trigger</span><span class="token punctuation">:</span> auto
-  <span class="token key atrule">top_n_per_article</span><span class="token punctuation">:</span> <span class="token number">1</span>
-  <span class="token key atrule">unescape</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
-<h4 id="step3-在项目的根目录-config-yml中添加下面配置"><a href="#step3-在项目的根目录-config-yml中添加下面配置" class="headerlink" title="step3: 在项目的根目录_config.yml中添加下面配置"></a>step3: 在项目的根目录<code>_config.yml</code>中添加下面配置</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token comment" spellcheck="true">#搜索插件</span>
-<span class="token key atrule">search</span><span class="token punctuation">:</span>
-  <span class="token key atrule">path</span><span class="token punctuation">:</span> search.xml
-  <span class="token key atrule">field</span><span class="token punctuation">:</span> post
-  <span class="token key atrule">content</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></code></pre>
-<p><img src="/images/hexo-matery-problems/hexo-search-config.png" alt="hexo-search-config"></p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>Matery</tag>
       </tags>
   </entry>
   <entry>
@@ -1859,6 +1859,82 @@ Array[6] = args</code></pre>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> result<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>result<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java中使用元组</title>
+    <url>/2020/01/09/java-tuple/</url>
+    <content><![CDATA[<p>元组（Tuple）是固定数量的不同类型的元素的组合。元组与集合的不同之处在于，元组中的元素类型可以是不同的，而且数量固定。元组的好处在于可以把多个元素作为一个单元传递。如果一个方法需要返回多个值，可以把这多个值作为元组返回，而不需要创建额外的类来表示。根据元素数量的不同，Vavr 总共提供了 Tuple0、Tuple1 到 Tuple8 等 9 个类。每个元组类都需要声明其元素类型。如 Tuple2&lt;String, Integer&gt;表示的是两个元素的元组，第一个元素的类型为 String，第二个元素的类型为 Integer。对于元组对象，可以使用 _1、_2 到 _8 来访问其中的元素。所有元组对象都是不可变的，在创建之后不能更改。</p>
+<p>元组通过接口 Tuple 的静态方法 of 来创建。元组类也提供了一些方法对它们进行操作。由于元组是不可变的，所有相关的操作都返回一个新的元组对象。在 清单 1 中，使用 Tuple.of 创建了一个 Tuple2 对象。Tuple2 的 map 方法用来转换元组中的每个元素，返回新的元组对象。而 apply 方法则把元组转换成单个值。其他元组类也有类似的方法。除了 map 方法之外，还有 map1、map2、map3 等方法来转换第 N 个元素；update1、update2 和 update3 等方法用来更新单个元素。</p>
+<br>
+
+
+
+<p>Python和Scala语言中有自带元组，Jdk中是没有这个数据类型的，虽然使用数组或者map也能达到想要的效果，但总归是没有元组方便。</p>
+<p>比如说一个方法有多个返回值时，虽然可以用<code>Object[]</code>或者<code>Map</code>进行封装，但是在拆箱的时候类型会缺失，所以还是不太方便。Java中有很多元组库，这里推荐一个我经常使用的<a href="https://www.vavr.io/">vavr</a>，当然<code>Tuple</code>只是这个库中的一小部分，该库提供了强大的函数式编程的能力，可以像写Scala一样写Java</p>
+<h2 id="引入pom依赖"><a href="#引入pom依赖" class="headerlink" title="引入pom依赖"></a>引入pom依赖</h2><p>目前最新的稳定版是<code>0.10.2</code></p>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- https://mvnrepository.com/artifact/io.vavr/vavr --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.vavr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>vavr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.10.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="常用方法使用"><a href="#常用方法使用" class="headerlink" title="常用方法使用"></a>常用方法使用</h2><h3 id="创建元组对象"><a href="#创建元组对象" class="headerlink" title="创建元组对象"></a>创建元组对象</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Tuple3<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">,</span> Long<span class="token operator">></span> tuple3 <span class="token operator">=</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"TupleTests"</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Long<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>可以看到我们通过<code>Tuple.of</code>创建了一个有三个元素的元组对象，输出结果</p>
+<pre class=" language-verilog"><code class="language-verilog"><span class="token punctuation">(</span>TupleTests<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">40</span><span class="token punctuation">:</span><span class="token number">26.137</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span></code></pre>
+<h3 id="更新元组内容"><a href="#更新元组内容" class="headerlink" title="更新元组内容"></a>更新元组内容</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Tuple3<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">,</span> Long<span class="token operator">></span> tuple3 <span class="token operator">=</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"TupleTests"</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Long<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  tuple3 <span class="token operator">=</span> tuple3<span class="token punctuation">.</span><span class="token function">update1</span><span class="token punctuation">(</span><span class="token string">"哈哈哈哈"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>通过<code>update1-n</code>方法，可以实现元组内容的更新，更新结果</p>
+<pre class=" language-verilog"><code class="language-verilog"><span class="token punctuation">(</span>TupleTests<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span>哈哈哈哈<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span></code></pre>
+<h3 id="方法多个返回值使用元组接收"><a href="#方法多个返回值使用元组接收" class="headerlink" title="方法多个返回值使用元组接收"></a>方法多个返回值使用元组接收</h3><p>这个需求其实之前在<a href="https://xiaomozhang.github.io/2020/01/04/java8-date-cycle/">Java8 处理常见的日期周期</a>这篇文章已经用过了，比如我们需要获取一个周期数据，有开始和结束，那么元组无疑是最好的选择。比如我们需要封装一个方法获取今天的最小时间和最大时间，那么这里就需要两个返回值，虽然我们可以用<code>Object[]</code>或者<code>Map</code>之类的容器达到我们的效果，但是如果我返回值得类型都不尽想同，那么在获取的时候就要进行类型转换，加到了转换出错的概率，但是使用元组就不会有这个问题。</p>
+<ul>
+<li><p>获取一天的开始和结束时间</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Tuple2<span class="token operator">&lt;</span>LocalDateTime<span class="token punctuation">,</span> LocalDateTime<span class="token operator">></span> <span class="token function">getNowRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  LocalDate now <span class="token operator">=</span> LocalDate<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 一天中从零时开始</span>
+  LocalDateTime startTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">atTime</span><span class="token punctuation">(</span>LocalTime<span class="token punctuation">.</span>MIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 一天到23:59:59秒结束</span>
+  LocalDateTime endTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">atTime</span><span class="token punctuation">(</span>LocalTime<span class="token punctuation">.</span>MAX<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>startTime<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>获取返回值</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  Tuple2<span class="token operator">&lt;</span>LocalDateTime<span class="token punctuation">,</span> LocalDateTime<span class="token operator">></span> tuple2 <span class="token operator">=</span> <span class="token function">getNowRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 这里通过 _n 或者 _n() 获取每一个元组中的一列数据</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"开始时间:"</span> <span class="token operator">+</span> tuple2<span class="token punctuation">.</span><span class="token function">_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"结束时间:"</span> <span class="token operator">+</span> tuple2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们可以看到<code>getNowRange</code>同时有两个放回值，通过<code>Tuple2</code>进行保存，过 _n 或者 _n() 获取每一个元组中的一列数据。最后获取的结果为</p>
+<pre><code>开始时间:2020-01-09T00:00
+结束时间:2020-01-09T23:59:59.999999999</code></pre>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是元组最常用的一些方法，其实我理解的元组就是一种列式存储的数据容器，和我们平时用的<code>Collection</code>接口下的一些<code>List</code>，<code>Set</code>不同，他们都是以行的形式存储，有了<code>Tuple</code>以后，在日常开发中也多了一种数据在内存中存储的选择。</p>
+<p>当然元组只是<code>vavr</code>库中的一小部分，更多使用方法还是要看官方文档</p>
+<p>参考文章：<a href="https://www.ibm.com/developerworks/cn/java/j-understanding-functional-programming-4/index.html">使用 Vavr 进行函数式编程</a></p>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -2344,82 +2420,6 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
       </categories>
       <tags>
         <tag>Java8</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java中使用元组</title>
-    <url>/2020/01/09/java-tuple/</url>
-    <content><![CDATA[<p>元组（Tuple）是固定数量的不同类型的元素的组合。元组与集合的不同之处在于，元组中的元素类型可以是不同的，而且数量固定。元组的好处在于可以把多个元素作为一个单元传递。如果一个方法需要返回多个值，可以把这多个值作为元组返回，而不需要创建额外的类来表示。根据元素数量的不同，Vavr 总共提供了 Tuple0、Tuple1 到 Tuple8 等 9 个类。每个元组类都需要声明其元素类型。如 Tuple2&lt;String, Integer&gt;表示的是两个元素的元组，第一个元素的类型为 String，第二个元素的类型为 Integer。对于元组对象，可以使用 _1、_2 到 _8 来访问其中的元素。所有元组对象都是不可变的，在创建之后不能更改。</p>
-<p>元组通过接口 Tuple 的静态方法 of 来创建。元组类也提供了一些方法对它们进行操作。由于元组是不可变的，所有相关的操作都返回一个新的元组对象。在 清单 1 中，使用 Tuple.of 创建了一个 Tuple2 对象。Tuple2 的 map 方法用来转换元组中的每个元素，返回新的元组对象。而 apply 方法则把元组转换成单个值。其他元组类也有类似的方法。除了 map 方法之外，还有 map1、map2、map3 等方法来转换第 N 个元素；update1、update2 和 update3 等方法用来更新单个元素。</p>
-<br>
-
-
-
-<p>Python和Scala语言中有自带元组，Jdk中是没有这个数据类型的，虽然使用数组或者map也能达到想要的效果，但总归是没有元组方便。</p>
-<p>比如说一个方法有多个返回值时，虽然可以用<code>Object[]</code>或者<code>Map</code>进行封装，但是在拆箱的时候类型会缺失，所以还是不太方便。Java中有很多元组库，这里推荐一个我经常使用的<a href="https://www.vavr.io/">vavr</a>，当然<code>Tuple</code>只是这个库中的一小部分，该库提供了强大的函数式编程的能力，可以像写Scala一样写Java</p>
-<h2 id="引入pom依赖"><a href="#引入pom依赖" class="headerlink" title="引入pom依赖"></a>引入pom依赖</h2><p>目前最新的稳定版是<code>0.10.2</code></p>
-<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- https://mvnrepository.com/artifact/io.vavr/vavr --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>io.vavr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>vavr<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>0.10.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-</code></pre>
-<h2 id="常用方法使用"><a href="#常用方法使用" class="headerlink" title="常用方法使用"></a>常用方法使用</h2><h3 id="创建元组对象"><a href="#创建元组对象" class="headerlink" title="创建元组对象"></a>创建元组对象</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  Tuple3<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">,</span> Long<span class="token operator">></span> tuple3 <span class="token operator">=</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"TupleTests"</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Long<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>可以看到我们通过<code>Tuple.of</code>创建了一个有三个元素的元组对象，输出结果</p>
-<pre class=" language-verilog"><code class="language-verilog"><span class="token punctuation">(</span>TupleTests<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">40</span><span class="token punctuation">:</span><span class="token number">26.137</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span></code></pre>
-<h3 id="更新元组内容"><a href="#更新元组内容" class="headerlink" title="更新元组内容"></a>更新元组内容</h3><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  Tuple3<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">,</span> Long<span class="token operator">></span> tuple3 <span class="token operator">=</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span><span class="token string">"TupleTests"</span><span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Long<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  tuple3 <span class="token operator">=</span> tuple3<span class="token punctuation">.</span><span class="token function">update1</span><span class="token punctuation">(</span><span class="token string">"哈哈哈哈"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>tuple3<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>通过<code>update1-n</code>方法，可以实现元组内容的更新，更新结果</p>
-<pre class=" language-verilog"><code class="language-verilog"><span class="token punctuation">(</span>TupleTests<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span>
-<span class="token punctuation">(</span>哈哈哈哈<span class="token punctuation">,</span> <span class="token number">2020</span><span class="token operator">-</span><span class="token number">01</span><span class="token operator">-</span><span class="token number">09</span>T20<span class="token punctuation">:</span><span class="token number">42</span><span class="token punctuation">:</span><span class="token number">27.623</span><span class="token punctuation">,</span> <span class="token number">9223372036854775807</span><span class="token punctuation">)</span></code></pre>
-<h3 id="方法多个返回值使用元组接收"><a href="#方法多个返回值使用元组接收" class="headerlink" title="方法多个返回值使用元组接收"></a>方法多个返回值使用元组接收</h3><p>这个需求其实之前在<a href="https://xiaomozhang.github.io/2020/01/04/java8-date-cycle/">Java8 处理常见的日期周期</a>这篇文章已经用过了，比如我们需要获取一个周期数据，有开始和结束，那么元组无疑是最好的选择。比如我们需要封装一个方法获取今天的最小时间和最大时间，那么这里就需要两个返回值，虽然我们可以用<code>Object[]</code>或者<code>Map</code>之类的容器达到我们的效果，但是如果我返回值得类型都不尽想同，那么在获取的时候就要进行类型转换，加到了转换出错的概率，但是使用元组就不会有这个问题。</p>
-<ul>
-<li><p>获取一天的开始和结束时间</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> Tuple2<span class="token operator">&lt;</span>LocalDateTime<span class="token punctuation">,</span> LocalDateTime<span class="token operator">></span> <span class="token function">getNowRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  LocalDate now <span class="token operator">=</span> LocalDate<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 一天中从零时开始</span>
-  LocalDateTime startTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">atTime</span><span class="token punctuation">(</span>LocalTime<span class="token punctuation">.</span>MIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 一天到23:59:59秒结束</span>
-  LocalDateTime endTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">atTime</span><span class="token punctuation">(</span>LocalTime<span class="token punctuation">.</span>MAX<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> Tuple<span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>startTime<span class="token punctuation">,</span> endTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-</li>
-<li><p>获取返回值</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  Tuple2<span class="token operator">&lt;</span>LocalDateTime<span class="token punctuation">,</span> LocalDateTime<span class="token operator">></span> tuple2 <span class="token operator">=</span> <span class="token function">getNowRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-  <span class="token comment" spellcheck="true">// 这里通过 _n 或者 _n() 获取每一个元组中的一列数据</span>
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"开始时间:"</span> <span class="token operator">+</span> tuple2<span class="token punctuation">.</span><span class="token function">_1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"结束时间:"</span> <span class="token operator">+</span> tuple2<span class="token punctuation">.</span>_2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>我们可以看到<code>getNowRange</code>同时有两个放回值，通过<code>Tuple2</code>进行保存，过 _n 或者 _n() 获取每一个元组中的一列数据。最后获取的结果为</p>
-<pre><code>开始时间:2020-01-09T00:00
-结束时间:2020-01-09T23:59:59.999999999</code></pre>
-</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上就是元组最常用的一些方法，其实我理解的元组就是一种列式存储的数据容器，和我们平时用的<code>Collection</code>接口下的一些<code>List</code>，<code>Set</code>不同，他们都是以行的形式存储，有了<code>Tuple</code>以后，在日常开发中也多了一种数据在内存中存储的选择。</p>
-<p>当然元组只是<code>vavr</code>库中的一小部分，更多使用方法还是要看官方文档</p>
-<p>参考文章：<a href="https://www.ibm.com/developerworks/cn/java/j-understanding-functional-programming-4/index.html">使用 Vavr 进行函数式编程</a></p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -3892,9 +3892,9 @@ systemctl status firewalld</code></pre>
     <url>/2022/01/15/mac-os-install-mutiple-java-jdk/</url>
     <content><![CDATA[<h2 id="Mac安装多版本JDK"><a href="#Mac安装多版本JDK" class="headerlink" title="Mac安装多版本JDK"></a>Mac安装多版本JDK</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>作为 Java 开发，JDK 必然不可或缺。<br>目前使用的主流版本还是 JDK 8,但偶尔会想体验下新版本（或者旧版本），如果能装多个版本的 JDK，而且很方便的切换就好了。<br>是的！本文就是要记录下 Mac 系统下如何这样操作。</p>
 <blockquote>
-<p>操作系统：macOS Mojave 10.14.5</p>
+<p>操作系统：macOS Catalina 10.15.7</p>
 </blockquote>
-<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>首先要下载多个版本的 JDK，这里以 JDK 7、JDK 8、JDK 11、JDK 15 为例，分别下载他们的解压版。</p>
+<h3 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h3><p>首先要下载多个版本的 JDK，这里以 JDK 7、JDK 8、JDK 11、JDK 17 为例，分别下载他们的解压版。</p>
 <p>解压后将文件夹移动到目录 <code>/Library/Java/JavaVirtualMachines</code>(非必须，后面配置环境变量需要)。</p>
 <p>然后配置多个环境变量如下：</p>
 <pre class=" language-shell"><code class="language-shell"># JDK 配置
@@ -3911,7 +3911,7 @@ alias jdk7="export JAVA_HOME=$JAVA_7_HOME"
 alias jdk8="export JAVA_HOME=$JAVA_8_HOME"
 alias jdk11="export JAVA_HOME=$JAVA_11_HOME"
 alias jdk17="export JAVA_HOME=$JAVA_17_HOME"</code></pre>
-<p>配置完之后，查看默认 <code>JDK</code> 版本(前面配置了默认JDK8):</p>
+<p>配置完之后,查看默认<code>JDK</code>版本(前面配置了默认JDK8):</p>
 <pre class=" language-shell"><code class="language-shell">$ java -version
 java version "1.8.0_271"
 Java(TM) SE Runtime Environment (build 1.8.0_271-b09)
@@ -3922,7 +3922,8 @@ $ java -version
 java version "17.0.1" 2021-10-19 LTS
 Java(TM) SE Runtime Environment (build 17.0.1+12-LTS-39)
 Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)</code></pre>
-<p>OK,收工！<br>喜欢小张哥的教程就多买几本书吧,送给自己的小baby,爱他(她)不妨就让他(她)多读书,从小就遨游在知识的海洋(*￣︶￣)<br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7725.jpeg">摩比爱识字</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7726.jpeg">美国双语分级阅读</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7727.jpeg">美国双语分级阅读套装</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7728.jpeg">学而思智能学习机</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7729.jpeg">美国科学分级阅读图书馆套装</a><br><a href="/images/mac-os-install-mutiple-java-jdk/WechatIMG7730.jpeg">美国科学分级阅读图书馆250本套装-启蒙-基础-提高-进阶-飞跃</a></p>
+<p>OK,收工！</p>
+<h3 id="结束语"><a href="#结束语" class="headerlink" title="结束语"></a>结束语</h3><p>喜欢小张哥的教程就多买几本书吧,送给自己的小baby,爱他(她)不妨就让他(她)多读书,从小就遨游在知识的海洋🙂<br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7725.jpeg" alt="摩比爱识字"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7726.jpeg" alt="美国双语分级阅读"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7727.jpeg" alt="美国双语分级阅读套装"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7728.jpeg" alt="学而思智能学习机"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7729.jpeg" alt="美国科学分级阅读图书馆套装"><br><img src="/images/mac-os-install-mutiple-java-jdk/WechatIMG7730.jpeg" alt="美国科学分级阅读图书馆250本套装-启蒙-基础-提高-进阶-飞跃"></p>
 ]]></content>
       <categories>
         <category>MacBook</category>
@@ -8909,6 +8910,87 @@ public class MainStat {
       </tags>
   </entry>
   <entry>
+    <title>正则表达式</title>
+    <url>/2020/03/18/tools-regex/</url>
+    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">匹配除了换行符以外的任意字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">指定*前边的内容可以连续重复使用任意次以使整个表达式得到匹配</td>
+</tr>
+<tr>
+<td align="center">.*</td>
+<td align="center">任意数量的不包含换行的字符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">单词的开头或结尾，也就是单词的分界处</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">匹配字母、数字、下划线、汉字</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">匹配任意空白字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">匹配数字</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">匹配字符串开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">匹配字符串结束</td>
+</tr>
+</tbody></table>
+<p>反义</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\W</td>
+<td align="center">匹配非字母、下划线、数字、汉字</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配不是空白字符串</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">匹配不是单词开始或者结束的位置</td>
+</tr>
+<tr>
+<td align="center">[^x]</td>
+<td align="center">匹配除了<code>x</code>以外的任意字符</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>正则表达式</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Swagger2 常用注解</title>
     <url>/2020/01/03/swagger-annotation/</url>
     <content><![CDATA[<p>Spring Boot 开发restful接口时，往往会有很多RESTful API，一般会选择swagger对接口进行管理</p>
@@ -9129,87 +9211,6 @@ public class MainStat {
       <tags>
         <tag>Swagger</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>正则表达式</title>
-    <url>/2020/03/18/tools-regex/</url>
-    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
-<thead>
-<tr>
-<th align="center">元字符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">.</td>
-<td align="center">匹配除了换行符以外的任意字符</td>
-</tr>
-<tr>
-<td align="center">*</td>
-<td align="center">指定*前边的内容可以连续重复使用任意次以使整个表达式得到匹配</td>
-</tr>
-<tr>
-<td align="center">.*</td>
-<td align="center">任意数量的不包含换行的字符</td>
-</tr>
-<tr>
-<td align="center">\b</td>
-<td align="center">单词的开头或结尾，也就是单词的分界处</td>
-</tr>
-<tr>
-<td align="center">\w</td>
-<td align="center">匹配字母、数字、下划线、汉字</td>
-</tr>
-<tr>
-<td align="center">\s</td>
-<td align="center">匹配任意空白字符</td>
-</tr>
-<tr>
-<td align="center">\d</td>
-<td align="center">匹配数字</td>
-</tr>
-<tr>
-<td align="center">^</td>
-<td align="center">匹配字符串开始</td>
-</tr>
-<tr>
-<td align="center">$</td>
-<td align="center">匹配字符串结束</td>
-</tr>
-</tbody></table>
-<p>反义</p>
-<table>
-<thead>
-<tr>
-<th align="center">元字符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">\W</td>
-<td align="center">匹配非字母、下划线、数字、汉字</td>
-</tr>
-<tr>
-<td align="center">\S</td>
-<td align="center">匹配不是空白字符串</td>
-</tr>
-<tr>
-<td align="center">\D</td>
-<td align="center">匹配任意非数字的字符</td>
-</tr>
-<tr>
-<td align="center">\B</td>
-<td align="center">匹配不是单词开始或者结束的位置</td>
-</tr>
-<tr>
-<td align="center">[^x]</td>
-<td align="center">匹配除了<code>x</code>以外的任意字符</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>正则表达式</category>
-      </categories>
   </entry>
   <entry>
     <title>Vertica 简介</title>
