@@ -1682,6 +1682,79 @@ cnpm install hexo-generator-searchdb --save</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>idea旧版本如何编译运行高版本的jdk项目</title>
+    <url>/2022/06/28/idea-old-version-support-high-jdk-version/</url>
+    <content><![CDATA[<p>最新使用2019版本的idea开发支持JDK17的项目发现项目启动编译报错,下面是我当前机器mac操作系统版本以及idea的安装的版本</p>
+<pre class=" language-shell"><code class="language-shell">IntelliJ IDEA 2019.3.5 (Ultimate Edition)
+Build #IU-193.7288.26, built on May 6, 2020
+Licensed to xiaozhangge
+Runtime version: 11.0.6+8-b520.66 x86_64
+VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
+macOS 10.15.7
+GC: ParNew, ConcurrentMarkSweep
+Memory: 1979M
+Cores: 12
+Registry: compiler.automake.allow.when.app.running=true
+Non-Bundled Plugins: GsonFormat, JRebelPlugin, Lombook Plugin, Statistic, cn.olange.rule, com.baomidou.plugin.idea.mybatisx, com.github.chencn.yamlandprops, com.zhaow.restful.toolkit, mobi.hsz.idea.gitignore</code></pre>
+<p>当机器运行jdk高于13版本发现运行启动项目会报以下错误信息</p>
+<blockquote>
+<p>Compilation failed: internal java compiler error</p>
+</blockquote>
+<p>build-log/build.log包含：</p>
+<pre class=" language-shell"><code class="language-shell">2022-06-28 12:37:37,055 [    797]  ERROR - tellij.util.io.FileChannelUtil - symbolic reference class is not accessible: class sun.nio.ch.FileChannelImpl, from class com.intellij.util.io.FileChannelUtil (unnamed module @27808f31)
+java.lang.IllegalAccessException: symbolic reference class is not accessible: class sun.nio.ch.FileChannelImpl, from class com.intellij.util.io.FileChannelUtil (unnamed module @27808f31)
+        at java.base/java.lang.invoke.MemberName.makeAccessException(MemberName.java:957)
+        at java.base/java.lang.invoke.MethodHandles$Lookup.checkSymbolicClass(MethodHandles.java:3675)
+        at java.base/java.lang.invoke.MethodHandles$Lookup.resolveOrFail(MethodHandles.java:3647)
+        at java.base/java.lang.invoke.MethodHandles$Lookup.findVirtual(MethodHandles.java:2687)
+        at com.intellij.util.io.FileChannelUtil.setupUnInterruptibleHandle(FileChannelUtil.java:36)
+        at com.intellij.util.io.FileChannelUtil.<clinit>(FileChannelUtil.java:18)
+        at com.intellij.util.io.ReadWriteDirectBufferWrapper$FileContext$1.execute(ReadWriteDirectBufferWrapper.java:59)
+        at com.intellij.util.io.ReadWriteDirectBufferWrapper$FileContext$1.execute(ReadWriteDirectBufferWrapper.java:49)
+        at com.intellij.openapi.util.io.FileUtilRt.doIOOperation(FileUtilRt.java:957)
+        at com.intellij.util.io.ReadWriteDirectBufferWrapper$FileContext.<init>(ReadWriteDirectBufferWrapper.java:49)
+        at com.intellij.util.io.ReadWriteDirectBufferWrapper.create(ReadWriteDirectBufferWrapper.java:35)
+        at com.intellij.util.io.DirectBufferWrapper.doCreate(DirectBufferWrapper.java:66)
+        at com.intellij.util.io.DirectBufferWrapper.getBuffer(DirectBufferWrapper.java:38)
+        at com.intellij.util.io.ReadWriteDirectBufferWrapper.getBuffer(ReadWriteDirectBufferWrapper.java:22)
+        at com.intellij.util.io.StorageLock.createValue(StorageLock.java:229)
+        at com.intellij.util.io.StorageLock.get(StorageLock.java:154)
+        at com.intellij.util.io.PagedFileStorage.getBufferWrapper(PagedFileStorage.java:324)
+        at com.intellij.util.io.PagedFileStorage.getReadOnlyBuffer(PagedFileStorage.java:307)
+        at com.intellij.util.io.PagedFileStorage.getInt(PagedFileStorage.java:110)
+        at com.intellij.util.io.ResizeableMappedFile.getInt(ResizeableMappedFile.java:203)
+        at com.intellij.util.io.PersistentEnumeratorBase.<init>(PersistentEnumeratorBase.java:219)
+        at com.intellij.util.io.PersistentBTreeEnumerator.<init>(PersistentBTreeEnumerator.java:73)
+        at com.intellij.util.io.PersistentEnumeratorDelegate.createDefaultEnumerator(PersistentEnumeratorDelegate.java:69)
+        at com.intellij.util.io.PersistentHashMap.<init>(PersistentHashMap.java:165)
+        at com.intellij.util.io.PersistentHashMap.<init>(PersistentHashMap.java:150)
+        at com.intellij.util.io.PersistentHashMap.<init>(PersistentHashMap.java:141)
+        at com.intellij.util.io.PersistentHashMap.<init>(PersistentHashMap.java:133)
+        at com.intellij.util.io.PersistentHashMap.<init>(PersistentHashMap.java:120)
+        at org.jetbrains.jps.incremental.storage.AbstractStateStorage.createMap(AbstractStateStorage.java:119)
+        at org.jetbrains.jps.incremental.storage.AbstractStateStorage.<init>(AbstractStateStorage.java:27)
+        at org.jetbrains.jps.incremental.storage.FileTimestampStorage.<init>(FileTimestampStorage.java:27)
+        at org.jetbrains.jps.incremental.storage.ProjectStamps.<init>(ProjectStamps.java:41)
+        at org.jetbrains.jps.cmdline.BuildRunner.load(BuildRunner.java:88)
+        at org.jetbrains.jps.cmdline.BuildMain.main(BuildMain.java:124)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:78)
+        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:567)
+        at org.jetbrains.jps.cmdline.Launcher.main(Launcher.java:43)</code></pre>
+<p>出现以上问题我们可以通过idea中 intelliJ IDEA—-&gt;Prefrences—-&gt;Compiler—-&gt;Shared build process VM options 通过设置参数包括来解决这个错误</p>
+<pre class=" language-shell"><code class="language-shell">--illegal-access=permit --add-opens=java.base/sun.nio.ch=ALL-UNNAMED</code></pre>
+<p><img src="/images/idea-old-version-support-high-jdk-version/image1.png" alt="idea-old-version-support-high-jdk-version-config"></p>
+]]></content>
+      <categories>
+        <category>idea high version jdk</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+        <tag>idea support high version jdk</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>IntelliJ IDEA 2019 创建maven web项目</title>
     <url>/2020/02/26/idea-web-project/</url>
     <content><![CDATA[<h2 id="IntelliJ-IDEA-2019-创建maven-web项目"><a href="#IntelliJ-IDEA-2019-创建maven-web项目" class="headerlink" title="IntelliJ IDEA 2019 创建maven web项目"></a>IntelliJ IDEA 2019 创建maven web项目</h2><p>本文介绍使用IDEA创建不使用模板的web项目。</p>
@@ -4438,33 +4511,6 @@ Java HotSpot(TM) 64-Bit Server VM (build 17.0.1+12-LTS-39, mixed mode, sharing)<
       </tags>
   </entry>
   <entry>
-    <title>MyBatis对象中属性 包含List&lt;String&gt;一对多映射处理方式</title>
-    <url>/2020/07/19/mybatis-one-collection-basic-type/</url>
-    <content><![CDATA[<p>在使用MyBatis查询数据库时，经常会有一对多的情况，那么在一对多的情况时，如果是一个<code>Collection&lt;String&gt;</code>或者<code>Collection&lt;Integer&gt;</code>  类型，那么我们的<code>ResultMap</code>该如何定义？</p>
-<p>方法很简单，这时候我们就需要使用到构造函数注入了，通过Integer和String的构造函数注入，具体的字段名称自己对好入座即可。</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>User<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user_map<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span> <span class="token attr-name">ofType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span> <span class="token comment" spellcheck="true">&lt;!-- 对号入座数据库column名称即可 --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>collection</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>authorities<span class="token punctuation">"</span></span> <span class="token attr-name">ofType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>java.lang.String<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor</span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>permission<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>  <span class="token comment" spellcheck="true">&lt;!-- 对号入座数据库column名称即可 --></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor</span><span class="token punctuation">></span></span>
-     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>collection</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">></span></span></code></pre>
-]]></content>
-      <categories>
-        <category>MyBatis</category>
-      </categories>
-      <tags>
-        <tag>MyBatis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MySQL 常用语句</title>
     <url>/2019/03/14/mysql-note-01/</url>
     <content><![CDATA[<h1 id="MySQL-常用语句"><a href="#MySQL-常用语句" class="headerlink" title="MySQL 常用语句"></a>MySQL 常用语句</h1><p><a href="http://www.powerxing.com/sql-join/">sql-join</a><br><a href="https://mp.weixin.qq.com/s?__biz=MzAwOTE3NDY5OA==&amp;mid=2647906520&amp;idx=2&amp;sn=e1da610a41a0692721d3756f9e1583bb&amp;chksm=8344d31db4335a0bf5164b6c57c7e49f6a89f0538d778b156450bbaceba55e6a47abcebf2dd1&amp;mpshare=1&amp;scene=1&amp;srcid=0128OHhJN5V4SPLdlN1uN4lb#rd">mysql常用sql语句总结</a></p>
@@ -4590,6 +4636,33 @@ AND TABLE_NAME = '</span>health_exp'<span class="token punctuation">;</span> </c
       </tags>
   </entry>
   <entry>
+    <title>MyBatis对象中属性 包含List&lt;String&gt;一对多映射处理方式</title>
+    <url>/2020/07/19/mybatis-one-collection-basic-type/</url>
+    <content><![CDATA[<p>在使用MyBatis查询数据库时，经常会有一对多的情况，那么在一对多的情况时，如果是一个<code>Collection&lt;String&gt;</code>或者<code>Collection&lt;Integer&gt;</code>  类型，那么我们的<code>ResultMap</code>该如何定义？</p>
+<p>方法很简单，这时候我们就需要使用到构造函数注入了，通过Integer和String的构造函数注入，具体的字段名称自己对好入座即可。</p>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>resultMap</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>User<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>user_map<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>id<span class="token punctuation">"</span></span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>result</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span> <span class="token attr-name">ofType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>int<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span> <span class="token comment" spellcheck="true">&lt;!-- 对号入座数据库column名称即可 --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>collection</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>collection</span> <span class="token attr-name">property</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>authorities<span class="token punctuation">"</span></span> <span class="token attr-name">ofType</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>java.lang.String<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>arg</span> <span class="token attr-name">column</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>permission<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>  <span class="token comment" spellcheck="true">&lt;!-- 对号入座数据库column名称即可 --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>collection</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>resultMap</span><span class="token punctuation">></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>MyBatis</category>
+      </categories>
+      <tags>
+        <tag>MyBatis</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MySQL 导出表结构和表数据 mysqldump用法</title>
     <url>/2019/03/22/mysql-note-mysqldump/</url>
     <content><![CDATA[<p>命令行下具体用法如下：</p>
@@ -4654,6 +4727,21 @@ gzip_types       text/plain application/x-javascript text/css application/xml ap
 ]]></content>
       <tags>
         <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Redis查看集群信息以及key分布非slot</title>
+    <url>/2020/07/29/redis-cluster-info/</url>
+    <content><![CDATA[<h2 id="进入redis集群"><a href="#进入redis集群" class="headerlink" title="进入redis集群"></a>进入redis集群</h2><pre class=" language-shell"><code class="language-shell">redis-cli -h ip -p port -c</code></pre>
+<h2 id="查看集群节点"><a href="#查看集群节点" class="headerlink" title="查看集群节点"></a>查看集群节点</h2><pre class=" language-shell"><code class="language-shell">cluster nodes</code></pre>
+<h2 id="查看key对应的slot"><a href="#查看key对应的slot" class="headerlink" title="查看key对应的slot"></a>查看key对应的slot</h2><pre class=" language-shell"><code class="language-shell">cluster keyslot key</code></pre>
+<h2 id="查看slot和节点的对应关系"><a href="#查看slot和节点的对应关系" class="headerlink" title="查看slot和节点的对应关系"></a>查看slot和节点的对应关系</h2><pre class=" language-shell"><code class="language-shell">cluster slots</code></pre>
+]]></content>
+      <categories>
+        <category>Redis</category>
+      </categories>
+      <tags>
+        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -4991,21 +5079,6 @@ IRR <span class="token operator">=</span> <span class="token number">16.43</span
       </categories>
       <tags>
         <tag>PMP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Redis查看集群信息以及key分布非slot</title>
-    <url>/2020/07/29/redis-cluster-info/</url>
-    <content><![CDATA[<h2 id="进入redis集群"><a href="#进入redis集群" class="headerlink" title="进入redis集群"></a>进入redis集群</h2><pre class=" language-shell"><code class="language-shell">redis-cli -h ip -p port -c</code></pre>
-<h2 id="查看集群节点"><a href="#查看集群节点" class="headerlink" title="查看集群节点"></a>查看集群节点</h2><pre class=" language-shell"><code class="language-shell">cluster nodes</code></pre>
-<h2 id="查看key对应的slot"><a href="#查看key对应的slot" class="headerlink" title="查看key对应的slot"></a>查看key对应的slot</h2><pre class=" language-shell"><code class="language-shell">cluster keyslot key</code></pre>
-<h2 id="查看slot和节点的对应关系"><a href="#查看slot和节点的对应关系" class="headerlink" title="查看slot和节点的对应关系"></a>查看slot和节点的对应关系</h2><pre class=" language-shell"><code class="language-shell">cluster slots</code></pre>
-]]></content>
-      <categories>
-        <category>Redis</category>
-      </categories>
-      <tags>
-        <tag>Redis</tag>
       </tags>
   </entry>
   <entry>
@@ -5659,85 +5732,6 @@ chown mysql.mysql /var/run/mysqld/
       </tags>
   </entry>
   <entry>
-    <title>Spring Aop AspectJ 摘录笔记</title>
-    <url>/2020/02/16/spring-aop/</url>
-    <content><![CDATA[<p>原文链接：<a href="https://juejin.im/post/5a55af9e518825734d14813f">https://juejin.im/post/5a55af9e518825734d14813f</a></p>
-<h2 id="AspectJ"><a href="#AspectJ" class="headerlink" title="@AspectJ"></a>@AspectJ</h2><p><strong>AspectJ是一个AOP框架，它能够对java代码进行AOP编译（一般在编译期进行），让java代码具有AspectJ的AOP功能（当然需要特殊的编译器），可以这样说AspectJ是目前实现AOP框架中最成熟，功能最丰富的语言，更幸运的是，AspectJ与java程序完全兼容，几乎是无缝关联，因此对于有java编程基础的工程师，上手和使用都非常容易.</strong> </p>
-<p>其实<strong>AspectJ单独就是一门语言</strong>，它需要专门的编译器(ajc编译器). Spring AOP 与ApectJ的目的一致，都是为了统一处理横切业务，但与AspectJ不同的是，Spring AOP并不尝试提供完整的AOP功能(即使它完全可以实现)，Spring AOP 更注重的是与Spring IOC容器的结合，并结合该优势来解决横切业务的问题，因此在AOP的功能完善方面，相对来说AspectJ具有更大的优势，同时,Spring注意到AspectJ在AOP的实现方式上依赖于特殊编译器(ajc编译器)，因此Spring很机智回避了这点，<strong>转向采用动态代理技术的实现原理来构建Spring AOP的内部机制（动态织入），这是与AspectJ（静态织入）最根本的区别</strong>。在AspectJ 1.5后，引入@Aspect形式的注解风格的开发，Spring也非常快地跟进了这种方式，因此Spring 2.0后便使用了与AspectJ一样的注解。请注意，<strong>Spring 只是使用了与 AspectJ 5 一样的注解，但仍然没有使用 AspectJ 的编译器，底层依是动态代理技术的实现，因此并不依赖于 AspectJ 的编译器</strong>。</p>
-<p>所以，Spring AOP虽然是使用了那一套注解，其实实现AOP的底层是使用了动态代理(JDK或者CGLib)来动态植入。</p>
-<blockquote>
-<ul>
-<li>切点:定位到具体方法的一个表达式</li>
-<li>切面: 切点+建言</li>
-<li>建言(增强):定位到方法后干什么事</li>
-</ul>
-</blockquote>
-<h2 id="前置通知-Before"><a href="#前置通知-Before" class="headerlink" title="前置通知 @Before"></a>前置通知 @Before</h2><p>前置通知通过@Before注解进行标注，并可直接传入切点表达式的值，该通知在目标函数执行前执行，注意JoinPoint，是Spring提供的静态变量，通过joinPoint 参数，可以获取目标对象的信息,如类名称,方法参数,方法名称等，该参数是可选的。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"前置通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"前置通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="后置通知-AfterReturning"><a href="#后置通知-AfterReturning" class="headerlink" title="后置通知 @AfterReturning"></a>后置通知 @AfterReturning</h2><p>通过@AfterReturning注解进行标注，该函数在目标函数执行完成后执行，并可以获取到目标函数最终的返回值returnVal，当目标函数没有返回值时，returnVal将返回null，必须通过returning = “returnVal”注明参数的名称而且必须与通知函数的参数名称相同。请注意，在任何通知中这些参数都是可选的，需要使用时直接填写即可，不需要使用时，可以完成不用声明出来。<strong>当出现异常则不执行。</strong></p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AfterReturning</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">,</span> returning <span class="token operator">=</span> <span class="token string">"returnVal"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">AfterReturning</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">,</span> Object returnVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 returnVal {} "</span><span class="token punctuation">,</span> returnVal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="异常通知-AfterThrowing"><a href="#异常通知-AfterThrowing" class="headerlink" title="异常通知 @AfterThrowing"></a>异常通知 @AfterThrowing</h2><p>该通知只有在异常时才会被触发，并由throwing来声明一个接收异常信息的变量，同样异常通知也用于Joinpoint参数，需要时加上即可。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AfterThrowing</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">,</span> throwing <span class="token operator">=</span> <span class="token string">"e"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterThrowable</span><span class="token punctuation">(</span>Throwable e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"异常: "</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="最终通知-After"><a href="#最终通知-After" class="headerlink" title="最终通知 @After"></a>最终通知 @After</h2><p>该通知有点类似于finally代码块，只要应用了无论什么情况下都会执行。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@After</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">after</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"最终通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"最终通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="环绕通知-Around"><a href="#环绕通知-Around" class="headerlink" title="环绕通知 @Around"></a>环绕通知 @Around</h2><p>环绕通知既可以在目标方法前执行也可在目标方法之后执行，更重要的是环绕通知可以控制目标方法是否指向执行，但即使如此，我们应该尽量以最简单的方式满足需求，在仅需在目标方法前执行时，应该采用前置通知而非环绕通知。第一个参数必须是ProceedingJoinPoint，通过该对象的proceed()方法来执行目标函数，proceed()的返回值就是环绕通知的返回值。同样的，ProceedingJoinPoint对象也是可以获取目标对象的信息、如类名称、方法参数、方法名称等等。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> Object <span class="token function">around</span><span class="token punctuation">(</span>ProceedingJoinPoint joinPoint<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"环绕通知前...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">// 执行目标函数</span>
-  Object obj <span class="token operator">=</span> joinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"环绕通知后....{}"</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="execution-语法"><a href="#execution-语法" class="headerlink" title="execution 语法"></a>execution 语法</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// scope ：方法作用域，如public,private,protect</span>
-<span class="token comment" spellcheck="true">// returnt-type：方法返回值类型</span>
-<span class="token comment" spellcheck="true">// fully-qualified-class-name：方法所在类的完全限定名称</span>
-<span class="token comment" spellcheck="true">// parameters 方法参数</span>
-<span class="token function">execution</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>scope<span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">return</span><span class="token operator">-</span>type<span class="token operator">></span> <span class="token operator">&lt;</span>fully<span class="token operator">-</span>qualified<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">></span><span class="token punctuation">.</span>*<span class="token punctuation">(</span>parameters<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
-<ul>
-<li><code>execution(* com.xiaozhangge.*.*(..))</code> com.xiaozhangge包下所有类的所有方法</li>
-<li><code>execution(* com.xiaozhangge.Dog.*(..))</code> Dog类下的所有方</li>
-<li><code>execution(* com.xiaozhangge.Dog*.*(..))</code> Dog开头的类下的所有方法</li>
-</ul>
-<h2 id="切点-Pointcut"><a href="#切点-Pointcut" class="headerlink" title="切点 @Pointcut"></a>切点 @Pointcut</h2><p>在使用切入点时，还可以抽出来一个<code>@Pointcut</code>来供使用，可以避免重复的execution在不同的注解里写很多遍。</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"execution(public * com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pointcut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token punctuation">}</span></code></pre>
-<p>使用</p>
-<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"pointcut()"</span><span class="token punctuation">)</span>
-<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"使用@Pointcut 的前置通知"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="AOP切面的优先级"><a href="#AOP切面的优先级" class="headerlink" title="AOP切面的优先级"></a>AOP切面的优先级</h2><p>有时候，我们对一个方法会有多个切面的问题，这个时候还会涉及到切面的执行顺序的问题。</p>
-<p>我们可以定义每个切面的优先级， Spring 中提供注解 <code>@Order(i)</code> ，当 <code>i</code> 的值越小，优先级越高。</p>
-<h2 id="环绕和前后置通知的区别"><a href="#环绕和前后置通知的区别" class="headerlink" title="环绕和前后置通知的区别"></a>环绕和前后置通知的区别</h2><p>对于有变量缓存需求，线程安全的应用场景，前后置通知实现比较困难，而环绕通知实现就非常容易；</p>
-<p><a href="https://www.cnblogs.com/yaphetsfang/articles/11378821.html">https://www.cnblogs.com/yaphetsfang/articles/11378821.html</a></p>
-]]></content>
-      <categories>
-        <category>Spring</category>
-      </categories>
-      <tags>
-        <tag>AspectJ</tag>
-        <tag>Aop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring Boot 使用jpa和H2数据库</title>
     <url>/2020/01/05/spring-boot-jpa-h2/</url>
     <content><![CDATA[<p>日常测试时没有数据库可用时，使用H2不失为一种解决方案，而且H2也经常用在持久层的单元测试，Spring Boot中使用H2也很简单，只要一些配置即可。</p>
@@ -5981,6 +5975,85 @@ chown mysql.mysql /var/run/mysqld/
       </categories>
       <tags>
         <tag>Spring Boot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Aop AspectJ 摘录笔记</title>
+    <url>/2020/02/16/spring-aop/</url>
+    <content><![CDATA[<p>原文链接：<a href="https://juejin.im/post/5a55af9e518825734d14813f">https://juejin.im/post/5a55af9e518825734d14813f</a></p>
+<h2 id="AspectJ"><a href="#AspectJ" class="headerlink" title="@AspectJ"></a>@AspectJ</h2><p><strong>AspectJ是一个AOP框架，它能够对java代码进行AOP编译（一般在编译期进行），让java代码具有AspectJ的AOP功能（当然需要特殊的编译器），可以这样说AspectJ是目前实现AOP框架中最成熟，功能最丰富的语言，更幸运的是，AspectJ与java程序完全兼容，几乎是无缝关联，因此对于有java编程基础的工程师，上手和使用都非常容易.</strong> </p>
+<p>其实<strong>AspectJ单独就是一门语言</strong>，它需要专门的编译器(ajc编译器). Spring AOP 与ApectJ的目的一致，都是为了统一处理横切业务，但与AspectJ不同的是，Spring AOP并不尝试提供完整的AOP功能(即使它完全可以实现)，Spring AOP 更注重的是与Spring IOC容器的结合，并结合该优势来解决横切业务的问题，因此在AOP的功能完善方面，相对来说AspectJ具有更大的优势，同时,Spring注意到AspectJ在AOP的实现方式上依赖于特殊编译器(ajc编译器)，因此Spring很机智回避了这点，<strong>转向采用动态代理技术的实现原理来构建Spring AOP的内部机制（动态织入），这是与AspectJ（静态织入）最根本的区别</strong>。在AspectJ 1.5后，引入@Aspect形式的注解风格的开发，Spring也非常快地跟进了这种方式，因此Spring 2.0后便使用了与AspectJ一样的注解。请注意，<strong>Spring 只是使用了与 AspectJ 5 一样的注解，但仍然没有使用 AspectJ 的编译器，底层依是动态代理技术的实现，因此并不依赖于 AspectJ 的编译器</strong>。</p>
+<p>所以，Spring AOP虽然是使用了那一套注解，其实实现AOP的底层是使用了动态代理(JDK或者CGLib)来动态植入。</p>
+<blockquote>
+<ul>
+<li>切点:定位到具体方法的一个表达式</li>
+<li>切面: 切点+建言</li>
+<li>建言(增强):定位到方法后干什么事</li>
+</ul>
+</blockquote>
+<h2 id="前置通知-Before"><a href="#前置通知-Before" class="headerlink" title="前置通知 @Before"></a>前置通知 @Before</h2><p>前置通知通过@Before注解进行标注，并可直接传入切点表达式的值，该通知在目标函数执行前执行，注意JoinPoint，是Spring提供的静态变量，通过joinPoint 参数，可以获取目标对象的信息,如类名称,方法参数,方法名称等，该参数是可选的。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"前置通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"前置通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="后置通知-AfterReturning"><a href="#后置通知-AfterReturning" class="headerlink" title="后置通知 @AfterReturning"></a>后置通知 @AfterReturning</h2><p>通过@AfterReturning注解进行标注，该函数在目标函数执行完成后执行，并可以获取到目标函数最终的返回值returnVal，当目标函数没有返回值时，returnVal将返回null，必须通过returning = “returnVal”注明参数的名称而且必须与通知函数的参数名称相同。请注意，在任何通知中这些参数都是可选的，需要使用时直接填写即可，不需要使用时，可以完成不用声明出来。<strong>当出现异常则不执行。</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AfterReturning</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">,</span> returning <span class="token operator">=</span> <span class="token string">"returnVal"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">AfterReturning</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">,</span> Object returnVal<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"后置通知 returnVal {} "</span><span class="token punctuation">,</span> returnVal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="异常通知-AfterThrowing"><a href="#异常通知-AfterThrowing" class="headerlink" title="异常通知 @AfterThrowing"></a>异常通知 @AfterThrowing</h2><p>该通知只有在异常时才会被触发，并由throwing来声明一个接收异常信息的变量，同样异常通知也用于Joinpoint参数，需要时加上即可。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@AfterThrowing</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">,</span> throwing <span class="token operator">=</span> <span class="token string">"e"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterThrowable</span><span class="token punctuation">(</span>Throwable e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"异常: "</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="最终通知-After"><a href="#最终通知-After" class="headerlink" title="最终通知 @After"></a>最终通知 @After</h2><p>该通知有点类似于finally代码块，只要应用了无论什么情况下都会执行。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@After</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">after</span><span class="token punctuation">(</span>JoinPoint joinPoint<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"最终通知 CLASS_METHOD : {}"</span><span class="token punctuation">,</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getDeclaringTypeName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"."</span> <span class="token operator">+</span> joinPoint<span class="token punctuation">.</span><span class="token function">getSignature</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"最终通知 ARGS : {}"</span><span class="token punctuation">,</span> Arrays<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>joinPoint<span class="token punctuation">.</span><span class="token function">getArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="环绕通知-Around"><a href="#环绕通知-Around" class="headerlink" title="环绕通知 @Around"></a>环绕通知 @Around</h2><p>环绕通知既可以在目标方法前执行也可在目标方法之后执行，更重要的是环绕通知可以控制目标方法是否指向执行，但即使如此，我们应该尽量以最简单的方式满足需求，在仅需在目标方法前执行时，应该采用前置通知而非环绕通知。第一个参数必须是ProceedingJoinPoint，通过该对象的proceed()方法来执行目标函数，proceed()的返回值就是环绕通知的返回值。同样的，ProceedingJoinPoint对象也是可以获取目标对象的信息、如类名称、方法参数、方法名称等等。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Around</span><span class="token punctuation">(</span><span class="token string">"execution(* com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> Object <span class="token function">around</span><span class="token punctuation">(</span>ProceedingJoinPoint joinPoint<span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"环绕通知前...."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// 执行目标函数</span>
+  Object obj <span class="token operator">=</span> joinPoint<span class="token punctuation">.</span><span class="token function">proceed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"环绕通知后....{}"</span><span class="token punctuation">,</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="execution-语法"><a href="#execution-语法" class="headerlink" title="execution 语法"></a>execution 语法</h2><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// scope ：方法作用域，如public,private,protect</span>
+<span class="token comment" spellcheck="true">// returnt-type：方法返回值类型</span>
+<span class="token comment" spellcheck="true">// fully-qualified-class-name：方法所在类的完全限定名称</span>
+<span class="token comment" spellcheck="true">// parameters 方法参数</span>
+<span class="token function">execution</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>scope<span class="token operator">></span> <span class="token operator">&lt;</span><span class="token keyword">return</span><span class="token operator">-</span>type<span class="token operator">></span> <span class="token operator">&lt;</span>fully<span class="token operator">-</span>qualified<span class="token operator">-</span><span class="token keyword">class</span><span class="token operator">-</span>name<span class="token operator">></span><span class="token punctuation">.</span>*<span class="token punctuation">(</span>parameters<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<ul>
+<li><code>execution(* com.xiaozhangge.*.*(..))</code> com.xiaozhangge包下所有类的所有方法</li>
+<li><code>execution(* com.xiaozhangge.Dog.*(..))</code> Dog类下的所有方</li>
+<li><code>execution(* com.xiaozhangge.Dog*.*(..))</code> Dog开头的类下的所有方法</li>
+</ul>
+<h2 id="切点-Pointcut"><a href="#切点-Pointcut" class="headerlink" title="切点 @Pointcut"></a>切点 @Pointcut</h2><p>在使用切入点时，还可以抽出来一个<code>@Pointcut</code>来供使用，可以避免重复的execution在不同的注解里写很多遍。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Pointcut</span><span class="token punctuation">(</span><span class="token string">"execution(public * com.xiaozhangge.aop.service.*.*(..))"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">pointcut</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+<p>使用</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Before</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"pointcut()"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"使用@Pointcut 的前置通知"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="AOP切面的优先级"><a href="#AOP切面的优先级" class="headerlink" title="AOP切面的优先级"></a>AOP切面的优先级</h2><p>有时候，我们对一个方法会有多个切面的问题，这个时候还会涉及到切面的执行顺序的问题。</p>
+<p>我们可以定义每个切面的优先级， Spring 中提供注解 <code>@Order(i)</code> ，当 <code>i</code> 的值越小，优先级越高。</p>
+<h2 id="环绕和前后置通知的区别"><a href="#环绕和前后置通知的区别" class="headerlink" title="环绕和前后置通知的区别"></a>环绕和前后置通知的区别</h2><p>对于有变量缓存需求，线程安全的应用场景，前后置通知实现比较困难，而环绕通知实现就非常容易；</p>
+<p><a href="https://www.cnblogs.com/yaphetsfang/articles/11378821.html">https://www.cnblogs.com/yaphetsfang/articles/11378821.html</a></p>
+]]></content>
+      <categories>
+        <category>Spring</category>
+      </categories>
+      <tags>
+        <tag>AspectJ</tag>
+        <tag>Aop</tag>
       </tags>
   </entry>
   <entry>
@@ -8910,87 +8983,6 @@ public class MainStat {
       </tags>
   </entry>
   <entry>
-    <title>正则表达式</title>
-    <url>/2020/03/18/tools-regex/</url>
-    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
-<thead>
-<tr>
-<th align="center">元字符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">.</td>
-<td align="center">匹配除了换行符以外的任意字符</td>
-</tr>
-<tr>
-<td align="center">*</td>
-<td align="center">指定*前边的内容可以连续重复使用任意次以使整个表达式得到匹配</td>
-</tr>
-<tr>
-<td align="center">.*</td>
-<td align="center">任意数量的不包含换行的字符</td>
-</tr>
-<tr>
-<td align="center">\b</td>
-<td align="center">单词的开头或结尾，也就是单词的分界处</td>
-</tr>
-<tr>
-<td align="center">\w</td>
-<td align="center">匹配字母、数字、下划线、汉字</td>
-</tr>
-<tr>
-<td align="center">\s</td>
-<td align="center">匹配任意空白字符</td>
-</tr>
-<tr>
-<td align="center">\d</td>
-<td align="center">匹配数字</td>
-</tr>
-<tr>
-<td align="center">^</td>
-<td align="center">匹配字符串开始</td>
-</tr>
-<tr>
-<td align="center">$</td>
-<td align="center">匹配字符串结束</td>
-</tr>
-</tbody></table>
-<p>反义</p>
-<table>
-<thead>
-<tr>
-<th align="center">元字符</th>
-<th align="center">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">\W</td>
-<td align="center">匹配非字母、下划线、数字、汉字</td>
-</tr>
-<tr>
-<td align="center">\S</td>
-<td align="center">匹配不是空白字符串</td>
-</tr>
-<tr>
-<td align="center">\D</td>
-<td align="center">匹配任意非数字的字符</td>
-</tr>
-<tr>
-<td align="center">\B</td>
-<td align="center">匹配不是单词开始或者结束的位置</td>
-</tr>
-<tr>
-<td align="center">[^x]</td>
-<td align="center">匹配除了<code>x</code>以外的任意字符</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>正则表达式</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Swagger2 常用注解</title>
     <url>/2020/01/03/swagger-annotation/</url>
     <content><![CDATA[<p>Spring Boot 开发restful接口时，往往会有很多RESTful API，一般会选择swagger对接口进行管理</p>
@@ -9211,6 +9203,87 @@ public class MainStat {
       <tags>
         <tag>Swagger</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>正则表达式</title>
+    <url>/2020/03/18/tools-regex/</url>
+    <content><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><h3 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h3><table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.</td>
+<td align="center">匹配除了换行符以外的任意字符</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="center">指定*前边的内容可以连续重复使用任意次以使整个表达式得到匹配</td>
+</tr>
+<tr>
+<td align="center">.*</td>
+<td align="center">任意数量的不包含换行的字符</td>
+</tr>
+<tr>
+<td align="center">\b</td>
+<td align="center">单词的开头或结尾，也就是单词的分界处</td>
+</tr>
+<tr>
+<td align="center">\w</td>
+<td align="center">匹配字母、数字、下划线、汉字</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="center">匹配任意空白字符</td>
+</tr>
+<tr>
+<td align="center">\d</td>
+<td align="center">匹配数字</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="center">匹配字符串开始</td>
+</tr>
+<tr>
+<td align="center">$</td>
+<td align="center">匹配字符串结束</td>
+</tr>
+</tbody></table>
+<p>反义</p>
+<table>
+<thead>
+<tr>
+<th align="center">元字符</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\W</td>
+<td align="center">匹配非字母、下划线、数字、汉字</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="center">匹配不是空白字符串</td>
+</tr>
+<tr>
+<td align="center">\D</td>
+<td align="center">匹配任意非数字的字符</td>
+</tr>
+<tr>
+<td align="center">\B</td>
+<td align="center">匹配不是单词开始或者结束的位置</td>
+</tr>
+<tr>
+<td align="center">[^x]</td>
+<td align="center">匹配除了<code>x</code>以外的任意字符</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>正则表达式</category>
+      </categories>
   </entry>
   <entry>
     <title>Vertica 简介</title>
