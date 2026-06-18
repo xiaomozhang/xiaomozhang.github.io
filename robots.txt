@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /wechat/
+
+Sitemap: https://xdfeastbuys.top/sitemap.xml
+
+
+User-agent:*
+Disallow:
